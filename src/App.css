@@ -1,54 +1,74 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+	animation: App-logo-spin infinite 20s linear;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
-.maze {
-  display: grid;
-  width: 600px;
-  height: 600px;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
+.mazeLayer {
+	display: grid;
+	width: 600px;
+	height: 600px;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
+	position: relative;
 }
-.cell {
-  border: 1px solid black;
-  height: 100%;
-  width: 100%;
+
+.movingLayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
+}
+.mapCell {
+	border: 1px solid black;
+	height: 100%;
+	width: 100%;
+}
+
+.movingCell {
+	border: 1px solid black;
+	width: 50%;
+	height: 50%;
+	background-color: antiquewhite;
 }
 .path {
-  background-color: pink;
+	background-color: pink;
 }
 
 .wall {
-  background-color: brown;
+	background-color: brown;
 }

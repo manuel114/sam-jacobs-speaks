@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   <style>
+      div {
+         border: 1px solid black;
+      }
+
+      .grid {
+         display: grid;
+         grid-template-rows: 1fr 1fr 1fr;
+         grid-template-columns: 1fr 1fr 1fr;
+         height: 400px;
+      }
+
+      .mother {
+         position: relative;
+         background: red;
+      }
+
+      .child {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(255, 255, 255, 0.5);
+         grid-auto-flow: dense;
+      }
+
+      .child>div {
+         width: 50%;
+         height: 50%;
+         justify-self: center;
+         align-self: center;
+      }
+
+
+      .player {
+         background: green;
+         grid-column: 1/2;
+         grid-row: 1/2;
+
+      }
+   </style>
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <div class="grid mother">
+      <div class="box1">1</div>
+      <div class="box2">2</div>
+      <div class="box3">3</div>
+      <div class="box4">4</div>
+      <div class="box5">5</div>
+      <div class="box6">6</div>
+      <div class="box7">7</div>
+      <div class="box8">8</div>
+      <div class="box9">9</div>
+
+      <div class="grid child">
+         <div class="box1 player">player</div>
+         <div class="box2">child2</div>
+         <div class="box3">child3</div>
+         <div class="box4">child4</div>
+         <div class="box5">child5</div>
+         <div class="box6">child6</div>
+         <div class="box7">child7</div>
+         <div class="box8">child8</div>
+         <div class="box9">child9</div>
+      </div>
+   </div>
+   <button class="button1">up</button>
+   <button class="button2">down</button>
+   <button class="button3">left</button>
+   <button class="button4">right</button>
+   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+   <script>
+      let playerX = 1;
+      let playerY = 1;
+
+      const movePlayer = () => {
+         document.querySelector('.player').style.setProperty('grid-column', `${playerX}/${playerX + 1}`);
+         document.querySelector('.player').style.setProperty('grid-row', `${playerY}/${playerY + 1}`);
+      }
+
+      $('.button1').on('click', () => {
+         playerY--
+         movePlayer()
+      })
+      $('.button2').on('click', () => {
+         playerY++
+         movePlayer()
+      })
+      $('.button3').on('click', () => {
+         playerX--
+         movePlayer()
+      })
+      $('.button4').on('click', () => {
+         playerX++
+         movePlayer()
+      })
+
+
+
+
+
+   </script>
+</body>
+
+</html>
