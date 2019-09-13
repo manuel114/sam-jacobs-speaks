@@ -19,11 +19,67 @@ class Maze extends Component {
 				[1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0]
 			],
 			playerLocation: {
-				x: 0,
-				y: 0
+				x: 1,
+				y: 1
 			}
 		};
 	}
+
+	moveCoinUp = y => {
+		const newY = this.state.playerLocation.y - 1;
+		this.setState({
+			playerLocation: {
+				x: this.state.playerLocation.x,
+				y: newY
+			}
+		});
+		document
+			.querySelector('.player')
+			.style.setProperty('grid-row', `${newY}/${newY + 1}`);
+		console.log(this.state.playerLocation.x);
+	};
+
+	moveCoinDown = y => {
+		const newY = this.state.playerLocation.y + 1;
+		this.setState({
+			playerLocation: {
+				x: this.state.playerLocation.x,
+				y: newY
+			}
+		});
+		document
+			.querySelector('.player')
+			.style.setProperty('grid-row', `${newY}/${newY + 1}`);
+		console.log(this.state.playerLocation.x);
+	};
+
+	moveCoinRight = x => {
+		const newX = this.state.playerLocation.x + 1;
+		this.setState({
+			playerLocation: {
+				x: newX,
+				y: this.state.playerLocation.y
+			}
+		});
+		document
+			.querySelector('.player')
+			.style.setProperty('grid-column', `${newX}/${newX + 1}`);
+		console.log(this.state.playerLocation.x);
+	};
+
+	moveCoinLeft = x => {
+		const newX = this.state.playerLocation.x - 1;
+		this.setState({
+			playerLocation: {
+				x: newX,
+				y: this.state.playerLocation.y
+			}
+		});
+		document
+			.querySelector('.player')
+			.style.setProperty('grid-column', `${newX}/${newX + 1}`);
+		console.log(this.state.playerLocation.x);
+	};
 
 	render() {
 		return (
@@ -51,6 +107,10 @@ class Maze extends Component {
 						})}
 					</div>
 				</div>
+				<button onClick={this.moveCoinLeft}>Left</button>
+				<button onClick={this.moveCoinUp}>Up</button>
+				<button onClick={this.moveCoinRight}>Right</button>
+				<button onClick={this.moveCoinDown}>Down</button>
 			</div>
 		);
 	}
