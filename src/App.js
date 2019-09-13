@@ -1,591 +1,138 @@
+import React, { Component } from "react";
+import axios from "axios";
 
-import React, {Component} from 'react';
-import axios from 'axios';
 // import Landing from './Landing';
 // import firebase from './firebase';
-import './App.css';
-// import {
-// 	BrowserRouter as Router,
-// 	Route,
-// 	Link
-// } from 'react-router-dom';
-
-String.prototype.removeStopWords = function () {
-	var x;
-	var y;
-	var words;
-	var word;
-	var stop_word;
-	var regex_str;
-	var regex;
-	var cleansed_string = this.valueOf();
-	var stop_words = new Array(
-		'a',
-		'about',
-		'above',
-		'across',
-		'after',
-		'again',
-		'against',
-		'all',
-		'almost',
-		'alone',
-		'along',
-		'already',
-		'also',
-		'although',
-		'always',
-		'among',
-		'an',
-		'and',
-		'another',
-		'any',
-		'anybody',
-		'anyone',
-		'anything',
-		'anywhere',
-		'are',
-		'area',
-		'areas',
-		'around',
-		'as',
-		'ask',
-		'asked',
-		'asking',
-		'asks',
-		'at',
-		'away',
-		'b',
-		'back',
-		'backed',
-		'backing',
-		'backs',
-		'be',
-		'became',
-		'because',
-		'become',
-		'becomes',
-		'been',
-		'before',
-		'began',
-		'behind',
-		'being',
-		'beings',
-		'best',
-		'better',
-		'between',
-		'big',
-		'both',
-		'but',
-		'by',
-		'c',
-		'came',
-		'can',
-		'cannot',
-		'case',
-		'cases',
-		'certain',
-		'certainly',
-		'clear',
-		'clearly',
-		'come',
-		'could',
-		'd',
-		'did',
-		'differ',
-		'different',
-		'differently',
-		'do',
-		'does',
-		'done',
-		'down',
-		'down',
-		'downed',
-		'downing',
-		'downs',
-		'during',
-		'e',
-		'each',
-		'early',
-		'either',
-		'end',
-		'ended',
-		'ending',
-		'ends',
-		'enough',
-		'even',
-		'evenly',
-		'ever',
-		'every',
-		'everybody',
-		'everyone',
-		'everything',
-		'everywhere',
-		'f',
-		'face',
-		'faces',
-		'fact',
-		'facts',
-		'far',
-		'felt',
-		'few',
-		'find',
-		'finds',
-		'first',
-		'for',
-		'four',
-		'from',
-		'full',
-		'fully',
-		'further',
-		'furthered',
-		'furthering',
-		'furthers',
-		'g',
-		'gave',
-		'general',
-		'generally',
-		'get',
-		'gets',
-		'give',
-		'given',
-		'gives',
-		'go',
-		'going',
-		'good',
-		'goods',
-		'got',
-		'great',
-		'greater',
-		'greatest',
-		'group',
-		'grouped',
-		'grouping',
-		'groups',
-		'h',
-		'had',
-		'has',
-		'have',
-		'having',
-		'he',
-		'her',
-		'here',
-		'herself',
-		'high',
-		'high',
-		'high',
-		'higher',
-		'highest',
-		'him',
-		'himself',
-		'his',
-		'how',
-		'however',
-		'i',
-		'if',
-		'important',
-		'in',
-		'interest',
-		'interested',
-		'interesting',
-		'interests',
-		'into',
-		'is',
-		'it',
-		'its',
-		'itself',
-		'j',
-		'just',
-		'k',
-		'keep',
-		'keeps',
-		'kind',
-		'knew',
-		'know',
-		'known',
-		'knows',
-		'l',
-		'large',
-		'largely',
-		'last',
-		'later',
-		'latest',
-		'least',
-		'less',
-		'let',
-		'lets',
-		'like',
-		'likely',
-		'long',
-		'longer',
-		'longest',
-		'm',
-		'made',
-		'make',
-		'making',
-		'man',
-		'many',
-		'may',
-		'me',
-		'member',
-		'members',
-		'men',
-		'might',
-		'more',
-		'most',
-		'mostly',
-		'mr',
-		'mrs',
-		'much',
-		'must',
-		'my',
-		'myself',
-		'n',
-		'necessary',
-		'need',
-		'needed',
-		'needing',
-		'needs',
-		'never',
-		'new',
-		'new',
-		'newer',
-		'newest',
-		'next',
-		'no',
-		'nobody',
-		'non',
-		'noone',
-		'not',
-		'nothing',
-		'now',
-		'nowhere',
-		'number',
-		'numbers',
-		'o',
-		'of',
-		'off',
-		'often',
-		'old',
-		'older',
-		'oldest',
-		'on',
-		'once',
-		'one',
-		'only',
-		'open',
-		'opened',
-		'opening',
-		'opens',
-		'or',
-		'order',
-		'ordered',
-		'ordering',
-		'orders',
-		'other',
-		'others',
-		'our',
-		'out',
-		'over',
-		'p',
-		'part',
-		'parted',
-		'parting',
-		'parts',
-		'per',
-		'perhaps',
-		'place',
-		'places',
-		'point',
-		'pointed',
-		'pointing',
-		'points',
-		'possible',
-		'present',
-		'presented',
-		'presenting',
-		'presents',
-		'problem',
-		'problems',
-		'put',
-		'puts',
-		'q',
-		'quite',
-		'r',
-		'rather',
-		'really',
-		'right',
-		'right',
-		'room',
-		'rooms',
-		's',
-		'said',
-		'same',
-		'saw',
-		'say',
-		'says',
-		'second',
-		'seconds',
-		'see',
-		'seem',
-		'seemed',
-		'seeming',
-		'seems',
-		'sees',
-		'several',
-		'shall',
-		'she',
-		'should',
-		'show',
-		'showed',
-		'showing',
-		'shows',
-		'side',
-		'sides',
-		'since',
-		'small',
-		'smaller',
-		'smallest',
-		'so',
-		'some',
-		'somebody',
-		'someone',
-		'something',
-		'somewhere',
-		'state',
-		'states',
-		'still',
-		'still',
-		'such',
-		'sure',
-		't',
-		'take',
-		'taken',
-		'than',
-		'that',
-		'the',
-		'their',
-		'them',
-		'then',
-		'there',
-		'therefore',
-		'these',
-		'they',
-		'thing',
-		'things',
-		'think',
-		'thinks',
-		'this',
-		'those',
-		'though',
-		'thought',
-		'thoughts',
-		'three',
-		'through',
-		'thus',
-		'to',
-		'today',
-		'together',
-		'too',
-		'took',
-		'toward',
-		'turn',
-		'turned',
-		'turning',
-		'turns',
-		'two',
-		'u',
-		'under',
-		'until',
-		'up',
-		'upon',
-		'us',
-		'use',
-		'used',
-		'uses',
-		'v',
-		'very',
-		'w',
-		'want',
-		'wanted',
-		'wanting',
-		'wants',
-		'was',
-		'way',
-		'ways',
-		'we',
-		'well',
-		'wells',
-		'went',
-		'were',
-		'what',
-		'when',
-		'where',
-		'whether',
-		'which',
-		'while',
-		'who',
-		'whole',
-		'whose',
-		'why',
-		'will',
-		'wish',
-		'with',
-		'within',
-		'without',
-		'work',
-		'worked',
-		'working',
-		'works',
-		'would',
-		'x',
-		'y',
-		'year',
-		'years',
-		'yet',
-		'you',
-		'young',
-		'younger',
-		'youngest',
-		'your',
-		'yours',
-		'z'
-	)
-
-	// Split out all the individual words in the phrase
-	words = cleansed_string.match(/[^\s]+|\s+[^\s+]$/g)
-
-	// Review all the words
-	for (x = 0; x < words.length; x++) {
-		// For each word, check all the stop words
-		for (y = 0; y < stop_words.length; y++) {
-			// Get the current word
-			word = words[x].replace(/\s+|[^a-z]+/ig, "");	// Trim the word and remove non-alpha
-
-			// Get the stop word
-			stop_word = stop_words[y];
-
-			// If the word matches the stop word, remove it from the keywords
-			if (word.toLowerCase() == stop_word) {
-				// Build the regex
-				regex_str = "^\\s*" + stop_word + "\\s*$";		// Only word
-				regex_str += "|^\\s*" + stop_word + "\\s+";		// First word
-				regex_str += "|\\s+" + stop_word + "\\s*$";		// Last word
-				regex_str += "|\\s+" + stop_word + "\\s+";		// Word somewhere in the middle
-				regex = new RegExp(regex_str, "ig");
-
-				// Remove the word from the keywords
-				cleansed_string = cleansed_string.replace(regex, " ");
-			}
-		}
-	}
-	return cleansed_string.replace(/^\s+|\s+$/g, "");
-}
+import "./App.css";
+import Maze from "./Components/Maze";
+import LandingPage from "./Components/LandingPage";
+// import Results from "./Components/Results";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			advice: [],
-			userWish: '',
-			keyWords: [],
-		}
-	}
-
-	handleChange = e => {
-		this.setState({
-			userWish: e.target.value
-		})
-		console.log(e.target.value);
-	}
-
-	handleSubmit = (e) => {
-		e.preventDefault();
-		const userSubmit = this.state.userWish;
-		console.log(userSubmit);
-
-		// const wordArray = userSubmit.split(" ");
-		// this.setState ({
-		// 	keyWords: wordArray,
-		// })
-
-		const testValue = userSubmit.removeStopWords();
-		console.log(testValue);
-		
-	}
-
-	componentDidMount() {
-		axios({
-			url: `https://api.adviceslip.com/advice/search/life`,
-			method: `GET`,
-			dataResponse: `json`,
-			// params: {
-			//     callback: `life`,
-			// }
-		}).then((answer) => {
-			console.log(answer);
-			const quotes = answer.data.results;
-			this.setState({
-				quotes,
-			})
-		})
-	}
-	render() {
-		return (
-			<div className='App'>
-				<h1>Zoltar Speaks</h1>
-				{/* <Landing /> */}
-				<img src="" alt="" />
-				<form action="submit">
-					<label htmlFor="">What is Your Wish?</label>
-					<input type="text" onChange={this.handleChange} />
-					<button type="submit" onClick={this.handleSubmit}>Deposit a Coin</button>
-				</form>
-			</div>
-		);
-
-	}
-
-// class App extends React.Component {
 //   constructor() {
 //     super();
 //     this.state = {
-//       maze: [
-//         [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//         [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-//         [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1],
-//         [1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1],
-//         [1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1],
-//         [1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1],
-//         [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1],
-//         [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-//         [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
-//         [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-//         [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-//         [1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1]
-//       ]
+//       advice: [],
+//       userWish: "",
+//       keyWord: "" // this is the first keyword from the user submission used to submit into the API Call
 //     };
 //   }
 
-//   render() {
-//     return (
-//       <div className='App'>
-//         <h1>Zoltar Speaks</h1>
-//         <div className='maze'>
-//           {this.state.maze.map((item, index) => {
-//             return item.map((cell, i) => {
-//               if (cell === 0) {
-//                 return <div className='cell path'>path</div>;
-//               } else {
-//                 return <div className='cell wall'>wall</div>;
-//               }
-//             });
-//           })}
-//         </div>
-//       </div>
-//     );
-//   }
-// >>>>>>> master
+//   handleChange = e => {
+//     this.setState({
+//       userWish: e.target.value
+//     });
+//     // console.log(e.target.value);
+//   };
+
+  //   handleSubmit = e => {
+  //     e.preventDefault();
+  //     const userSubmit = this.state.userWish;
+  //     // console.log(userSubmit);
+
+  //     const stopWordsRemoved = userSubmit.removeStopWords();
+  //     console.log(stopWordsRemoved);
+
+  //     // turn this into an array
+
+  //     const wordArray = stopWordsRemoved.split(" ");
+  //     // console.log(wordArray);
+
+  //     // take the first value of the array [0] and save it to state
+
+  //     const userKeyWord = wordArray[0];
+  //     console.log(userKeyWord);
+
+  //     // run it through the API Call to get contextual advice
+
+  //     axios({
+  //       url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
+  //       method: `GET`,
+  //       dataResponse: `json`
+  //     }).then(answer => {
+  //       console.log(answer);
+
+  //       console.log(answer.data.message);
+
+  //       if (typeof answer.data.message === "undefined") {
+  //         this.setState(
+  //           {
+  // advice: [...this.state.advice, answer.data.slips[0].advice],
+  //             advice: answer.data.slips[0].advice
+  //           },
+  //           () => {
+  //             console.log(this.state.advice);
+  //           }
+  //         );
+  //       }
+  //     });
+  //   };
+
+  componentDidMount() {
+    // on mount, lets do an API call, get a random piece of advnce and save
+
+    axios({
+      url: `https://api.adviceslip.com/advice`,
+      method: `GET`,
+      dataResponse: `json`
+    })
+      .then(answer => {
+        console.log(answer);
+
+        // console.log(answer.data.slip.advice);
+
+        const randomQuote = answer.data.slip.advice;
+
+        this.setState({
+          advice: randomQuote
+        });
+      })
+      .catch(() => {
+        console.log("error");
+      });
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          {/* <h1>Zoltar Speaks</h1>
+          <img src="" alt="" />
+
+          <form action="submit">
+            <label htmlFor="">What is Your Wish?</label>
+            <input type="text" onChange={this.handleChange} /> */}
+
+			<Route exact path="/" component={LandingPage} />
+
+            {/* <Link to="/maze">
+              <button type="submit" onClick={this.handleSubmit}>
+                Deposit a Coin
+              </button>
+            </Link> */}
+
+            <Route path="/maze" component={Maze} />
+
+          {/* </form> */}
+        </div>
+      </Router>
+    );
+  }
+
+  // class App extends React.Component {
+  //
+
+  //   render() {
+  //     return (
+  //       <div className='App'>
+  //         <h1>Zoltar Speaks</h1>
+  //
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  // >>>>>>> master
 }
 
 export default App;
