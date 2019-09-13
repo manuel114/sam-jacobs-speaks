@@ -1,121 +1,106 @@
-import React, { Component } from "react";
-import axios from "axios";
-import filterWish from './filterWish'
-
-// import Landing from './Landing';
+import React, { Component } from 'react';
+import axios from 'axios';
+import filterWish from './filterWish';
 // import firebase from './firebase';
-import "./App.css";
-
-import Maze from "./Components/Maze";
-
-import LandingPage from "./Components/LandingPage";
+import './App.css';
+import Maze from './Components/Maze';
+import LandingPage from './Components/LandingPage';
 // import Results from "./Components/Results";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			advice: []
+			// userWish: "",
+		};
+	}
 
-  constructor() {
-    super()
-    this.state = {
-      advice: [],
-      // userWish: "",
-    }
-  }
+	handleSubmit = userWish => {
+		const userInput = userWish;
 
+		const filteredWish = filterWish(userInput);
+		console.log(filteredWish);
 
-  handleSubmit = (e, userWish) => {
-    e.preventDefault();
-    // const userInput = this.state.userWish;
-    // console.log(userWishImported);
-    const userInput = userWish;
+		// turn this into an array
 
-    const filteredWish = filterWish(userInput);
-    console.log(filteredWish)
+		const wordArray = filteredWish.split(' ');
+		// console.log(wordArray);
 
-    // turn this into an array
+		// take the first value of the array [0] and save it to state
 
-    const wordArray = filteredWish.split(" ");
-    // console.log(wordArray);
+		const userKeyWord = wordArray[0];
+		console.log(userKeyWord);
 
-    // take the first value of the array [0] and save it to state
+		// run it through the API Call to get contextual advice
 
-    const userKeyWord = wordArray[0];
-    console.log(userKeyWord);
+		axios({
+			url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
+			method: `GET`,
+			dataResponse: `json`
+		}).then(answer => {
+			console.log(answer);
 
-    // run it through the API Call to get contextual advice
+			// console.log(answer.data.message);
 
-    axios({
-      url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
-      method: `GET`,
-      dataResponse: `json`
-    }).then(answer => {
-      console.log(answer);
+			if (typeof answer.data.message === 'undefined') {
+				this.setState(
+					{
+						advice: [...this.state.advice, answer.data.slips[0].advice],
+						advice: answer.data.slips[0].advice
+					},
+					() => {
+						console.log(this.state.advice);
+					}
+				);
+			} else {
+				console.log(this.state.advice);
+			}
+		});
+	};
 
-      // console.log(answer.data.message);
+	componentDidMount() {
+		// on mount, make an API call, get a random piece of advice and store in state, just in case the user's keyword query doesn't return any result
 
-      if (typeof answer.data.message === "undefined") {
-        this.setState(
-          {
-            advice: [...this.state.advice, answer.data.slips[0].advice],
-            advice: answer.data.slips[0].advice
-          },
-          () => {
-            console.log(this.state.advice);
-          }
-        );
-      } else {
-        console.log(this.state.advice);
-      }
-    });
-  };
+		axios({
+			url: `https://api.adviceslip.com/advice`,
+			method: `GET`,
+			dataResponse: `json`
+		})
+			.then(answer => {
+				console.log(answer);
 
-  componentDidMount() {
-    // on mount, make an API call, get a random piece of advnce and save, just in case the user's keyword query doesn't return any result
+				const randomAdvice = answer.data.slip.advice;
 
-    axios({
-      url: `https://api.adviceslip.com/advice`,
-      method: `GET`,
-      dataResponse: `json`
-    })
-      .then(answer => {
-        console.log(answer);
+				this.setState({
+					advice: randomAdvice
+				});
+			})
+			.catch(() => {
+				console.log('error');
+			});
+	}
 
-        // console.log(answer.data.slip.advice);
-
-        const randomQuote = answer.data.slip.advice;
-
-        this.setState({
-          advice: randomQuote
-        });
-      })
-      .catch(() => {
-        console.log("error");
-      });
-  }
-
-  render() {
-    return (
-      <Router>
-        <div className="App">
-
-          <Route exact path="/"
-            component={() =>
-              <LandingPage
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-              />}
-
-          />
-
-          <Route path="/maze" component={Maze} />
-
-
-        </div>
-      </Router>
-    );
-  }
-
-
+	render() {
+		return (
+			<Router>
+				<div className='App'>
+					<Route
+						exact
+						path='/'
+						component={() => (
+							<LandingPage
+								handleSubmit={this.handleSubmit}
+								handleChange={this.handleChange}
+							/>
+						)}
+					/>
+					<Route path='/maze' component={Maze} />
+				</div>
+			</Router>
+		);
+	}
 }
 
 export default App;
