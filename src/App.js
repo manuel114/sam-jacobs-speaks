@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import axios from 'axios';
 // import Landing from './Landing';
@@ -544,6 +545,47 @@ class App extends Component {
 		);
 
 	}
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       maze: [
+//         [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+//         [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+//         [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1],
+//         [1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1],
+//         [1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1],
+//         [1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1],
+//         [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+//         [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+//         [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
+//         [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
+//         [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
+//         [1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1]
+//       ]
+//     };
+//   }
+
+//   render() {
+//     return (
+//       <div className='App'>
+//         <h1>Zoltar Speaks</h1>
+//         <div className='maze'>
+//           {this.state.maze.map((item, index) => {
+//             return item.map((cell, i) => {
+//               if (cell === 0) {
+//                 return <div className='cell path'>path</div>;
+//               } else {
+//                 return <div className='cell wall'>wall</div>;
+//               }
+//             });
+//           })}
+//         </div>
+//       </div>
+//     );
+//   }
+// >>>>>>> master
 }
 
 export default App;

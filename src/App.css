@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+.maze {
+  display: grid;
+  width: 600px;
+  height: 600px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  justify-items: center;
+}
+.cell {
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}
+.path {
+  background-color: pink;
+}
+
+.wall {
+  background-color: brown;
+}
