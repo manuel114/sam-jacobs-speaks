@@ -20,187 +20,101 @@ class Maze extends Component {
 				[1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, -2]
 			],
 			playerLocation: {
-				x: 1,
-				y: 1
+				x: 0,
+				y: 0
 			},
 			showModal: true
 		};
 	}
 
+	// on click/keydown, get target location x, y, store in target state
 
-// on click/keydown, get target location x, y, store in target state
-
-// check if target cell is within boundary: 
+	// check if target cell is within boundary:
 
 	// if yes, check type of target cell
 
-			// if path, move(), updates this.state.playerLocation
+	// if path, move(), updates this.state.playerLocation
 
-			// if wall, null
+	// if wall, null
 
-			// if exit, Link to modal box
+	// if exit, Link to modal box
 
-			// if trap, trap()
+	// if trap, trap()
 
 	// if no, null
 
-
 	//pass in X or Y axis, and +1 or -1 movement
-updateCoinLocation=(axis, vector)=>{
+	updateCoinLocation = (axis, vector) => {
+		console.log(vector);
+		console.log(this.state.playerLocation);
 
-	// this.state.playerLocation[axis]+vector
+		const target = this.state.playerLocation;
 
-	
-	const target = this.state.playerLocaton
-	
-	target[axis] = target[axis]+vector
-	
-		if ( target[axis]< 1 || target[axis]>this.state.mazeMap.length) {
+		target[axis] = this.state.playerLocation[axis] + vector;
+		// this is where it's counting
+
+		if (
+			target[axis] + vector < 0 ||
+			target[axis] + vector > this.state.mazeMap.length
+		) {
 			console.log('out of bounds');
-			
 		} else {
 			console.log('in bounds');
-			this.checkTargetCell()
-		}
-	}
-
-
-
-
-
-
-
-	checkTarget = (x, y) => {
-		console.log('target x', x);
-		console.log('target y', y);
-
-		this.checkTargetCell(x, y);
-		if (this.state.mazeMap[y - 1][x - 1] === 0) {
-			console.log('path is clear');
-			return true;
-		} else {
-			console.log('path is blocked');
-			return false;
+			this.checkTargetCell(target, axis, vector);
 		}
 	};
 
-	checkTargetCell = (x, y) => {
-		const targetCell = this.state.mazeMap[y - 1][x - 1];
+	checkTargetCell = (target, axis, vector) => {
+		const targetCellValue = this.state.mazeMap[target.y][target.x];
 
-		let cellType;
-		switch (targetCell) {
-			case 0: {
-				// added brackets
-				cellType = 'path';
+		console.log('check target cell,', target.x, target.y);
+		console.log('targetCellValue', targetCellValue);
+		switch (targetCellValue) {
+			case 1: {
+				console.log('wall!!!!!');
+				console.log(
+					'player location when wall is hit',
+					this.state.playerLocation
+				);
+
+				console.log('before target', target);
+				target[axis] = this.state.playerLocation[axis] + vector * -1;
+				console.log('after target', target);
+
+				// const newPlayerLocation = this.state.playerLocation;
+
+				// newPlayerLocation[axis] += vector * -1;
+
+				// this.setState({
+				// 	playerLocation: newPlayerLocation
+				// });
+
 				break;
 			}
-			case 1: {
-				// added brackets
-				cellType = 'wall';
+			case -2: {
+				this.moveCoin(target);
+				alert('your wish is granted!');
+				break;
+			}
+			case 0: {
+				this.moveCoin(target);
 
 				break;
-			} // added brackets
-			case -2:
-				{
-					cellType = 'win';
-					alert('your wish is granted!');
-				}
-
-				return cellType;
+			}
 		}
-		console.log(cellType);
-		this.setState({
-			showModal: true
+	};
+
+	moveCoin = target => {
+		console.log('move coin', target);
+
+		this.setState({ playerLocation: target }, () => {
+			console.log('player location changed');
+			document.querySelector(
+				'.player'
+			).style.transform = `translate(${target.x}00%,${target.y}00%)`;
 		});
 	};
 
-	// Check if trap, then send player back to start or random location
-
-	moveCoinUp = () => {
-		const newY = this.state.playerLocation.y - 1;
-
-		if (this.checkBoundary(newY) === true) {
-			this.setState({
-				playerLocation: {
-					x: this.state.playerLocation.x,
-					y: newY
-				}
-			});
-
-			document
-				.querySelector('.player')
-				.style.setProperty('grid-row', `${newY}/${newY + 1}`);
-
-			console.log(this.state.playerLocation.x);
-		}
-	};
-
-	moveCoinDown = y => {
-		const newY = this.state.playerLocation.y + 1;
-
-		if (this.checkBoundary(newY) === true) {
-			this.setState({
-				playerLocation: {
-					x: this.state.playerLocation.x,
-					y: newY
-				}
-			});
-			document
-				.querySelector('.player')
-				.style.setProperty('grid-row', `${newY}/${newY + 1}`);
-			console.log(this.state.playerLocation.x);
-		}
-	};
-
-	// };
-
-	moveCoinRight = x => {
-		const newX = this.state.playerLocation.x + 1;
-
-		console.log('newX', newX);
-
-		if (
-			this.checkBoundary(newX) === true &&
-			this.checkTarget(newX, this.state.playerLocation.y)
-		) {
-			this.setState({
-				playerLocation: {
-					x: newX,
-					y: this.state.playerLocation.y
-				}
-			});
-			document
-				.querySelector('.player')
-				.style.setProperty('grid-column', `${newX}/${newX + 1}`);
-			console.log(this.state.playerLocation.x);
-		}
-	};
-
-	moveCoinLeft = x => {
-		console.log(this.state.playerLocation.x);
-		console.log(this.state.playerLocation.y);
-
-		const newX = this.state.playerLocation.x - 1;
-		if (this.checkBoundary(newX) === true) {
-			this.setState({
-				playerLocation: {
-					x: newX,
-					y: this.state.playerLocation.y
-				}
-			});
-			document
-				.querySelector('.player')
-				.style.setProperty('grid-column', `${newX}/${newX + 1}`);
-			console.log(this.state.playerLocation.x);
-		}
-	};
-
-// moveCoin = (axis, direction)=>{
-	
-// }
-
-
-	// }
 	render() {
 		return (
 			<div>
@@ -221,7 +135,11 @@ updateCoinLocation=(axis, vector)=>{
 							return row.map((cell, X) => {
 								if (cell === -1) {
 									// starting location
-									return <div className='movingCell player avatar'>Player</div>;
+									return (
+										<div className='movingCell player'>
+											<div className='avatar'></div>
+										</div>
+									);
 								} else {
 									return <div className='movingCell'>O</div>;
 								}
@@ -229,10 +147,30 @@ updateCoinLocation=(axis, vector)=>{
 						})}
 					</div>
 				</div>
-				<button onClick={this.moveCoinLeft}>Left</button>
-				<button onClick={this.moveCoinUp}>Up</button>
-				<button onClick={this.moveCoinRight}>Right</button>
-				<button onClick={this.moveCoinDown}>Down</button>
+				<button
+					onClick={() => {
+						this.updateCoinLocation('x', -1);
+					}}>
+					Left
+				</button>
+				<button
+					onClick={() => {
+						this.updateCoinLocation('y', -1);
+					}}>
+					Up
+				</button>
+				<button
+					onClick={() => {
+						this.updateCoinLocation('x', 1);
+					}}>
+					Right
+				</button>
+				<button
+					onClick={() => {
+						this.updateCoinLocation('y', 1);
+					}}>
+					Down
+				</button>
 
 				{this.state.showModal ? <WinModal /> : null}
 				{/* modal appears if victory condition is set to true*/}
