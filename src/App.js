@@ -5,7 +5,8 @@ import filterWish from './filterWish';
 import './App.css';
 import Maze from './Components/Maze';
 import LandingPage from './Components/LandingPage';
-// import Results from "./Components/Results";
+import Results from "./Components/Results";
+
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
 		super();
 		this.state = {
 			advice: []
-			// userWish: "",
+			
 		};
 	}
 
@@ -84,22 +85,23 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
-				<div className='App'>
-					<Route
-						exact
-						path='/'
-						component={() => (
-							<LandingPage
-								handleSubmit={this.handleSubmit}
-								handleChange={this.handleChange}
-							/>
-						)}
-					/>
-					<Route path='/maze' component={Maze} />
-				</div>
-			</Router>
-		);
+      <Router>
+        <div className="App">
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <LandingPage
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            )}
+          />
+          <Route path="/maze" component={Maze} />
+          <Route path="/results" component={Results} />
+        </div>
+      </Router>
+    );
 	}
 }
 
