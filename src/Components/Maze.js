@@ -165,9 +165,9 @@ class Maze extends Component {
 		}
 	};
 
-moveCoin = (axis, direction)=>{
+// moveCoin = (axis, direction)=>{
 	
-}
+// }
 
 
 	// }

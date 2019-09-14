@@ -6,8 +6,6 @@ import './App.css';
 import Maze from './Components/Maze';
 import LandingPage from './Components/LandingPage';
 import Results from './Components/Results';
-import 
-
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
