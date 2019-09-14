@@ -65,6 +65,7 @@
 	height: 50%;
 	background-color: antiquewhite;
 }
+
 .path {
 	background-color: pink;
 }
@@ -72,7 +73,32 @@
 .wall {
 	background-color: brown;
 }
+
 .player {
 	grid-row: 1/2;
 	grid-column: 1/2;
+}
+
+.avatar {
+  background-image: url("./Assets/coinTest.png");
+  background-position: top 0% left 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* for avatar sprite sheet */
+  animation: moveSprite 0.5s steps(5) infinite;
+  /* width: 16px;
+  height: 16px; */
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  z-index: 5;
+}
+
+@keyframes moveSprite { 
+  100%{background-position: top 0% left -500px};
 }

@@ -96,9 +96,11 @@ class Maze extends Component {
 					y: newY
 				}
 			});
+
 			document
 				.querySelector('.player')
 				.style.setProperty('grid-row', `${newY}/${newY + 1}`);
+
 			console.log(this.state.playerLocation.x);
 		}
 	};
@@ -163,6 +165,11 @@ class Maze extends Component {
 		}
 	};
 
+moveCoin = (axis, direction)=>{
+	
+}
+
+
 	// }
 	render() {
 		return (
@@ -183,6 +190,7 @@ class Maze extends Component {
 						{this.state.mazeMap.map((row, Y) => {
 							return row.map((cell, X) => {
 								if (cell === -1) {
+									// starting location
 									return <div className='movingCell player'>Player</div>;
 								} else {
 									return <div className='movingCell'>O</div>;
