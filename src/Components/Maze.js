@@ -48,9 +48,14 @@ class Maze extends Component {
 	//pass in X or Y axis, and +1 or -1 movement
 updateCoinLocation=(axis, vector)=>{
 
-	const target =this.state.playerLocation[axis]+vector
+	// this.state.playerLocation[axis]+vector
 
-		if ( target< 1 || target >this.state.mazeMap.length) {
+	
+	const target = this.state.playerLocaton
+	
+	target[axis] = target[axis]+vector
+	
+		if ( target[axis]< 1 || target[axis]>this.state.mazeMap.length) {
 			console.log('out of bounds');
 			
 		} else {
