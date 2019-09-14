@@ -27,18 +27,43 @@ class Maze extends Component {
 		};
 	}
 
-	checkBoundary = target => {
-		// console.log(target);
-		// console.log(this.state.playerLocation.x, this.state.playerLocation.y);
 
-		if (target > 12 || target < 1) {
+// on click/keydown, get target location x, y, store in target state
+
+// check if target cell is within boundary: 
+
+	// if yes, check type of target cell
+
+			// if path, move(), updates this.state.playerLocation
+
+			// if wall, null
+
+			// if exit, Link to modal box
+
+			// if trap, trap()
+
+	// if no, null
+
+
+	//pass in X or Y axis, and +1 or -1 movement
+updateCoinLocation=(axis, vector)=>{
+
+	const target =this.state.playerLocation[axis]+vector
+
+		if ( target< 1 || target >this.state.mazeMap.length) {
 			console.log('out of bounds');
-			return false;
+			
 		} else {
 			console.log('in bounds');
-			return true;
+			this.checkTargetCell()
 		}
-	};
+	}
+
+
+
+
+
+
 
 	checkTarget = (x, y) => {
 		console.log('target x', x);
@@ -191,7 +216,7 @@ class Maze extends Component {
 							return row.map((cell, X) => {
 								if (cell === -1) {
 									// starting location
-									return <div className='movingCell player'>Player</div>;
+									return <div className='movingCell player avatar'>Player</div>;
 								} else {
 									return <div className='movingCell'>O</div>;
 								}

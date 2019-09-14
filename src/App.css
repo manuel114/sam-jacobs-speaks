@@ -40,6 +40,17 @@
 	grid-template-rows: repeat(12, 1fr);
 	justify-items: center;
 	position: relative;
+	animation: spinMaze infinite 2s linear alternate;
+	
+}
+
+@keyframes spinMaze {
+	from {
+		transform: perspective(200px)  rotateZ(0deg) rotateX(360deg);
+	}
+	to {
+		transform: perspective(200px) rotateZ(50deg) rotateX(60deg);
+	}
 }
 
 .movingLayer {
@@ -63,7 +74,7 @@
 	border: 1px solid black;
 	width: 50%;
 	height: 50%;
-	background-color: antiquewhite;
+	background-color: rgba(0,0,0,0);
 }
 
 .path {
@@ -89,8 +100,8 @@
   animation: moveSprite 0.5s steps(5) infinite;
   /* width: 16px;
   height: 16px; */
-  width: 100px;
-  height: 100px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -100,5 +111,5 @@
 }
 
 @keyframes moveSprite { 
-  100%{background-position: top 0% left -500px};
+  100%{background-position: top 0% left -150px};
 }

@@ -84,8 +84,9 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="coinTest avatar">
-				</div>
+				{/* <div 
+					className="coinTest avatar">
+				</div> */}
 				<div className='App'>
 					<Route
 						exact
