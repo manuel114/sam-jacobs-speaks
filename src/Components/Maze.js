@@ -25,9 +25,26 @@ class Maze extends Component {
 		};
 	}
 
-	moveCoinUp = y => {
+	checkBoundary = (target) => {
+		console.log(target);
+		console.log(this.state.playerLocation.x,this.state.playerLocation.y);
+		if (target > 12 || target < 1){
+			console.log("out of bounds");
+			return false;
+		}else {
+			console.log("in bounds");
+			return true;
+		}
+	}
+
+	
+	moveCoinUp = () => {
 		const newY = this.state.playerLocation.y - 1;
-		this.setState({
+		
+		if (this.checkBoundary(newY) === true) {
+
+
+			this.setState({
 			playerLocation: {
 				x: this.state.playerLocation.x,
 				y: newY
@@ -37,50 +54,67 @@ class Maze extends Component {
 			.querySelector('.player')
 			.style.setProperty('grid-row', `${newY}/${newY + 1}`);
 		console.log(this.state.playerLocation.x);
-	};
+		}
+
+	}
+		
+	
 
 	moveCoinDown = y => {
+
 		const newY = this.state.playerLocation.y + 1;
-		this.setState({
+
+		if (this.checkBoundary(newY) === true) {
+
+			this.setState({
 			playerLocation: {
 				x: this.state.playerLocation.x,
 				y: newY
 			}
-		});
+		})
 		document
 			.querySelector('.player')
 			.style.setProperty('grid-row', `${newY}/${newY + 1}`);
 		console.log(this.state.playerLocation.x);
-	};
+
+		}}
+		
+	// };
 
 	moveCoinRight = x => {
 		const newX = this.state.playerLocation.x + 1;
-		this.setState({
+		
+		if (this.checkBoundary(newX) === true) {
+			this.setState({
 			playerLocation: {
 				x: newX,
 				y: this.state.playerLocation.y
 			}
-		});
+		})
 		document
 			.querySelector('.player')
 			.style.setProperty('grid-column', `${newX}/${newX + 1}`);
 		console.log(this.state.playerLocation.x);
-	};
+		}}
+	
+	// }
 
 	moveCoinLeft = x => {
 		const newX = this.state.playerLocation.x - 1;
-		this.setState({
+		if (this.checkBoundary(newX) === true) {
+this.setState({
 			playerLocation: {
 				x: newX,
 				y: this.state.playerLocation.y
 			}
-		});
+		})
 		document
 			.querySelector('.player')
 			.style.setProperty('grid-column', `${newX}/${newX + 1}`);
 		console.log(this.state.playerLocation.x);
-	};
-
+		}
+	}
+	// }
 	render() {
 		return (
 			<div>
