@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import ZoltarLogo from '../Assets/ZoltarLogo.svg';
 // import Maze from '../Components/Maze';
 // import Results from '../Components/Results';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -31,43 +32,39 @@ class LandingPage extends Component {
     return (
       // <Router>
       <div>
-        <h1>Zoltar Speaks</h1>
-        <img src='' alt='' />
+        <header className="zoltarContainer">
+          <div className="zoltarTitleImage">
+            <h1>Zoltar Speaks</h1>
+            <img className="zoltarImage" src={require("../Assets/ZoltarLogo.svg")} alt={"Zoltar Speaks Logo"} />
+          </div>
 
-        <form action='submit'>
-          <label htmlFor=''>What is Your Wish?</label>
-          <input type='text' onChange={this.handleChange} />
+          <div className="makeWishContainer">
+            <form action='submit'>
+              <h2 className="wishQuestion">What do you wish for?</h2>
 
-          <Link to='/maze'>
-            <button
-              onClick={() => this.props.handleSubmit(this.state.userWish)}>
-              go to maze
-						</button>
-          </Link>
-        </form>
+              <div className="buttonLinkContainer">
+                <div className="userInput">
+                  <label className="wishLabel hidden"></label>
+                  <input type='text' onChange={this.handleChange} />
+                </div>
+                <div className="wishButton">
+                  <Link to='/maze'>
+                    <button className="landingPageButton"
+                      onClick={() => this.props.handleSubmit(this.state.userWish)}>
+                      enter maze
+                	  </button>
+                  </Link>
+                </div>
+              </div>
+            </form>
 
-        <div class="background">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+          </div>
+
+        </header>
+
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
       </div>
     );
   }

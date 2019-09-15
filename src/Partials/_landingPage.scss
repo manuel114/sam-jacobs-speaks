@@ -1,79 +1,133 @@
 //CODEPEN REFERENCED FROM SARANSH SINHA
-// @import 'compass';
 
 
-// n is number of stars required
-@function multiple-box-shadow ($n) {
-  $value: '#{random(2000)}px #{random(2000)}px #FFF';
-  @for $i from 2 through $n {
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
-  }
-
-  @return unquote($value);
+div {
+  // border: 2px solid green;
+  display: flex;
+  flex-direction: column;
 }
 
-html {
-  height: 100%;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-  overflow: hidden;
-
+.zoltarContainer {
+  border: 2px solid #e2804d;
+  // width: 60px;
+    margin: 2rem auto;
+  justify-content: center;
+  z-index: 100;
+  background: radial-gradient(ellipse at bottom, #3e000e 30%, #090a0f 100%);
+  width: 800px;
+  height: 90vh;
 }
-    
+
+.zoltarImage {
+  z-index: 100;
+  //  width: 30vw;
+  // max-width: 600px;
+  // height: 30vw;
+  max-height: 450px;
+  // width: 700px;
+}
+
+.wishQuestion {
+  color: #fff;
+  font-family: 'Hind Siliguri', sans-serif;
+  letter-spacing: 1.2px;
+  margin-top: 5%;
+  padding-bottom: 10%;
+}
+
+.wishLabel {
+  color: #fff;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+.hidden{
+   visibility:hidden;
+}
+
+.landingPageButton {
+  background: #e2804d;
+  border: 1px solid #e2804d;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 0.5rem ;
+}
+
+.landingPageButton:hover {
+  background: #df96cc;
+  border: 1px solid #df96cc;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 0.5rem ;
+  transition: all 0.3s;
+}
+
+.buttonLinkContainer {
+  display: flex;
+  // border: 3px solid red;
+  flex-direction: row;
+}
+
+.userInput {
+  width: 60%;
+  height: 50px;
+  padding-left: 5rem;
+}
+
+.wishButton {
+  // display: flex;
+  // width: 40%;
+  padding-left: 2rem;
+}
+
+
+
+//ANIMATED BACKGROUND
+
 #stars {
+	content:"e";
+  background: transparent;
+  box-shadow: $stars;
+  animation: animStar 50s linear infinite;
+}
+#stars:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
   width: 1px;
   height: 1px;
   background: transparent;
-  box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
-
-    
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-  }
+  box-shadow: $starsAfter;
 }
 
-    
 #stars2 {
-  
   width: 2px;
   height: 2px;
   background: transparent;
-  box-shadow: $shadows-medium;
+  box-shadow: $stars2;
   animation: animStar 100s linear infinite;
-    
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-  }
 }
-    
+#stars2:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $stars2After;
+}
+
 #stars3 {
   width: 3px;
   height: 3px;
   background: transparent;
-  box-shadow: $shadows-big;
+  box-shadow: $stars3;
   animation: animStar 150s linear infinite;
-    
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-  }
+}
+#stars3:after {
+  content: "e ";
+  position: absolute;
+  top: 2000px;
+  background: transparent;
+  box-shadow: $stars3After;
 }
 
 #title {
@@ -83,26 +137,25 @@ html {
   right: 0;
   color: #FFF;
   text-align: center;
-  font-family: 'lato',sans-serif;
+  font-family: "lato", sans-serif;
   font-weight: 300;
   font-size: 50px;
   letter-spacing: 10px;
   margin-top: -60px;
   padding-left: 10px;
 }
-  
-  span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-    
+
+#title span {
+  background: -webkit-linear-gradient(white, #38495a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @keyframes animStar {
-  from	{
+  from {
     transform: translateY(0px);
   }
-  to		{
+  to {
     transform: translateY(-2000px);
   }
 }
-    

@@ -1,14 +1,11 @@
 @import 'setup';
+@import 'global';
 @import 'variables';
 @import 'landingPage';
 
 
 .App {
 	text-align: center;
-}
-
-h1 {
-   color: purple;
 }
 
 .App-logo {

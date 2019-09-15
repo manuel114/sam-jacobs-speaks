@@ -8,6 +8,7 @@ import LandingPage from './LandingPage';
 import Results from './Results';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+
 class App extends Component {
   constructor() {
     super();

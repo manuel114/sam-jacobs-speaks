@@ -1,0 +1,35 @@
+html {
+  font-size: 125%;
+  overflow-x: hidden;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #3e000e 0%, #090a0f 100%);
+  overflow: hidden;
+}
+
+.wrapper {
+    max-width: 1680px;
+    margin: 0 auto;
+}
+
+.innerWrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+
+img {
+    width: 100%;
+}
+
+input {
+  height: 45px;
+}
+
+h1 {
+  font-family: 'Poiret One', cursive;
+  -webkit-text-stroke: 3px#fff; 
+  text-stroke: 3px #fff;
+  letter-spacing: 7px;
+  font-size: 3rem;
+  padding: 1.5rem 0;
+}
