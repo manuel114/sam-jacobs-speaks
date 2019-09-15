@@ -68,8 +68,6 @@ class App extends Component {
 			dataResponse: `json`
 		})
 			.then(answer => {
-				console.log(answer);
-
 				const randomAdvice = answer.data.slip.advice;
 
 				this.setState({
