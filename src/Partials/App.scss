@@ -1,5 +1,14 @@
+@import 'setup';
+@import 'variables';
+@import 'landingPage';
+
+
 .App {
 	text-align: center;
+}
+
+h1 {
+   color: purple;
 }
 
 .App-logo {
@@ -96,7 +105,7 @@
 }
 
 .avatar {
-	background-image: url('./Assets/coinTest.png');
+	background-image: url('../Assets/coinTest.png');
 	background-position: top 0% left 0px;
 	background-repeat: no-repeat;
 	background-size: cover;
