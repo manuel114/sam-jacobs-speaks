@@ -27,22 +27,6 @@ class Maze extends Component {
 		};
 	}
 
-	// // on click/keydown, get target location x, y, store in target state
-
-	// // check if target cell is within boundary:
-
-	// // if yes, check type of target cell
-
-	// // if path, move(), updates this.state.playerLocation
-
-	// // if wall, null
-
-	// // if exit, Link to modal box
-
-	// // if trap, trap()
-
-	// // if no, null
-
 	//pass in X or Y axis, and +1 or -1 movement
 	updateCoinLocation = (axis, vector) => {
 		console.log(vector);
@@ -67,6 +51,8 @@ class Maze extends Component {
 			x: playerLocation.x,
 			y: playerLocation.y
 		};
+
+		// const target = this.state.playerLocation;
 
 		target[axis] += vector;
 
