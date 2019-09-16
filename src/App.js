@@ -1,67 +1,80 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import filterWish from './filterWish';
+import React, { Component } from "react";
+import axios from "axios";
+import filterWish from "./filterWish";
 // import firebase from './firebase';
 // import './App.css';
 import "./Partials/App.scss";
-import Maze from './Components/Maze';
-import LandingPage from './Components/LandingPage';
-import Results from './Components/Results';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Maze from "./Components/Maze";
+import LandingPage from "./Components/LandingPage";
+import Results from "./Components/Results";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      advice: ''
+      advice: "",
+
+      // Error Handling
+
+      wishEmpty: false
     };
   }
 
-  handleSubmit = userWish => {
+  handleSubmit = (event, userWish) => {
+    console.log(userWish);
 
-    // if user input is blank, then add a class onto the wish box
-    // else, go as per usual
+    if (userWish !== "") {
+      // if user input is blank, then add a class onto the wish box
+      // else, go as per usual
 
-    const userInput = userWish;
+      const userInput = userWish;
 
-    const filteredWish = filterWish(userInput);
-    console.log(filteredWish);
+      const filteredWish = filterWish(userInput);
+      console.log(filteredWish);
 
-    // turn this into an array
+      // turn this into an array
 
-    const wordArray = filteredWish.split(' ');
-    // console.log(wordArray);
+      const wordArray = filteredWish.split(" ");
+      // console.log(wordArray);
 
-    // take the first value of the array [0] and save it to state
+      // take the first value of the array [0] and save it to state
 
-    const userKeyWord = wordArray[0];
-    console.log(userKeyWord);
+      const userKeyWord = wordArray[0];
+      console.log(userKeyWord);
 
-    // run it through the API Call to get contextual advice
+      // run it through the API Call to get contextual advice
 
-    axios({
-      url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
-      method: `GET`,
-      dataResponse: `json`
-    }).then(answer => {
-      console.log(answer);
+      axios({
+        url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
+        method: `GET`,
+        dataResponse: `json`
+      }).then(answer => {
+        console.log(answer);
 
-      // console.log(answer.data.message);
+        // console.log(answer.data.message);
 
-      if (typeof answer.data.message === 'undefined') {
-        this.setState(
-          {
-            // advice: [...this.state.advice, answer.data.slips[0].advice],
-            advice: answer.data.slips[0].advice
-          },
-          () => {
-            console.log(this.state.advice);
-          }
-        );
-      } else {
-        console.log(this.state.advice);
-      }
-    });
+        if (typeof answer.data.message === "undefined") {
+          this.setState(
+            {
+              // advice: [...this.state.advice, answer.data.slips[0].advice],
+              advice: answer.data.slips[0].advice
+            },
+            () => {
+              console.log(this.state.advice);
+            }
+          );
+        } else {
+          console.log(this.state.advice);
+        }
+      });
+    } else {
+      event.preventDefault();
+
+      this.setState({
+        wishEmpty: true
+      });
+    }
   };
 
   componentDidMount() {
@@ -80,7 +93,7 @@ class App extends Component {
         });
       })
       .catch(() => {
-        console.log('error');
+        console.log("error");
       });
   }
 
@@ -90,21 +103,22 @@ class App extends Component {
         {/* <div 
 					className="coinTest avatar">
 				</div> */}
-        <div className='App'>
+        <div className="App">
           <Route
             exact
-            path='/'
+            path="/"
             component={() => (
               <LandingPage
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
+                wishEmpty={this.state.wishEmpty}
               />
             )}
           />
-          <Route path='/maze' component={Maze} />
+          <Route path="/maze" component={Maze} />
 
           <Route
-            path='/results'
+            path="/results"
             component={() => <Results finalAnswer={this.state.advice} />}
           />
         </div>
