@@ -7,10 +7,15 @@ div {
   flex-direction: column;
 }
 
+
+.zoltarFrame {
+  border: 15px solid transparent;
+  border-image: url("../Assets/ZoltarFrame.svg") 150 round;
+  width: 800px;
+  height: 90vh;
+}
 .zoltarContainer {
-  border: 2px solid #e2804d;
-  // width: 60px;
-    margin: 2rem auto;
+  margin: 2rem auto;
   justify-content: center;
   z-index: 100;
   background: radial-gradient(ellipse at bottom, #3e000e 30%, #090a0f 100%);
@@ -23,16 +28,25 @@ div {
   //  width: 30vw;
   // max-width: 600px;
   // height: 30vw;
-  max-height: 450px;
+  max-height: 430px;
+  padding-bottom: 5%;
   // width: 700px;
+}
+
+.makeWishContainer {
+  border-top: 6px solid #e2804d;
+  height: 100%;
 }
 
 .wishQuestion {
   color: #fff;
   font-family: 'Hind Siliguri', sans-serif;
   letter-spacing: 1.2px;
-  margin-top: 5%;
-  padding-bottom: 10%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  font-size: 1.5rem;
+  // margin-top: 5%;
+  // padding-bottom: 10%;
 }
 
 .wishLabel {
@@ -48,15 +62,15 @@ div {
   border: 1px solid #e2804d;
   color: #fff;
   text-transform: capitalize;
-  padding: 0.5rem ;
+  padding: 2rem;
 }
 
 .landingPageButton:hover {
-  background: #df96cc;
-  border: 1px solid #df96cc;
+  background: #df96cc;;
+  border: 1px solid #df96cc;;
   color: #fff;
   text-transform: capitalize;
-  padding: 0.5rem ;
+  padding: 2rem;
   transition: all 0.3s;
 }
 
@@ -67,7 +81,7 @@ div {
 }
 
 .userInput {
-  width: 60%;
+  width: 70%;
   height: 50px;
   padding-left: 5rem;
 }
@@ -153,9 +167,9 @@ div {
 
 @keyframes animStar {
   from {
-    transform: translateY(0px);
+    transform: translateY(-2000px);
   }
   to {
-    transform: translateY(-2000px);
+    transform: translateY(0px);
   }
 }

@@ -50,8 +50,16 @@
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(12, 1fr);
 	justify-items: center;
-	position: relative;
+  position: relative;
+  margin: 5% auto;
 	/* animation: spinMaze infinite 2s linear alternate; */
+}
+
+.buttonContainerMaze {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @keyframes spinMaze {
@@ -72,7 +80,7 @@
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(12, 1fr);
-	justify-items: center;
+  justify-items: center;
 }
 .mapCell {
 	border: 1px solid black;

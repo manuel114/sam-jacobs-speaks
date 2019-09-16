@@ -122,63 +122,66 @@ class Maze extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Maze</h1>
-        <div className='mazeLayer'>
-          {this.state.mazeMap.map((row, Y) => {
-            return row.map((cell, X) => {
-              if (cell !== 1) {
-                return <div className='mapCell path'>path</div>;
-              } else {
-                return <div className='mapCell wall'>wall</div>;
-              }
-            });
-          })}
-
-          <div className='movingLayer'>
+      <div className="wrapper">
+        <div>
+          <div className='mazeLayer'>
             {this.state.mazeMap.map((row, Y) => {
               return row.map((cell, X) => {
-                if (cell === -1) {
-                  // starting location
-                  return (
-                    <div className='movingCell player'>
-                      <div className='avatar'></div>
-                    </div>
-                  );
+                if (cell !== 1) {
+                  return <div className='mapCell path'>path</div>;
                 } else {
-                  return <div className='movingCell'>O</div>;
+                  return <div className='mapCell wall'>wall</div>;
                 }
               });
             })}
-          </div>
-        </div>
-        <button
-          onClick={() => {
-            this.updateCoinLocation('x', -1);
-          }}>
-          Left
-				</button>
-        <button
-          onClick={() => {
-            this.updateCoinLocation('y', -1);
-          }}>
-          Up
-				</button>
-        <button
-          onClick={() => {
-            this.updateCoinLocation('x', 1);
-          }}>
-          Right
-				</button>
-        <button
-          onClick={() => {
-            this.updateCoinLocation('y', 1);
-          }}>
-          Down
-				</button>
 
-        {this.state.showModal ? <WinModal /> : null}
-        {/* modal appears if victory condition is set to true*/}
+            <div className='movingLayer'>
+              {this.state.mazeMap.map((row, Y) => {
+                return row.map((cell, X) => {
+                  if (cell === -1) {
+                    // starting location
+                    return (
+                      <div className='movingCell player'>
+                        <div className='avatar'></div>
+                      </div>
+                    );
+                  } else {
+                    return <div className='movingCell'>O</div>;
+                  }
+                });
+              })}
+            </div>
+          </div>
+          <div className="buttonContainerMaze">
+            <button
+              onClick={() => {
+                this.updateCoinLocation('x', -1);
+              }}>
+              Left
+    				</button>
+            <button
+              onClick={() => {
+                this.updateCoinLocation('y', -1);
+              }}>
+              Up
+    				</button>
+            <button
+              onClick={() => {
+                this.updateCoinLocation('x', 1);
+              }}>
+              Right
+    				</button>
+            <button
+              onClick={() => {
+                this.updateCoinLocation('y', 1);
+              }}>
+              Down
+    				</button>
+          </div>
+
+          {this.state.showModal ? <WinModal /> : null}
+          {/* modal appears if victory condition is set to true*/}
+        </div>
       </div>
     );
   }
