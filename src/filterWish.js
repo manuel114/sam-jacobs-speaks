@@ -1,5 +1,5 @@
 //this is a function to filter user input and only keeps keywords
-//i.e. 'i really love pizza' => 'love pizza"
+//e.g. 'i really love pizza' => 'love pizza"
 
 function filterWish(string) {
 
@@ -452,4 +452,4 @@ function filterWish(string) {
   return string.replace(/^\s+|\s+$/g, "");
 };
 
-export default filterWish
+export default filterWish;
