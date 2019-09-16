@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   handleSubmit = (event, userWish) => {
-    console.log(userWish);
+    // console.log(userWish);
 
     if (userWish !== "") {
       // if user input is blank, then add a class onto the wish box
@@ -31,7 +31,7 @@ class App extends Component {
       const userInput = userWish;
 
       const filteredWish = filterWish(userInput);
-      console.log(filteredWish);
+      // console.log(filteredWish);
 
       // turn this into an array
 
@@ -77,8 +77,7 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    // on mount, make an API call, get a random piece of advice and store in state, just in case the user's keyword query doesn't return any result
+  getRandomQuote = () => {
 
     axios({
       url: `https://api.adviceslip.com/advice`,
@@ -87,6 +86,7 @@ class App extends Component {
     })
       .then(answer => {
         const randomAdvice = answer.data.slip.advice;
+        console.log(randomAdvice);
 
         this.setState({
           advice: randomAdvice
@@ -95,6 +95,13 @@ class App extends Component {
       .catch(() => {
         console.log("error");
       });
+
+  }
+
+  componentDidMount() {
+    // on mount, make an API call, get a random piece of advice and store in state, just in case the user's keyword query doesn't return any result
+    this.getRandomQuote();
+    
   }
 
   render() {
@@ -115,12 +122,18 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/maze" component={Maze} />
-
           <Route
+            path="/maze"
+            component={() => <Maze 
+              finalAnswer={this.state.advice} 
+              getRandomQuote={this.getRandomQuote}
+              />}
+          />
+
+          {/* <Route
             path="/results"
             component={() => <Results finalAnswer={this.state.advice} />}
-          />
+          /> */}
         </div>
       </Router>
     );

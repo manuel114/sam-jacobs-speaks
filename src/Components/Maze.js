@@ -172,7 +172,12 @@ class Maze extends Component {
           </button>
         </div>
 
-        {this.state.showModal ? <WinModal /> : null}
+        {this.state.showModal ? (
+		  <WinModal 
+		  finalAnswer={this.props.finalAnswer} 
+		  getRandomQuote={this.props.getRandomQuote}
+		  />
+        ) : null}
         {/* modal appears if victory condition is set to true */}
       </main>
 
