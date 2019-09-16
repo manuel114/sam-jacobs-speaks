@@ -26,7 +26,12 @@ class Maze extends Component {
 			showModal: true
 		};
 	}
-
+	componentDidMount() {
+		document.addEventListener('keydown', this.handleKeyPress, false);
+	}
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyPress, false);
+	}
 	updateCoinLocation = (axis, vector) => {
 		console.log(vector);
 		console.log(this.state.playerLocation);
@@ -78,9 +83,33 @@ class Maze extends Component {
 		this.setState({ playerLocation: target });
 	};
 
+	handleKeyPress = e => {
+		console.log(e.key);
+		switch (e.key) {
+			case 'ArrowUp': {
+				this.updateCoinLocation('y', -1);
+				break;
+			}
+			case 'ArrowDown': {
+				this.updateCoinLocation('y', 1);
+				break;
+			}
+			case 'ArrowLeft': {
+				this.updateCoinLocation('x', -1);
+				break;
+			}
+			case 'ArrowRight': {
+				this.updateCoinLocation('x', 1);
+				break;
+			}
+		}
+	};
 	render() {
 		return (
-			<main className='mazeContainer'>
+			<main
+				className='mazeContainer'
+				onKeyPress={this.handleKeyPress}
+				tabIndex='0'>
 				<div className='mazeLayer'>
 					{this.state.mazeMap.map((row, Y) => {
 						return row.map((cell, X) => {
