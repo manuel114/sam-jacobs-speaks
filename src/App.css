@@ -1,4 +1,4 @@
-.App {
+/* .App {
 	text-align: center;
 }
 
@@ -45,9 +45,9 @@
 	grid-template-rows: repeat(12, 1fr);
 	justify-items: center;
 	position: relative;
-	/* animation: spinMaze infinite 2s linear alternate; */
-}
-
+	animation: spinMaze infinite 2s linear alternate;
+} */
+/* 
 @keyframes spinMaze {
 	from {
 		transform: perspective(200px) rotateZ(0deg) rotateX(360deg);
@@ -101,10 +101,8 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 
-	/* for avatar sprite sheet */
 	animation: moveSprite 0.5s steps(5) infinite;
-	/* width: 100%;
-	height: 100%; */
+	
 
 	width: 40px;
 	height: 40px;
@@ -120,4 +118,4 @@
 	100% {
 		background-position: top 0% left -200px;
 	}
-}
+}  */

@@ -10,103 +10,107 @@ import Results from './Components/Results';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			advice: ''
-		};
-	}
+  constructor() {
+    super();
+    this.state = {
+      advice: ''
+    };
+  }
 
-	handleSubmit = userWish => {
-		const userInput = userWish;
+  handleSubmit = userWish => {
 
-		const filteredWish = filterWish(userInput);
-		console.log(filteredWish);
+    // if user input is blank, then add a class onto the wish box
+    // else, go as per usual
 
-		// turn this into an array
+    const userInput = userWish;
 
-		const wordArray = filteredWish.split(' ');
-		// console.log(wordArray);
+    const filteredWish = filterWish(userInput);
+    console.log(filteredWish);
 
-		// take the first value of the array [0] and save it to state
+    // turn this into an array
 
-		const userKeyWord = wordArray[0];
-		console.log(userKeyWord);
+    const wordArray = filteredWish.split(' ');
+    // console.log(wordArray);
 
-		// run it through the API Call to get contextual advice
+    // take the first value of the array [0] and save it to state
 
-		axios({
-			url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
-			method: `GET`,
-			dataResponse: `json`
-		}).then(answer => {
-			console.log(answer);
+    const userKeyWord = wordArray[0];
+    console.log(userKeyWord);
 
-			// console.log(answer.data.message);
+    // run it through the API Call to get contextual advice
 
-			if (typeof answer.data.message === 'undefined') {
-				this.setState(
-					{
-						// advice: [...this.state.advice, answer.data.slips[0].advice],
-						advice: answer.data.slips[0].advice
-					},
-					() => {
-						console.log(this.state.advice);
-					}
-				);
-			} else {
-				console.log(this.state.advice);
-			}
-		});
-	};
+    axios({
+      url: `https://api.adviceslip.com/advice/search/${userKeyWord}`,
+      method: `GET`,
+      dataResponse: `json`
+    }).then(answer => {
+      console.log(answer);
 
-	componentDidMount() {
-		// on mount, make an API call, get a random piece of advice and store in state, just in case the user's keyword query doesn't return any result
+      // console.log(answer.data.message);
 
-		axios({
-			url: `https://api.adviceslip.com/advice`,
-			method: `GET`,
-			dataResponse: `json`
-		})
-			.then(answer => {
-				const randomAdvice = answer.data.slip.advice;
+      if (typeof answer.data.message === 'undefined') {
+        this.setState(
+          {
+            // advice: [...this.state.advice, answer.data.slips[0].advice],
+            advice: answer.data.slips[0].advice
+          },
+          () => {
+            console.log(this.state.advice);
+          }
+        );
+      } else {
+        console.log(this.state.advice);
+      }
+    });
+  };
 
-				this.setState({
-					advice: randomAdvice
-				});
-			})
-			.catch(() => {
-				console.log('error');
-			});
-	}
+  componentDidMount() {
+    // on mount, make an API call, get a random piece of advice and store in state, just in case the user's keyword query doesn't return any result
 
-	render() {
-		return (
-			<Router>
-				{/* <div 
+    axios({
+      url: `https://api.adviceslip.com/advice`,
+      method: `GET`,
+      dataResponse: `json`
+    })
+      .then(answer => {
+        const randomAdvice = answer.data.slip.advice;
+
+        this.setState({
+          advice: randomAdvice
+        });
+      })
+      .catch(() => {
+        console.log('error');
+      });
+  }
+
+  render() {
+    return (
+      <Router>
+        {/* <div 
 					className="coinTest avatar">
 				</div> */}
-				<div className='App'>
-					<Route
-						exact
-						path='/'
-						component={() => (
-							<LandingPage
-								handleSubmit={this.handleSubmit}
-								handleChange={this.handleChange}
-							/>
-						)}
-					/>
-					<Route path='/maze' component={Maze} />
+        <div className='App'>
+          <Route
+            exact
+            path='/'
+            component={() => (
+              <LandingPage
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            )}
+          />
+          <Route path='/maze' component={Maze} />
 
-					<Route
-						path='/results'
-						component={() => <Results finalAnswer={this.state.advice} />}
-					/>
-				</div>
-			</Router>
-		);
-	}
+          <Route
+            path='/results'
+            component={() => <Results finalAnswer={this.state.advice} />}
+          />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

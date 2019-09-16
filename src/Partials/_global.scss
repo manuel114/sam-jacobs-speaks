@@ -1,27 +1,27 @@
 html {
   font-size: 125%;
-  overflow-x: hidden;
-  height: 100%;
-  background: radial-gradient(ellipse at bottom, #3e000e 0%, #090a0f 100%);
-  // overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #3e000e 0%, #090a0f 100%) no-repeat;
+  overflow: hidden;
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .wrapper {
     max-width: 1680px;
 }
 
-.innerWrapper {
-  max-width: 1080px;
-  margin: 0 auto;
-  position: relative;
-}
-
 img {
     width: 100%;
+    display: block;
 }
 
 input {
-  height: 45px;
+  height: 2rem;
   background: #3e000e;
   color: #fff;
   border: 2px solid #df96cc;
@@ -32,13 +32,12 @@ input {
 
 h1 {
   font-family: 'Poiret One', cursive;
-  // color: #df96cc;
-  -webkit-text-stroke: 3px #fff; 
-  text-stroke: 3px #fff;
+  -webkit-text-stroke: 3px #f9f1da; 
   letter-spacing: 7px;
   font-size: 3rem;
-  padding: 1.5rem 0;
+  text-transform: uppercase;
 }
+
 
 button:focus {
   outline: none;

@@ -1,59 +1,36 @@
-
-
-div {
-  // border: 2px solid green;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.zoltarFrame {
-  border: 15px solid transparent;
-  border-image: url("../Assets/ZoltarFrame.svg") 150 round;
-  width: 800px;
-  height: 90vh;
-}
 .zoltarContainer {
+  border: 30px solid transparent;
+  border-image: url("../Assets/ZoltarFrame.svg") 150 round ;
   margin: 2rem auto;
-  justify-content: center;
+  padding: 1rem;
   z-index: 100;
-  background: radial-gradient(ellipse at bottom, #3e000e 30%, #090a0f 100%);
-  width: 800px;
+  width: 55vw;
   height: 90vh;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items:center;
 }
 
 .zoltarImage {
-  z-index: 100;
-  //  width: 30vw;
-  // max-width: 600px;
-  // height: 30vw;
-  max-height: 430px;
-  padding-bottom: 5%;
-  // width: 700px;
-}
-
-.makeWishContainer {
-  // border-top: 6px solid #e2804d;
-  height: 100%;
+  margin-top: -5%;
+  max-height: 60%;
 }
 
 .wishQuestion {
   color: #fff;
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: 'Poiret One', cursive;
   letter-spacing: 1.2px;
   padding-top: 2%;
-  padding-bottom: 3%;
+  padding-bottom: 7%;
   font-size: 1.5rem;
-  // margin-top: 5%;
-  // padding-bottom: 10%;
+  text-transform: capitalize;
+  -webkit-text-stroke: 2px #f9f1da; 
 }
 
 .wishLabel {
   color: #fff;
   font-family: 'Hind Siliguri', sans-serif;
-}
-.hidden{
-   visibility:hidden;
 }
 
 .landingPageButton {
@@ -61,15 +38,16 @@ div {
   border: 1px solid #e2804d;
   color: #fff;
   text-transform: capitalize;
-  padding: 2rem;
+  padding: 1rem;
+  font-family: 'Hind Siliguri', sans-serif;
 }
 
 .landingPageButton:hover {
-  background: #df96cc;;
-  border: 1px solid #df96cc;;
+  background: #df96cc;
+  border: 1px solid #df96cc;
   color: #fff;
   text-transform: capitalize;
-  padding: 2rem;
+  padding: 1rem;
   transition: all 0.3s;
 }
 
@@ -91,32 +69,34 @@ div {
   padding-left: 2rem;
 }
 
-
-
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
 
 #stars {
-	content:"e";
+	content:"";
   background: transparent;
   box-shadow: $stars;
   animation: animStar 50s linear infinite;
+  z-index: -1;
 }
+
 #stars:after {
   content: " ";
   position: absolute;
   top: 2000px;
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: $starsAfter;
-}
-
-#stars2 {
   width: 2px;
   height: 2px;
   background: transparent;
+  box-shadow: $starsAfter;
+  z-index: -1;
+}
+
+#stars2 {
+  width: 4px;
+  height: 4px;
+  background: transparent;
   box-shadow: $stars2;
   animation: animStar 100s linear infinite;
+  z-index: -1;
 }
 #stars2:after {
   content: " ";
@@ -126,6 +106,7 @@ div {
   height: 2px;
   background: transparent;
   box-shadow: $stars2After;
+  z-index: -1;
 }
 
 #stars3 {
@@ -134,34 +115,16 @@ div {
   background: transparent;
   box-shadow: $stars3;
   animation: animStar 150s linear infinite;
+  z-index: -1;
 }
+
 #stars3:after {
-  content: "e ";
+  content: "";
   position: absolute;
   top: 2000px;
   background: transparent;
   box-shadow: $stars3After;
-}
-
-#title {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  color: #FFF;
-  text-align: center;
-  font-family: "lato", sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 10px;
-  margin-top: -60px;
-  padding-left: 10px;
-}
-
-#title span {
-  background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  z-index: -1;
 }
 
 // REFERENCED BY Mario Duarte
@@ -177,23 +140,14 @@ div {
 
 @keyframes float {
 	0% {
-		// box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-		transform: translate(0, 0);
-	}
-	50% {
-		// box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-    transform: translatey(10px);
-	}
+	transform: translateY(0)	
+  }
 	100% {
-		// box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-    transform: translate(0, 0);
+
+    transform: translateY(8%);
 	}
 }
 
 .zoltarImage {
-	box-sizing: border-box;
-	overflow: hidden;
-	transform: translatey(0px);
-	animation: float 6s ease-in-out infinite;
-	// img { width: 100%; height: auto; }
+	animation: float 4s ease-in-out infinite alternate-reverse;
 }
