@@ -112,7 +112,6 @@ class Maze extends Component {
       <main
         className="mazeContainer"
         onKeyPress={this.handleKeyPress}
-        tabIndex="0"
       >
         <div className="mazeLayer">
           {this.state.mazeMap.map((row, Y) => {
