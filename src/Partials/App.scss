@@ -2,6 +2,7 @@
 @import 'global';
 @import 'variables';
 @import 'landingPage';
+@import 'maze';
 
 
 .App {
@@ -43,95 +44,4 @@
 	}
 }
 
-.mazeLayer {
-	display: grid;
-	width: 600px;
-	height: 600px;
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(12, 1fr);
-	justify-items: center;
-  position: relative;
-  margin: 5% auto;
-	/* animation: spinMaze infinite 2s linear alternate; */
-}
 
-.buttonContainerMaze {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@keyframes spinMaze {
-	from {
-		transform: perspective(200px) rotateZ(0deg) rotateX(360deg);
-	}
-	to {
-		transform: perspective(200px) rotateZ(50deg) rotateX(60deg);
-	}
-}
-
-.movingLayer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
-}
-.mapCell {
-	border: 1px solid black;
-	height: 100%;
-	width: 100%;
-}
-
-.movingCell {
-	border: 1px solid black;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0);
-}
-
-.path {
-	background-color: pink;
-}
-
-.wall {
-	background-color: brown;
-}
-
-.player {
-	position: relative;
-	transition: all 1s;
-	background-color: green;
-}
-
-.avatar {
-	background-image: url('../Assets/coinTest.png');
-	background-position: top 0% left 0px;
-	background-repeat: no-repeat;
-	background-size: cover;
-
-	/* for avatar sprite sheet */
-	animation: moveSprite 0.5s steps(5) infinite;
-	/* width: 100%;
-	height: 100%; */
-
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	border: none;
-	z-index: 5;
-}
-
-@keyframes moveSprite {
-	100% {
-		background-position: top 0% left -200px;
-	}
-}

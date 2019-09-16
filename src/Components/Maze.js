@@ -182,6 +182,9 @@ class Maze extends Component {
           {this.state.showModal ? <WinModal /> : null}
           {/* modal appears if victory condition is set to true*/}
         </div>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
       </div>
     );
   }
