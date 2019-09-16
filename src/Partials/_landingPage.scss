@@ -69,6 +69,17 @@
 	padding-left: 2rem;
 }
 
+.wishError {
+	border: 2px solid $tertiary;
+	animation: warning 2s 2;
+}
+
+@keyframes warning {
+  0%   {border: 2px solid $tertiary}
+  50%  {border: 2px solid red;}
+  100% {border: 2px solid $tertiary;}
+}
+
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
 
 #stars {
