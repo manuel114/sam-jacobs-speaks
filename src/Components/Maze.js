@@ -6,17 +6,17 @@ class Maze extends Component {
     super(props);
     this.state = {
       mazeMap: [
-        [-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-        [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1],
-        [1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1],
-        [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-        [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1],
-        [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-        [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
-        [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-        [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
+        [-1, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+        [1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0],
+        [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        [1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0],
+        [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0],
+        [1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0],
         [1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, -2]
       ],
       playerLocation: {
@@ -70,6 +70,12 @@ class Maze extends Component {
         });
         break;
       }
+      case -3:{
+        this.moveCoin(target);
+        this.setState({
+          spin:true
+        })
+      }
       case 0: {
         this.moveCoin(target);
         break;
@@ -81,7 +87,7 @@ class Maze extends Component {
     console.log("move coin", target);
     console.log("player location changed");
     document.querySelector(".player").style.transform = `translate(${target.x -
-      1}00%,${target.y - 1}00%)`;
+      1}00%,${target.y - 1}00%)`
     this.setState({ playerLocation: target });
   };
 
@@ -112,8 +118,8 @@ class Maze extends Component {
       <main
         className="mazeContainer"
         onKeyPress={this.handleKeyPress}
-        tabIndex="0"
       >
+        
         <div className="mazeLayer">
           {this.state.mazeMap.map((row, Y) => {
             return row.map((cell, X) => {
