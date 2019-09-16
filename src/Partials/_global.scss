@@ -32,7 +32,7 @@ input {
 
 h1 {
   font-family: 'Poiret One', cursive;
-  color: #df96cc;
+  // color: #df96cc;
   -webkit-text-stroke: 3px #fff; 
   text-stroke: 3px #fff;
   letter-spacing: 7px;
@@ -47,4 +47,5 @@ button:focus {
 :focus {
   box-shadow: 0 0 0 0.5px #ffffff, 0 0 3px 3px #df96cc;
 }  
+
 
