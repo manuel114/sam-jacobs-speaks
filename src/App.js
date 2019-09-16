@@ -117,16 +117,23 @@ class App extends Component {
 							/>
 						)}
 					/>
-					<Route path='/maze' component={Maze} />
-
+					<Route
+						path='/maze'
+						component={() => (
+							<Maze
+								finalAnswer={this.state.advice}
+								getRandomQuote={this.getRandomQuote}
+							/>
+						)}
+					/>
 					<Route
 						path='/results'
 						component={() => <Results finalAnswer={this.state.advice} />}
 					/>
 					<div className='starsContent'>
-						<div id='stars'></div>
-						<div id='stars2'></div>
-						<div id='stars3'></div>
+						<div className='stars'></div>
+						<div className='stars2'></div>
+						<div className='stars3'></div>
 					</div>
 				</div>
 			</Router>
