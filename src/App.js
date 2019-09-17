@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import filterWish from './filterWish';
-// import firebase from './firebase';
-// import './App.css';
+import firebase from './firebase';
 import './Partials/App.scss';
 import Maze from './Components/Maze';
 import LandingPage from './Components/LandingPage';
