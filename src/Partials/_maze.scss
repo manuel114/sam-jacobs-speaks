@@ -1,188 +1,186 @@
-
-
 .mazeContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  margin-top: 10vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	margin-top: 10vh;
 }
 
 .mazeLayer {
-  display: grid;
-  max-width: 600px;
-  max-height: 600px;
-  min-width: 320px;
-  min-height: 320px;
-  width: 50vw;
-  height: 50vw;
+	display: grid;
+	max-width: 600px;
+	max-height: 600px;
+	min-width: 320px;
+	min-height: 320px;
+	width: 50vw;
+	height: 50vw;
 
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
-  position: relative;
-  margin: 0 auto;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
+	position: relative;
+	margin: 0 auto;
 }
 
 .movingLayer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
 }
 
 .cell {
-  min-height: 27px;
-  min-width: 27px;
-  width: 100%;
-  height: 100%;
+	min-height: 27px;
+	min-width: 27px;
+	width: 100%;
+	height: 100%;
 }
 
 .mapCell {
-  border: 1px solid black;
-  height: 100%;
-  width: 100%;
+	border: 1px solid black;
+	height: 100%;
+	width: 100%;
 }
 
 .buttonContainerMaze {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	padding: 1rem;
 }
 
 @keyframes spinMaze {
-  from {
-    transform: perspective(200px) rotateZ(0deg) rotateX(360deg);
-  }
-  to {
-    transform: perspective(200px) rotateZ(50deg) rotateX(60deg);
-  }
+	from {
+		transform: perspective(200px) rotateZ(0deg) rotateX(360deg);
+	}
+	to {
+		transform: perspective(200px) rotateZ(50deg) rotateX(60deg);
+	}
 }
 
 .path {
-  background-color: pink;
+	background-color: pink;
 }
 
 .wall {
-  background-color: brown;
+	background-color: brown;
 }
 
 .player {
-  position: relative;
-  transition: all 0.3s;
-  background-color: green;
+	position: relative;
+	transition: all 0.3s;
+	background-color: green;
 }
 
 .avatar {
-  background-image: url("../Assets/coinTest.png");
-  background-position: top 0% left 0px;
-  background-repeat: no-repeat;
-  background-size: cover;
+	background-image: url('../Assets/coinTest.png');
+	background-position: top 0% left 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
 
-  /* for avatar sprite sheet */
-  animation: moveSprite 0.5s steps(5) infinite;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  z-index: 5;
+	/* for avatar sprite sheet */
+	animation: moveSprite 0.5s steps(5) infinite;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	z-index: 5;
 }
 
 @keyframes moveSprite {
-  100% {
-    background-position: top 0% left -200px;
-    // -200 is the width of the coin multiples by the number of steps
-  }
+	100% {
+		background-position: top 0% left -200px;
+		// -200 is the width of the coin multiples by the number of steps
+	}
 }
 
 .winModal {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 
-  background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.4);
 
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+	//   display: flex;
+	//   justify-content: center;
+	//   align-items: center;
 }
 
 .winModalSub {
-  position: absolute;
-  width: 700px;
-  height: 350px;
-  background-color: rgba(0, 0, 0, 0);
-  opacity: 1;
+	position: absolute;
+	width: 700px;
+	height: 350px;
+	background-color: rgba(0, 0, 0, 0);
+	opacity: 1;
 
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  animation: appear 2s;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	animation: appear 2s;
 }
 
 @keyframes appear {
-  from {
-    top: -600px;
-    // opacity: 0;
-  }
-  to {
-    top: 0;
-    // opacity: 1;
-    // -200 is the width of the coin multiples by the number of steps
-  }
+	from {
+		top: -600px;
+		// opacity: 0;
+	}
+	to {
+		top: 0;
+		// opacity: 1;
+		// -200 is the width of the coin multiples by the number of steps
+	}
 }
 
 .card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  perspective: 800px; /*important for the flip. The lower the value, the closer you will view the transform" */
+	width: 100%;
+	height: 100%;
+	position: relative;
+	perspective: 800px; /*important for the flip. The lower the value, the closer you will view the transform" */
 }
 
 .front,
 .back {
-  /* some styling for each card */
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  //   transition: all 2s;
-  backface-visibility: hidden; /*This means that when it is flipped over, we don't see the back */
-  font-size: 1.4rem;
+	/* some styling for each card */
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	//   transition: all 2s;
+	backface-visibility: hidden; /*This means that when it is flipped over, we don't see the back */
+	font-size: 1.4rem;
 }
 
 .front {
-  background: white; /* coral */
+	background: white; /* coral */
 }
 
 .back {
-  background: white; /*cornflowerblue */
-  transform: rotateY(180deg); /*By Default set the back to be rotate */
+	background: white; /*cornflowerblue */
+	transform: rotateY(180deg); /*By Default set the back to be rotate */
 }
 
 .flipFront {
-  transform: rotateY(-180deg);
-  animation: flipFrontAnimation 2s;
+	transform: rotateY(-180deg);
+	animation: flipFrontAnimation 2s;
 }
 
 .flipBack {
-  transform: rotateY(0deg);
-  animation: flipBackAnimation 2s;
+	transform: rotateY(0deg);
+	animation: flipBackAnimation 2s;
 
-  p {
-    color: black;
-  }
+	p {
+		color: black;
+	}
 }
 
 // .card:hover .back {
@@ -193,19 +191,19 @@
 // }
 
 @keyframes flipBackAnimation {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(0);
-  }
+	from {
+		transform: rotateY(180deg);
+	}
+	to {
+		transform: rotateY(0);
+	}
 }
 
 @keyframes flipFrontAnimation {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-180deg);
-  }
+	from {
+		transform: rotateY(0);
+	}
+	to {
+		transform: rotateY(-180deg);
+	}
 }
