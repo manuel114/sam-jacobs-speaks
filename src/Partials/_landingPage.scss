@@ -1,173 +1,204 @@
 .zoltarContainer {
-	border: 30px solid transparent;
-	border-image: url('../Assets/ZoltarFrame.svg') 150 round;
-	margin: 2rem auto;
-	padding: 1rem;
-	z-index: 100;
-	width: 55vw;
-	height: 90vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+  border: 30px solid transparent;
+  border-image: url("../Assets/ZoltarFrame.svg") 150 round;
+  margin: 2rem auto;
+  padding: 1rem;
+  z-index: 100;
+  width: 55vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: url("../Assets/singleCoin.png"), pointer;
+  form,
+  a,
+  button,
+  input[type="text"],
+  .wishButton {
+    cursor: url("../Assets/singleCoin.png"), pointer;
+  }
 }
-
+button.landingPageButton:focus {
+  border: none;
+}
+h1 {
+  margin-bottom: 0.5rem;
+}
 .zoltarImage {
-	margin-top: -5%;
-	max-height: 60%;
+  margin-top: -5%;
+  max-height: 60%;
 }
-
+.makeWishContainer {
+  display: flex;
+  width: 100%;
+      max-width: 600px;
+}
 .wishQuestion {
-	color: #fff;
-	font-family: 'Poiret One', cursive;
-	letter-spacing: 1.2px;
-	padding-top: 2%;
-	padding-bottom: 15%;
-	font-size: 1.5rem;
-	text-transform: capitalize;
-	-webkit-text-stroke: 2px #f9f1da;
-	text-align: center;
+  color: #fff;
+  font-family: "Poiret One", cursive;
+  letter-spacing: 1.2px;
+  padding-top: 2%;
+  // padding-bottom: 10%;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  -webkit-text-stroke: 2px #f9f1da;
+  text-align: center;
 }
-
 .wishLabel {
-	color: #fff;
-	font-family: 'Hind Siliguri', sans-serif;
+  color: #fff;
+  font-family: "Hind Siliguri", sans-serif;
 }
-
-.landingPageButton {
-	background: $primary;
-	border: 1px solid $primary;
-	color: #fff;
-	text-transform: capitalize;
-	padding: 1rem;
-  font-family: 'Hind Siliguri', sans-serif;
-  background-position: center;
+.leftForm {
+    flex: 1 0 75%;
+//   width: 75%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
 }
-
-.landingPageButton:hover {
-  background: $tertiary;
-  border: 1px solid transparent;
-	text-transform: capitalize;
-	padding: 2rem ;
-  transition: all 0.3s;
-  background: url('../Assets/coinSlot.svg') center no-repeat;
-    // background-position: center;
-  color: transparent;
-}
-
 .buttonLinkContainer {
-	display: flex;
-	// border: 3px solid red;
-	flex-direction: row;
+    padding-left: 0.5rem;
+//   width: 25%;
+  flex: 1 0 25%;
+  max-width: 130px;
+  button {
+    border: none;
+  }
+//   .landingPageButton {
+      
+//   }
+  .wishButton:focus,
+  .wishButton:active,
+  .wishButton:hover {
+    border: none;
+  }
 }
-
 .userInput {
-	width: 70%;
-	height: 50px;
-	padding-left: 5rem;
+  width: 70%;
+  height: 50px;
+  padding-left: 5rem;
 }
-
 .wishButton {
-	// display: flex;
-	// width: 40%;
-	padding-left: 2rem;
+  // display: flex;
+  // width: 40%;
+  // padding-left: 2rem;'
+  align-self: center;
 }
-
 .wishError {
-	border: 2px solid $tertiary;
-	animation: warning 2s 2;
+  border: 2px solid $tertiary;
+  animation: warning 2s infinite;
 }
-
 @keyframes warning {
-	0% {
-		border: 2px solid $tertiary;
-	}
-	50% {
-		border: 2px solid red;
-	}
-	100% {
-		border: 2px solid $tertiary;
-	}
+  0% {
+    border: 2px solid $tertiary;
+  }
+  50% {
+    border: 2px solid red;
+  }
+  100% {
+    border: 2px solid $tertiary;
+  }
 }
-
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
-
 .stars {
-	content: '';
-	background: transparent;
-	box-shadow: $stars;
-	animation: animStar 50s linear infinite;
-	z-index: -1;
+  content: "";
+  background: transparent;
+  box-shadow: $stars;
+  animation: animStar 50s linear infinite;
+  z-index: -1;
 }
-
 .stars:after {
-	content: ' ';
-	position: absolute;
-	top: 2000px;
-	width: 2px;
-	height: 2px;
-	background: transparent;
-	box-shadow: $starsAfter;
-	z-index: -1;
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $starsAfter;
+  z-index: -1;
 }
-
 .stars2 {
-	width: 4px;
-	height: 4px;
-	background: transparent;
-	box-shadow: $stars2;
-	animation: animStar 100s linear infinite;
-	z-index: -1;
+  width: 4px;
+  height: 4px;
+  background: transparent;
+  box-shadow: $stars2;
+  animation: animStar 100s linear infinite;
+  z-index: -1;
 }
 .stars2:after {
-	content: ' ';
-	position: absolute;
-	top: 2000px;
-	width: 2px;
-	height: 2px;
-	background: transparent;
-	box-shadow: $stars2After;
-	z-index: -1;
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $stars2After;
+  z-index: -1;
 }
-
 .stars3 {
-	width: 3px;
-	height: 3px;
-	background: transparent;
-	box-shadow: $stars3;
-	animation: animStar 150s linear infinite;
-	z-index: -1;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $stars3;
+  animation: animStar 150s linear infinite;
+  z-index: -1;
 }
-
 .stars3:after {
-	content: '';
-	position: absolute;
-	top: 2000px;
-	background: transparent;
-	box-shadow: $stars3After;
-	z-index: -1;
+  content: "";
+  position: absolute;
+  top: 2000px;
+  background: transparent;
+  box-shadow: $stars3After;
+  z-index: -1;
 }
-
 // REFERENCED BY Mario Duarte
-
 @keyframes animStar {
-	from {
-		transform: translateY(-2000px);
-	}
-	to {
-		transform: translateY(infinite);
-	}
+  from {
+    transform: translateY(-2000px);
+  }
+  to {
+    transform: translateY(infinite);
+  }
 }
-
 @keyframes float {
-	0% {
-		transform: translateY(0);
-	}
-	100% {
-		transform: translateY(5%);
-	}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(5%);
+  }
 }
-
 .zoltarImage {
-	animation: float 4s ease-in-out infinite alternate-reverse;
+  animation: float 4s ease-in-out infinite alternate-reverse;
+}
+@media (max-width: 1120px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  h2.wishQuestion {
+    font-size: 1.2rem;
+  }
+  img.zoltarImage {
+    width: 80%;
+  }
+  .makeWishContainer {
+      flex-direction: column;
+      max-width: auto;
+      justify-content: center;
+      align-items: center;
+  }
+  .leftForm, .buttonLinkContainer {
+      width: 100%;
+      padding: 0;
+  }
+  .landingPageButton {
+      width: 6rem;
+  }
+ 
+}
+@media (max-width: 736px) {
+  img.zoltarImage {
+    width: 100%;
+  }
 }
