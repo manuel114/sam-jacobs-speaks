@@ -79,6 +79,26 @@
 	background-color: brown;
 }
 
+.exit {
+	background: url('../Assets/crystalBall.svg');
+	background-size: cover;
+}
+.portal {
+	background: url('../Assets/portal.svg');
+	background-size: cover;
+}
+.reverse {
+	background: yellow;
+}
+.mushroom {
+	background: url('../Assets/mushroom.svg');
+	background-size: 100%;
+}
+.oil {
+	background: url('../Assets/oilSpill.svg') no-repeat;
+	background-size: contain;
+}
+
 .player {
 	position: relative;
 	transition: all 0.3s;
@@ -137,31 +157,27 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .winModalSub {
-	position: absolute;
-	width: 700px;
-	height: 350px;
-	background-color: rgba(0, 0, 0, 0);
-	opacity: 1;
-
+	position: fixed;
+	width: 60vw;
+	height: 40vh;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	margin: auto;
-	animation: appear 2s;
+	animation: appear 1s;
 }
 
 @keyframes appear {
-	from {
-		top: -600px;
+	0% {
+		transform: translateY(-20vh);
 	}
-	to {
-		top: 0;
+	100% {
+		transform: translateY(0);
 	}
 }
 
@@ -174,21 +190,19 @@
 
 .front,
 .back {
-	/* some styling for each card */
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	//   transition: all 2s;
-	backface-visibility: hidden; /*This means that when it is flipped over, we don't see the back */
+
+	backface-visibility: hidden;
 	font-size: 1.4rem;
 }
 
 .front {
-	background: white; /* coral */
+	transform: rotateY(0deg);
 }
 
 .back {
-	background: white; /*cornflowerblue */
 	transform: rotateY(180deg); /*By Default set the back to be rotate */
 }
 
@@ -205,13 +219,6 @@
 		color: black;
 	}
 }
-
-// .card:hover .back {
-//   transform: rotateY(0);
-// }
-// .card:hover .front {
-//   transform: rotateY(-180deg);
-// }
 
 @keyframes flipBackAnimation {
 	from {

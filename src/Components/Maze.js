@@ -7,18 +7,18 @@ class Maze extends Component {
 		super(props);
 		this.state = {
 			mazeMap: [
-				[-1, 0, 1, -3, 0, 0, 0, 0, 1, 0, 0, -6],
+				[-1, -2, 1, -3, 0, 0, 0, 0, 1, 0, 0, -6],
 				[0, -4, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
 				[1, -5, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
 				[1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0],
-				[1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
-				[1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
-				[1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0],
-				[1, 0, 0, 0, 0, 1, 0, 0, 1, -2, 1, 0],
-				[1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0],
-				[1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0],
-				[1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0],
-				[1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+				[-6, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+				[0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0],
+				[0, 1, 0, 0, 0, 1, 0, 0, 1, -2, 1, 0],
+				[0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+				[0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0],
+				[0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0],
+				[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
 			],
 			playerLocation: {
 				x: 1,
@@ -27,7 +27,8 @@ class Maze extends Component {
 			showModal: false,
 			spin: false,
 			coinSize: 'regular',
-			reverseControl: false
+			reverseControl: false,
+			dPad: 'show'
 		};
 	}
 
@@ -37,31 +38,42 @@ class Maze extends Component {
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this.handleKeyPress, false);
 	}
+
 	updateCoinLocation = (axis, vector) => {
-		if (
-			this.state.playerLocation[axis] + vector > 0 &&
-			this.state.playerLocation[axis] + vector <= this.state.mazeMap.length
-		) {
-			this.checkTargetCell(this.state.playerLocation, axis, vector);
+		//create a shallow copy of current player location
+		const target = Object.assign({}, this.state.playerLocation);
+		//set target location according to the axis and vector passed in
+		target[axis] += vector;
+
+		//make sure the target cell is within maze boundary
+		if (target[axis] > 0 && target[axis] <= this.state.mazeMap.length) {
+			//pass the target to the next step
+			this.checkTargetCell(target);
 		}
 	};
 
-	checkTargetCell = (playerLocation, axis, vector) => {
-		const target = {
-			x: playerLocation.x,
-			y: playerLocation.y
-		};
-		target[axis] += vector;
+	checkTargetCell = target => {
+		//use target location x and y as indexes to access maze array and element value
 		const targetCellValue = this.state.mazeMap[target.y - 1][target.x - 1];
+		//if target cell is not a wall
 		if (targetCellValue !== 1) {
-			this.moveCoin(target);
+			this.moveCoin(target, 0.3);
+			//if target cell is a portal
+			if (targetCellValue === -6) {
+				//after 0.3s, send back to the starting point
+				setTimeout(() => {
+					this.moveCoin({ x: 1, y: 1 }, 2);
+				}, 300);
+			}
 		}
+
 		switch (targetCellValue) {
 			//exit of maze
 			case -2: {
 				this.setState({
 					showModal: true,
-					spin: 'noSpin'
+					spin: 'noSpin',
+					dPad: 'hide'
 				});
 				break;
 			}
@@ -81,19 +93,13 @@ class Maze extends Component {
 				this.setState({ reverseControl: true });
 				break;
 			}
-			//send coin to starting point
-			case -6: {
-				this.moveCoin({ x: 1, y: 1 });
-				break;
-			}
 		}
 	};
 
-	moveCoin = target => {
-		console.log('move coin', target);
-		console.log('player location changed');
+	moveCoin = (target, time) => {
 		document.querySelector('.player').style.transform = `translate(${target.x -
 			1}00%,${target.y - 1}00%)`;
+		document.querySelector('.player').style.transition = `transform ${time}s`;
 		this.setState({ playerLocation: target });
 	};
 
@@ -144,10 +150,45 @@ class Maze extends Component {
 				<div className={`mazeLayer ${this.state.spin}`}>
 					{this.state.mazeMap.map((row, Y) => {
 						return row.map((cell, X) => {
-							if (cell !== 1) {
-								return <Cell cellLayer='mapCell' cellType='path' />;
-							} else {
-								return <Cell cellLayer='mapCell' cellType='wall' />;
+							switch (cell) {
+								case 1: {
+									return <Cell cellLayer='mapCell' cellType='wall' />;
+									break;
+								}
+
+								case 0: {
+									return <Cell cellLayer='mapCell' cellType='path' />;
+									break;
+								}
+
+								case -1: {
+									return <Cell cellLayer='mapCell' cellType='path' />;
+									break;
+								}
+
+								case -2: {
+									return <Cell cellLayer='mapCell' cellType='exit' />;
+									break;
+								}
+
+								case -3: {
+									return <Cell cellLayer='mapCell' cellType='oil' />;
+									break;
+								}
+
+								case -4: {
+									return <Cell cellLayer='mapCell' cellType='mushroom' />;
+									break;
+								}
+
+								case -5: {
+									return <Cell cellLayer='mapCell' cellType='reverse' />;
+									break;
+								}
+								case -6: {
+									return <Cell cellLayer='mapCell' cellType='portal' />;
+									break;
+								}
 							}
 						});
 					})}
@@ -170,8 +211,9 @@ class Maze extends Component {
 						})}
 					</div>
 				</div>
-				<div className='controller'>
+				<div className={`dPad ${this.state.dPad}DPad`}>
 					<button
+						className='dPadButton dPadLeft'
 						onClick={() => {
 							if (this.state.reverseControl === false) {
 								this.updateCoinLocation('x', -1);
@@ -179,9 +221,10 @@ class Maze extends Component {
 								this.updateCoinLocation('x', 1);
 							}
 						}}>
-						Left
+						<span className='visuallyHidden'>left</span>
 					</button>
 					<button
+						className='dPadButton dPadUp'
 						onClick={() => {
 							if (this.state.reverseControl === false) {
 								this.updateCoinLocation('y', -1);
@@ -189,9 +232,10 @@ class Maze extends Component {
 								this.updateCoinLocation('y', 1);
 							}
 						}}>
-						Up
+						<span className='visuallyHidden'>up</span>
 					</button>
 					<button
+						className='dPadButton dPadRight'
 						onClick={() => {
 							if (this.state.reverseControl === false) {
 								this.updateCoinLocation('x', 1);
@@ -199,9 +243,10 @@ class Maze extends Component {
 								this.updateCoinLocation('x', -1);
 							}
 						}}>
-						Right
+						<span className='visuallyHidden'>right</span>
 					</button>
 					<button
+						className='dPadButton dPadDown'
 						onClick={() => {
 							if (this.state.reverseControl === false) {
 								this.updateCoinLocation('y', 1);
@@ -209,7 +254,7 @@ class Maze extends Component {
 								this.updateCoinLocation('y', -1);
 							}
 						}}>
-						Down
+						<span className='visuallyHidden'>down</span>
 					</button>
 				</div>
 
