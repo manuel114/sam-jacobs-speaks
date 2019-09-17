@@ -24,8 +24,9 @@ class WinModal extends Component {
             <div
               className={`front ${
                 this.state.flipButtonPressed ? "flipFront" : ""
-              }`}
+                }`}
             >
+              <h2 className="cardTitle">your wish has been granted</h2>
               <button onClick={this.flipCard}>
                 Your Wish Has Been Granted
               </button>
@@ -34,7 +35,7 @@ class WinModal extends Component {
             <div
               className={`back ${
                 this.state.flipButtonPressed ? "flipBack" : ""
-              }`}
+                }`}
             >
               <p>{this.props.finalAnswer}</p>
 
