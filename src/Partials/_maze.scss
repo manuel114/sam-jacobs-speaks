@@ -1,10 +1,4 @@
-.app {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20vh;
-}
+
 
 .mazeContainer {
   display: flex;
@@ -12,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  margin-top: 10vh;
 }
 
 .mazeLayer {
