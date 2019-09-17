@@ -7,6 +7,8 @@
   align-items: center;
   position: relative;
   margin-top: 10vh;
+ 
+	// margin: 2rem auto;
 }
 
 .mazeLayer {
@@ -17,12 +19,13 @@
   min-height: 320px;
   width: 50vw;
   height: 50vw;
-
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   justify-items: center;
   position: relative;
   margin: 0 auto;
+   border: 30px solid transparent;
+	border-image: url('../Assets/ZoltarFrame.svg') 150 round;
 }
 
 .movingLayer {
