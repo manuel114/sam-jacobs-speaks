@@ -6,7 +6,7 @@ $tertiary: #df96cc;
 
 html {
   font-size: 125%;
-  background: radial-gradient(ellipse at bottom, #3e000e 0%, #090a0f 100%) no-repeat;
+  background: radial-gradient(ellipse at bottom, $secondary 0%, #090a0f 100%) no-repeat;
   overflow: hidden;
 }
 
@@ -28,9 +28,9 @@ img {
 
 input {
   height: 2rem;
-  background: #3e000e;
+  background: $secondary;
   color: #fff;
-  border: 2px solid #df96cc;
+  border: 2px solid $tertiary;
   margin: 1rem 0;
   padding: 1rem 0;
   padding: 15px;
@@ -48,11 +48,6 @@ h1 {
 button:focus,
 input:focus {
   outline: none;
-  box-shadow: 0 0 0 0.5px #ffffff, 0 0 3px 3px #df96cc;
+  box-shadow: 0 0 0 0.5px #ffffff, 0 0 3px 3px $tertiary;
 }
-
-// :focus {
-//   box-shadow: 0 0 0 0.5px #ffffff, 0 0 3px 3px #df96cc;
-// }  
-
 

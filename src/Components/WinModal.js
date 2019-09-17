@@ -26,9 +26,9 @@ class WinModal extends Component {
                 this.state.flipButtonPressed ? "flipFront" : ""
                 }`}
             >
-              <h2 className="cardTitle">your wish has been granted</h2>
-              <button onClick={this.flipCard}>
-                Your Wish Has Been Granted
+              <h2 className="cardTitle">your wish is granted</h2>
+              <button className="seeWishButton" onClick={this.flipCard}>
+                see wish now
               </button>
             </div>
 
@@ -37,10 +37,10 @@ class WinModal extends Component {
                 this.state.flipButtonPressed ? "flipBack" : ""
                 }`}
             >
-              <p>{this.props.finalAnswer}</p>
+              <p className="modalWish" ><span>{this.props.finalAnswer}</span></p>
 
               <Link to="/">
-                <button onClick={this.props.getRandomQuote}>
+                <button className="newWishButton" onClick={this.props.getRandomQuote}>
                   Try another wish?
                 </button>
               </Link>
