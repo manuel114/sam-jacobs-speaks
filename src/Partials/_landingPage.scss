@@ -41,6 +41,7 @@
 	text-transform: capitalize;
 	padding: 1rem;
   font-family: 'Hind Siliguri', sans-serif;
+  background-position: center;
 }
 
 .landingPageButton:hover {
@@ -49,7 +50,8 @@
 	text-transform: capitalize;
 	padding: 1rem ;
   transition: all 0.3s;
-  background: url('../Assets/coinSlot.svg') no-repeat;
+  background: url('../Assets/coinSlot.svg') center no-repeat;
+    // background-position: center;
   color: transparent;
 }
 
