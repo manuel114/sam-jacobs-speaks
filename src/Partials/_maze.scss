@@ -1,31 +1,29 @@
 .mazeContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	margin-top: 10vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  margin-top: 10vh;
- 
 	// margin: 2rem auto;
 }
 
 .mazeLayer {
-  display: grid;
-  max-width: 600px;
-  max-height: 600px;
-  min-width: 320px;
-  min-height: 320px;
-  width: 50vw;
-  height: 50vw;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
-  position: relative;
-  margin: 0 auto;
-   border: 30px solid transparent;
+	display: grid;
+	max-width: 600px;
+	max-height: 600px;
+	min-width: 320px;
+	min-height: 320px;
+	width: 50vw;
+	height: 50vw;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
+	position: relative;
+	margin: 0 auto;
+	border: 30px solid transparent;
 	border-image: url('../Assets/ZoltarFrame.svg') 150 round;
-
 }
 
 .movingLayer {
@@ -60,17 +58,21 @@
 	padding: 1rem;
 }
 
+.spin {
+	animation: spinMaze 15s infinite linear;
+}
+
 @keyframes spinMaze {
 	from {
-		transform: perspective(200px) rotateZ(0deg) rotateX(360deg);
+		transform: rotateZ(0deg);
 	}
 	to {
-		transform: perspective(200px) rotateZ(50deg) rotateX(60deg);
+		transform: rotateZ(360deg);
 	}
 }
 
 .path {
-	background-color: pink;
+	background-color: transparent;
 }
 
 .wall {
@@ -88,12 +90,17 @@
 	position: absolute;
 	width: 200vw;
 	height: 200vh;
-	left: -100vw;
-	top: -100vh;
-	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0.15vw, black 15vw);
+	left: -98vw;
+	top: -98vh;
+	background: radial-gradient(
+		circle,
+		rgba(0, 0, 0, 0) 0.15vw,
+		rgba(12, 9, 15, 0.5) 5vw,
+		rgb(12, 9, 15) 10vw
+	);
 }
 
-.avatar {
+.coin {
 	background-image: url('../Assets/coinTest.png');
 	background-position: top 0% left 0px;
 	background-repeat: no-repeat;
@@ -111,8 +118,14 @@
 	z-index: 5;
 }
 
+.big {
+	transform: scale(1.5);
+	left: 0;
+	top: 0;
+}
+
 @keyframes moveSprite {
-	100% {
+	.00% {
 		background-position: top 0% left -200px;
 		// -200 is the width of the coin multiples by the number of steps
 	}
@@ -126,10 +139,6 @@
 	bottom: 0;
 
 	background-color: rgba(0, 0, 0, 0.4);
-
-	//   display: flex;
-	//   justify-content: center;
-	//   align-items: center;
 }
 
 .winModalSub {
@@ -150,12 +159,9 @@
 @keyframes appear {
 	from {
 		top: -600px;
-		// opacity: 0;
 	}
 	to {
 		top: 0;
-		// opacity: 1;
-		// -200 is the width of the coin multiples by the number of steps
 	}
 }
 

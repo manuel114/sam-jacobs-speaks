@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
 
-class Cell extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			visited: false
-		};
+const Cell = ({ cellType, cellLayer, size }) => {
+	if (cellType === 'player') {
+		return (
+			<div className={`cell ${cellLayer} player`}>
+				<div className={`coin ${size}`}></div>
+			</div>
+		);
+	} else {
+		return <div className={`cell ${cellLayer} ${cellType}`}></div>;
 	}
+};
 
-	render() {
-		if (this.props.cellType === 'player') {
-			return (
-				<div className={`cell ${this.props.cellLayer} player`}>
-					<div className='avatar'></div>
-				</div>
-			);
-		} else {
-			return (
-				<div
-					className={`cell ${this.props.cellLayer} ${this.props.cellType}`}></div>
-			);
-		}
-	}
-}
 export default Cell;
