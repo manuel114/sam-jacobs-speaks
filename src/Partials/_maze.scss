@@ -15,7 +15,7 @@
 	min-height: 320px;
 	width: 50vw;
 	height: 50vw;
-
+	overflow: hidden;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(12, 1fr);
 	justify-items: center;
@@ -41,9 +41,11 @@
 }
 
 .mapCell {
-	border: 1px solid black;
 	height: 100%;
 	width: 100%;
+}
+.movingCell {
+	position: relative;
 }
 
 .buttonContainerMaze {
@@ -73,7 +75,17 @@
 .player {
 	position: relative;
 	transition: all 0.3s;
-	background-color: green;
+}
+
+.player::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 200vw;
+	height: 200vh;
+	left: -100vw;
+	top: -100vh;
+	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0.15vw, black 15vw);
 }
 
 .avatar {
