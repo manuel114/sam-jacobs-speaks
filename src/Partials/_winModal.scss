@@ -13,15 +13,18 @@
   background: url('../Assets/paperBackground.jpg');
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .cardTitle, 
 .modalWish {
-	font-family: 'Poiret One', cursive;
-	-webkit-text-stroke: 3px $secondary;
-	text-stroke: 3px $secondary;
+  // font-family: 'Poiret One', cursive;
+  -webkit-text-stroke: 3px $secondary;
+  color: $secondary;
+  letter-spacing: 2rem;
+  font-size: 1.8rem;
+	// text-stroke: 3px $secondary;
 	text-transform: capitalize;
-	letter-spacing: 1px;
   display: flex;
   justify-content: center;
   margin-top: 5.5rem;
@@ -30,7 +33,10 @@
 }
 
 .cardTitle {
-    padding-bottom: 5%;
+  padding-bottom: 5%;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-family: 'Cinzel', serif;
 }
 
 .modalWish {
@@ -38,6 +44,8 @@
   text-align: center;
   line-height: 2rem;
   letter-spacing: 0.2rem;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 2rem;
 }
 
 .seeWishButton,
