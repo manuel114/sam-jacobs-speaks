@@ -42,8 +42,8 @@ class LandingPage extends Component {
                 placeholder="enter what you desire here"
                 onChange={this.handleChange}
                 className={this.props.wishEmpty === true
-                    ? "wishError"
-                    : ""
+                  ? "wishError"
+                  : ""
                 }
               />
 
