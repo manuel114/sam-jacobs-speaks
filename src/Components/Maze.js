@@ -211,6 +211,7 @@ class Maze extends Component {
 						})}
 					</div>
 				</div>
+
 				<div className={`dPad ${this.state.dPad}DPad`}>
 					<button
 						className='dPadButton dPadLeft'
@@ -256,6 +257,7 @@ class Maze extends Component {
 						}}>
 						<span className='visuallyHidden'>down</span>
 					</button>
+
 				</div>
 
 				{this.state.showModal ? (

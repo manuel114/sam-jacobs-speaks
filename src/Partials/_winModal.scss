@@ -1,7 +1,7 @@
 .zoltarCard {
 	background: #f9f1da;
 	margin: 5rem auto;
-	height: 50vh;
+	// height: 50vh;
 	width: 800px;
 	// height: 90vh;
 	display: flex;
@@ -18,21 +18,21 @@
 
 .cardTitle, 
 .modalWish {
-  // font-family: 'Poiret One', cursive;
+  font-family: 'Poiret One', cursive;
   -webkit-text-stroke: 3px $secondary;
   color: $secondary;
   letter-spacing: 2rem;
-  font-size: 1.8rem;
 	// text-stroke: 3px $secondary;
 	text-transform: capitalize;
   display: flex;
   justify-content: center;
-  margin-top: 5.5rem;
+  margin-top: 3.5rem;
   // transition-duration: 5s;
   // transition-delay: 2s;
 }
 
 .cardTitle {
+  font-size: 1.8rem;
   padding-bottom: 5%;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
@@ -45,7 +45,7 @@
   line-height: 2rem;
   letter-spacing: 0.2rem;
   font-family: 'Hind Siliguri', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .seeWishButton,
