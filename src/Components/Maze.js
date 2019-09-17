@@ -140,30 +140,32 @@ class Maze extends Component {
 					</div>
 				</div>
 				<div className='controller'>
-					<button
-						onClick={() => {
-							this.updateCoinLocation('x', -1);
-						}}>
-						Left
-					</button>
-					<button
-						onClick={() => {
-							this.updateCoinLocation('y', -1);
-						}}>
-						Up
-					</button>
-					<button
-						onClick={() => {
-							this.updateCoinLocation('x', 1);
-						}}>
-						Right
-					</button>
-					<button
-						onClick={() => {
-							this.updateCoinLocation('y', 1);
-						}}>
-						Down
-					</button>
+					<div className="dpad">
+						<button className="dpadLeft"
+							onClick={() => {
+								this.updateCoinLocation('x', -1);
+							}}>
+							{/* Left */}
+						</button>
+						<button className="dpadUp"
+							onClick={() => {
+								this.updateCoinLocation('y', -1);
+							}}>
+							{/* Up */}
+						</button>
+						<button className="dpadRight"
+							onClick={() => {
+								this.updateCoinLocation('x', 1);
+							}}>
+							{/* Right */}
+						</button>
+						<button className="dpadDown"
+							onClick={() => {
+								this.updateCoinLocation('y', 1);
+							}}>
+							{/* Down */}
+						</button>
+					</div>
 				</div>
 
 				{this.state.showModal ? (
