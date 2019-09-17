@@ -436,7 +436,7 @@ function filterWish(string) {
       let filterWord = wordsToRemove[y];
 
       // If the word matches the stop word, remove it from the keywords
-      if (word.toLowerCase() == filterWord) {
+      if (word.toLowerCase() === filterWord) {
         // Build the regex
         let regex_str = "^\\s*" + filterWord + "\\s*$"; // Only word
         regex_str += "|^\\s*" + filterWord + "\\s+"; // First word

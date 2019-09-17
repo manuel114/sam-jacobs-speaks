@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import filterWish from './filterWish';
-import firebase from './firebase';
+// import firebase from './firebase';
 import './Partials/App.scss';
 import Maze from './Components/Maze';
 import LandingPage from './Components/LandingPage';
-import Results from './Components/Results';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			advice: '',
-
-			// Error Handling
-
-			wishEmpty: false
 		};
 	}
 	handleSubmit = userWish => {
@@ -36,21 +31,13 @@ class App extends Component {
 			method: `GET`,
 			dataResponse: `json`
 		}).then(answer => {
-			console.log(answer);
-
+			
 			if (typeof answer.data.message === 'undefined') {
+				console.log(answer.data.slips[0].advice);
 				this.setState(
 					{
-						// advice: [...this.state.advice, answer.data.slips[0].advice],
 						advice: answer.data.slips[0].advice
-					},
-					() => {
-						console.log(this.state.advice);
-					}
-				);
-			} else {
-				console.log(this.state.advice);
-			}
+					})}
 		});
 	};
 
@@ -79,40 +66,39 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
-				<div className='app'>
-					<Route
-						exact
-						path='/'
-						component={() => (
-							<LandingPage
-								handleSubmit={this.handleSubmit}
-								handleChange={this.handleChange}
-								wishEmpty={this.state.wishEmpty}
-							/>
-						)}
-					/>
-					<Route
-						path='/maze'
-						component={() => (
-							<Maze
-								finalAnswer={this.state.advice}
-								getRandomQuote={this.getRandomQuote}
-							/>
-						)}
-					/>
-					<Route
-						path='/results'
-						component={() => <Results finalAnswer={this.state.advice} />}
-					/>
-					<div className='starsContent'>
-						<div className='stars'></div>
-						<div className='stars2'></div>
-						<div className='stars3'></div>
-					</div>
-				</div>
-			</Router>
-		);
+      <Router>
+        <div className="app">
+			
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <LandingPage
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                wishEmpty={this.state.wishEmpty}
+              />
+            )}
+          />
+
+          <Route
+            path="/maze"
+            component={() => (
+              <Maze
+                finalAnswer={this.state.advice}
+                getRandomQuote={this.getRandomQuote}
+              />
+            )}
+          />
+
+          <div className="starsContent">
+            <div className="stars"></div>
+            <div className="stars2"></div>
+            <div className="stars3"></div>
+          </div>
+        </div>
+      </Router>
+    );
 	}
 }
 

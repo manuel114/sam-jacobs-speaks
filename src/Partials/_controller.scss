@@ -1,25 +1,36 @@
 .dPad {
-	position: fixed;
-	width: 250px;
-	height: 250px;
-	// display: none;
-	z-index: 500;
-	button {
-		border: 3px solid #e2804d;
-		background: #3e000e;
+	display: none;
+}
 
-		&:hover {
-			background: #e2804d;
-		}
-	}
+.showDPad{
+	z-index: 500;
 }
-.dPadButton {
-	width: 0;
-	height: 0;
-	border-top: 60px solid transparent;
-	border-bottom: 60px solid transparent;
-	border-left: 160px solid green;
-}
+
+
+
+
+// .dPad {
+// 	position: fixed;
+// 	width: 250px;
+// 	height: 250px;
+// 	// display: none;
+// 	z-index: 500;
+// 	button {
+// 		border: 3px solid #e2804d;
+// 		background: #3e000e;
+
+// 		&:hover {
+// 			background: #e2804d;
+// 		}
+// 	}
+// }
+// .dPadButton {
+// 	width: 0;
+// 	height: 0;
+// 	border-top: 60px solid transparent;
+// 	border-bottom: 60px solid transparent;
+// 	border-left: 160px solid green;
+// }
 
 // .dPadUp {
 // 	position: absolute;
@@ -67,11 +78,11 @@
 
 // // button responsive
 
-// @media (max-width: 940px) {
-// 	.dPad {
-// 		display: block;
-// 	}
-// }
+@media (max-width: 940px) {
+	.dPad {
+		display: block;
+	}
+}
 
 // @media (max-width: 750px) {
 // 	.dPadRight {

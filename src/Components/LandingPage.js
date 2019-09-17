@@ -9,11 +9,15 @@ class LandingPage extends Component {
       wishEmpty: false
     };
   }
+
   handleChange = e => {
     let userInput = e.target.value;
     this.setState({ userWish: userInput });
   };
+
   emptyStringCheck = (event, userWish) => {
+    console.log(userWish);
+
     if (userWish !== "") {
       this.props.handleSubmit(userWish);
       this.setState({
@@ -31,6 +35,7 @@ class LandingPage extends Component {
       );
     }
   };
+
   render() {
     return (
       <main className="wrapper zoltarContainer">
@@ -40,7 +45,14 @@ class LandingPage extends Component {
           src={require("../Assets/ZoltarLogo.svg")}
           alt={"Zoltar Speaks Logo"}
         />
-        <form className="makeWishContainer" action="submit">
+
+        <form
+          className="makeWishContainer"
+          action="submit"
+          onSubmit={event => (
+            this.emptyStringCheck(event, this.state.userWish)
+          )}
+        >
           <div className="leftForm">
             <h2 className="wishQuestion">What do you wish for?</h2>
             <label className="wishLabel visuallyHidden">Enter a wish</label>

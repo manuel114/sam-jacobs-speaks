@@ -51,79 +51,80 @@
   position: relative;
 }
 
-.buttonContainerMaze {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 1rem;
-}
+// .buttonContainerMaze {
+//   display: flex;
+//   flex-direction: row;
+//   margin: 0 auto;
+//   padding: 1rem;
+// }
 
-button {
-  border: 3px solid #e2804d;
-  background: #3e000e;
+// button {
+//   border: 3px solid #e2804d;
+//   background: #3e000e;
 
-  &:hover {
-    background: #e2804d;
-  }
-}
+//   &:hover {
+//     background: #e2804d;
+//   }
+// }
 
-.controller {
-  position: relative;
-}
+// .controller {
+//   position: relative;
+// }
 
-.dpad {
-  position: fixed;
-  width: 50vw;
-  height: 10vh;
-  display: none;
-}
+// .dpad {
+//   position: fixed;
+//   width: 50vw;
+//   height: 10vh;
+//   display: none;
+// }
 
-.dpadUp {
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  border-top-left-radius: 25%;
-  border-top-right-radius: 25%;
-}
+// .dpadUp {
+//   position: absolute;
+//   top: 44%;
+//   left: 50%;
+//   border-top-left-radius: 25%;
+//   border-top-right-radius: 25%;
+// }
 
-.dpadDown {
-  position: absolute;
-  top: 167%;
-  left: 50%;
-  border-bottom-left-radius: 25%;
-  border-bottom-right-radius: 25%;
-}
+// .dpadDown {
+//   position: absolute;
+//   top: 167%;
+//   left: 50%;
+//   border-bottom-left-radius: 25%;
+//   border-bottom-right-radius: 25%;
+// }
 
-.dpadLeft {
-  position: absolute;
-  top: 111.5%;
-  right: 49.25%;
-  border-top-left-radius: 25%;
-  border-bottom-left-radius: 25%;
-}
+// .dpadLeft {
+//   position: absolute;
+//   top: 111.5%;
+//   right: 49.25%;
+//   border-top-left-radius: 25%;
+//   border-bottom-left-radius: 25%;
+// }
 
-.dpadRight {
-  position: absolute;
-  top: 111.5%;
-  left: 59.5%;
-  border-top-right-radius: 25%;
-  border-bottom-right-radius: 25%;
-}
+// .dpadRight {
+//   position: absolute;
+//   top: 111.5%;
+//   left: 59.5%;
+//   border-top-right-radius: 25%;
+//   border-bottom-right-radius: 25%;
+// }
 
-.dpadUp,
-.dpadDown {
-  width: 10%;
-  height: 70%;
-}
+// .dpadUp,
+// .dpadDown {
+//   width: 10%;
+//   height: 70%;
+// }
 
-.dpadLeft,
-.dpadRight {
-  width: 13%;
-  height: 60%;
+// .dpadLeft,
+// .dpadRight {
+//   width: 13%;
+//   height: 60%;
 
-  .spin {
-    animation: spinMaze 15s infinite linear;
-  }
+  
+// }
+.spin {
+  animation: spinMaze 15s infinite linear;
 }
 
 @keyframes spinMaze {
@@ -140,7 +141,9 @@ button {
 }
 
 .wall {
-  background-color: brown;
+  background-color:rgba(226, 128, 77, 0.4);
+  background-image: url("https://www.transparenttextures.com/patterns/dark-brick-wall.png");
+  border-radius:15%;
 }
 
 .exit {
@@ -170,12 +173,12 @@ button {
 
 .player::after {
   content: "";
-  display: block;
+  // display: block;
   position: absolute;
-  width: 200vw;
-  height: 200vh;
-  left: -98vw;
-  top: -98vh;
+  width: 300vw;
+  height: 300vh;
+  left: -148vw;
+  top: -148vh;
   background: radial-gradient(
     circle,
     rgba(0, 0, 0, 0) 0.15vw,
@@ -192,8 +195,8 @@ button {
 
   /* for avatar sprite sheet */
   animation: moveSprite 0.5s steps(5) infinite;
-  width: 40px;
-  height: 40px;
+  width: 90%;
+  height: 90%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -202,18 +205,20 @@ button {
   z-index: 5;
 }
 
+@keyframes moveSprite {
+  .00% {
+    background-position: top 0% left 122%;
+    // -200 is the width of the coin multiples by the number of steps
+  }
+}
+
 .big {
   transform: scale(1.5);
   left: 0;
   top: 0;
 }
 
-@keyframes moveSprite {
-  .00% {
-    background-position: top 0% left -200px;
-    // -200 is the width of the coin multiples by the number of steps
-  }
-}
+
 
 .winModal {
   position: fixed;
@@ -284,116 +289,116 @@ button {
   }
 }
 
-@keyframes flipBackAnimation {
-  from {
-    transform: rotateY(180deg);
-  }
-  to {
-    transform: rotateY(0);
-  }
-}
+// @keyframes flipBackAnimation {
+//   from {
+//     transform: rotateY(180deg);
+//   }
+//   to {
+//     transform: rotateY(0);
+//   }
+// }
 
-@keyframes flipFrontAnimation {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(-180deg);
-  }
-}
+// @keyframes flipFrontAnimation {
+//   from {
+//     transform: rotateY(0);
+//   }
+//   to {
+//     transform: rotateY(-180deg);
+//   }
+// }
 
-// button responsive
+// // button responsive
 
-@media (max-width: 940px) {
-  .dpad {
-    display: block;
-  }
-}
+// @media (max-width: 940px) {
+//   .dpad {
+//     display: block;
+//   }
+// }
 
-@media (max-width: 750px) {
-  .dpadRight {
-    position: absolute;
-    top: 111.5%;
-    left: 61.5%;
-    border-top-right-radius: 25%;
-    border-bottom-right-radius: 25%;
-  }
+// @media (max-width: 750px) {
+//   .dpadRight {
+//     position: absolute;
+//     top: 111.5%;
+//     left: 61.5%;
+//     border-top-right-radius: 25%;
+//     border-bottom-right-radius: 25%;
+//   }
 
-  .dpadUp,
-  .dpadDown {
-    width: 12%;
-    height: 70%;
-  }
+//   .dpadUp,
+//   .dpadDown {
+//     width: 12%;
+//     height: 70%;
+//   }
 
-  .dpadLeft,
-  .dpadRight {
-    width: 13%;
-    height: 59%;
-  }
-}
+//   .dpadLeft,
+//   .dpadRight {
+//     width: 13%;
+//     height: 59%;
+//   }
+// }
 
-@media (max-width: 600px) {
-  .dpadUp {
-    top: 100%;
-    left: 50%;
-  }
+// @media (max-width: 600px) {
+//   .dpadUp {
+//     top: 100%;
+//     left: 50%;
+//   }
 
-  .dpadLeft {
-    top: 166.5%;
-    right: 49.25%;
-  }
+//   .dpadLeft {
+//     top: 166.5%;
+//     right: 49.25%;
+//   }
 
-  .dpadDown {
-    top: 223%;
-    left: 50%;
-  }
+//   .dpadDown {
+//     top: 223%;
+//     left: 50%;
+//   }
 
-  .dpadRight {
-    top: 166.5%;
-    left: 64.25%;
-  }
+//   .dpadRight {
+//     top: 166.5%;
+//     left: 64.25%;
+//   }
 
-  .dpadUp,
-  .dpadDown {
-    width: 15%;
-    height: 70%;
-  }
+//   .dpadUp,
+//   .dpadDown {
+//     width: 15%;
+//     height: 70%;
+//   }
 
-  .dpadLeft,
-  .dpadRight {
-    width: 18%;
-    height: 60%;
-  }
-}
+//   .dpadLeft,
+//   .dpadRight {
+//     width: 18%;
+//     height: 60%;
+//   }
+// }
 
-@media (max-width: 480px) {
-  .dpadRight {
-    left: 69%;
-  }
+// @media (max-width: 480px) {
+//   .dpadRight {
+//     left: 69%;
+//   }
 
-  .dpadUp,
-  .dpadDown {
-    width: 20%;
-  }
+//   .dpadUp,
+//   .dpadDown {
+//     width: 20%;
+//   }
 
-  .dpadLeft,
-  .dpadRight {
-    width: 20%;
-  }
-}
+//   .dpadLeft,
+//   .dpadRight {
+//     width: 20%;
+//   }
+// }
 
-@media (max-width: 320px) {
-  .dpadRight {
-    left: 78.5%;
-  }
+// @media (max-width: 320px) {
+//   .dpadRight {
+//     left: 78.5%;
+//   }
 
-  .dpadUp,
-  .dpadDown {
-    width: 30%;
-  }
+//   .dpadUp,
+//   .dpadDown {
+//     width: 30%;
+//   }
 
-  .dpadLeft,
-  .dpadRight {
-    width: 30%;
-  }
-}
+//   .dpadLeft,
+//   .dpadRight {
+//     width: 30%;
+//   }
+// }
