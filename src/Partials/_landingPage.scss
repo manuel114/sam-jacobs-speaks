@@ -35,8 +35,8 @@
 }
 
 .landingPageButton {
-	background: #e2804d;
-	border: 1px solid #e2804d;
+	background: $primary;
+	border: 1px solid $primary;
 	color: #fff;
 	text-transform: capitalize;
 	padding: 1rem;
@@ -45,7 +45,7 @@
 }
 
 .landingPageButton:hover {
-  background: #df96cc;
+  background: $tertiary;
   border: 1px solid transparent;
 	text-transform: capitalize;
 	padding: 2rem ;

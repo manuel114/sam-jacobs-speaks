@@ -5,17 +5,74 @@
 	width: 800px;
 	// height: 90vh;
 	display: flex;
-	align-items: center;
+  align-items: center;
+  
+}
+
+.front, .back {
+  background: url('../Assets/paperBackground.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cardTitle, 
+.modalWish {
+  // font-family: 'Poiret One', cursive;
+  -webkit-text-stroke: 3px $secondary;
+  color: $secondary;
+  letter-spacing: 2rem;
+  font-size: 1.8rem;
+	// text-stroke: 3px $secondary;
+	text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  margin-top: 5.5rem;
+  // transition-duration: 5s;
+  // transition-delay: 2s;
 }
 
 .cardTitle {
-	font-family: 'Poiret One', cursive;
-	-webkit-text-stroke: 3px #000;
-	text-stroke: 3px #000;
-	text-transform: capitalize;
-	letter-spacing: 1px;
-	padding: 5% 0;
+  padding-bottom: 5%;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-family: 'Cinzel', serif;
 }
+
+.modalWish {
+  padding: 0 3rem;
+  text-align: center;
+  line-height: 2rem;
+  letter-spacing: 0.2rem;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 2rem;
+}
+
+.seeWishButton,
+.newWishButton {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  margin: 2rem auto;
+  background: $primary;
+  border: 1px solid $primary;
+  color: #fff;
+  font-family: 'Hind Siliguri', sans-serif;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+
+.newWishButton {
+  // margin: 2rem auto;
+}
+
+.seeWishButton:hover,
+.newWishButton:hover {
+  background: $tertiary;
+  border: 1px solid $tertiary;
+  transition: all 0.3s;
+}
+
 
 .finalAnswer {
 	color: #000;
