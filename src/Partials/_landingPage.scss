@@ -76,14 +76,20 @@
 }
 
 @keyframes warning {
-  0%   {border: 2px solid $tertiary}
-  50%  {border: 2px solid red;}
-  100% {border: 2px solid $tertiary;}
+	0% {
+		border: 2px solid $tertiary;
+	}
+	50% {
+		border: 2px solid red;
+	}
+	100% {
+		border: 2px solid $tertiary;
+	}
 }
 
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
 
-#stars {
+.stars {
 	content: '';
 	background: transparent;
 	box-shadow: $stars;
@@ -91,7 +97,7 @@
 	z-index: -1;
 }
 
-#stars:after {
+.stars:after {
 	content: ' ';
 	position: absolute;
 	top: 2000px;
@@ -102,7 +108,7 @@
 	z-index: -1;
 }
 
-#stars2 {
+.stars2 {
 	width: 4px;
 	height: 4px;
 	background: transparent;
@@ -110,7 +116,7 @@
 	animation: animStar 100s linear infinite;
 	z-index: -1;
 }
-#stars2:after {
+.stars2:after {
 	content: ' ';
 	position: absolute;
 	top: 2000px;
@@ -121,7 +127,7 @@
 	z-index: -1;
 }
 
-#stars3 {
+.stars3 {
 	width: 3px;
 	height: 3px;
 	background: transparent;
@@ -130,7 +136,7 @@
 	z-index: -1;
 }
 
-#stars3:after {
+.stars3:after {
 	content: '';
 	position: absolute;
 	top: 2000px;
