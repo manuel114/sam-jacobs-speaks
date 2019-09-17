@@ -15,21 +15,22 @@ class WinModal extends Component {
     });
   };
 
+
   render() {
     return (
       <div className="winModal">
         <div className="winModalSub">
           {/* <Link to="/results"> */}
-          <div className="card">
+          <div className="card" onClick={this.flipCard}>
             <div
               className={`front ${
                 this.state.flipButtonPressed ? "flipFront" : ""
                 }`}
             >
               <h2 className="cardTitle">your wish is granted</h2>
-              <button className="seeWishButton" onClick={this.flipCard}>
+              {/*<button className="seeWishButton" >
                 see wish now
-              </button>
+              </button>*/}
             </div>
 
             <div
