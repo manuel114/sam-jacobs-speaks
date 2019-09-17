@@ -1,9 +1,12 @@
+
+
 .mazeContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  margin-top: 10vh;
 }
 
 .mazeLayer {
@@ -101,7 +104,7 @@
 }
 
 .winModal {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -154,7 +157,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-//   transition: all 2s;
+  //   transition: all 2s;
   backface-visibility: hidden; /*This means that when it is flipped over, we don't see the back */
   font-size: 1.4rem;
 }
@@ -169,17 +172,17 @@
 }
 
 .flipFront {
-	transform: rotateY(-180deg);
-	animation: flipFrontAnimation 2s;
+  transform: rotateY(-180deg);
+  animation: flipFrontAnimation 2s;
 }
 
 .flipBack {
-	transform: rotateY(0deg);
-	animation: flipBackAnimation 2s;
-	
-	p {
-		color: black;
-	}
+  transform: rotateY(0deg);
+  animation: flipBackAnimation 2s;
+
+  p {
+    color: black;
+  }
 }
 
 // .card:hover .back {
@@ -206,5 +209,3 @@
     transform: rotateY(-180deg);
   }
 }
-
-

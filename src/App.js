@@ -104,7 +104,7 @@ class App extends Component {
 				{/* <div 
 					className="coinTest avatar">
 				</div> */}
-				<div className='App'>
+				<div className='app'>
 					<Route
 						exact
 						path='/'
