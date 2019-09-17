@@ -3,19 +3,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class LandingPage extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			userWish: ''
 		};
 	}
+handleChange = e => {
+    let userInput = e.target.value;
 
-	handleChange = e => {
-		let userInput = e.target.value;
+    this.setState(
+      { userWish: userInput })
 
-		this.setState({ userWish: userInput });
-	};
-
+  };
 	render() {
 		return (
 			<main className='wrapper zoltarContainer'>
@@ -57,6 +58,12 @@ class LandingPage extends Component {
 			</main>
 		);
 	}
+
+ 
+
+  
+
+ 
 }
 
 export default LandingPage;

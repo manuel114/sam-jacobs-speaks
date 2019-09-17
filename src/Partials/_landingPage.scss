@@ -22,7 +22,7 @@
 	font-family: 'Poiret One', cursive;
 	letter-spacing: 1.2px;
 	padding-top: 2%;
-	padding-bottom: 7%;
+	padding-bottom: 15%;
 	font-size: 1.5rem;
 	text-transform: capitalize;
 	-webkit-text-stroke: 2px #f9f1da;
@@ -39,16 +39,17 @@
 	color: #fff;
 	text-transform: capitalize;
 	padding: 1rem;
-	font-family: 'Hind Siliguri', sans-serif;
+  font-family: 'Hind Siliguri', sans-serif;
 }
 
 .landingPageButton:hover {
-	background: #df96cc;
-	border: 1px solid #df96cc;
-	color: #fff;
+  background: #df96cc;
+  border: 1px solid transparent;
 	text-transform: capitalize;
-	padding: 1rem;
-	transition: all 0.3s;
+	padding: 1rem ;
+  transition: all 0.3s;
+  background: url('../Assets/coinSlot.svg') no-repeat;
+  color: transparent;
 }
 
 .buttonLinkContainer {
