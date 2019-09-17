@@ -171,46 +171,48 @@ class Maze extends Component {
 					</div>
 				</div>
 				<div className='controller'>
-					<button
-						onClick={() => {
-							if (this.state.reverseControl === false) {
-								this.updateCoinLocation('x', -1);
-							} else {
-								this.updateCoinLocation('x', 1);
-							}
-						}}>
-						Left
-					</button>
-					<button
-						onClick={() => {
-							if (this.state.reverseControl === false) {
-								this.updateCoinLocation('y', -1);
-							} else {
-								this.updateCoinLocation('y', 1);
-							}
-						}}>
-						Up
-					</button>
-					<button
-						onClick={() => {
-							if (this.state.reverseControl === false) {
-								this.updateCoinLocation('x', 1);
-							} else {
-								this.updateCoinLocation('x', -1);
-							}
-						}}>
-						Right
-					</button>
-					<button
-						onClick={() => {
-							if (this.state.reverseControl === false) {
-								this.updateCoinLocation('y', 1);
-							} else {
-								this.updateCoinLocation('y', -1);
-							}
-						}}>
-						Down
-					</button>
+          <div className='dpad'>
+            <button className='dpadLeft'
+              onClick={() => {
+                if (this.state.reverseControl === false) {
+                  this.updateCoinLocation('x', -1);
+                } else {
+                  this.updateCoinLocation('x', 1);
+                }
+              }}>
+              Left
+            </button>
+            <button className='dpadUp'
+              onClick={() => {
+                if (this.state.reverseControl === false) {
+                  this.updateCoinLocation('y', -1);
+                } else {
+                  this.updateCoinLocation('y', 1);
+                }
+              }}>
+              Up
+            </button>
+            <button className='dpadRight'
+              onClick={() => {
+                if (this.state.reverseControl === false) {
+                  this.updateCoinLocation('x', 1);
+                } else {
+                  this.updateCoinLocation('x', -1);
+                }
+              }}>
+              Right
+            </button>
+            <button className='dpadDown'
+              onClick={() => {
+                if (this.state.reverseControl === false) {
+                  this.updateCoinLocation('y', 1);
+                } else {
+                  this.updateCoinLocation('y', -1);
+                }
+              }}>
+              Down
+            </button>
+          </div>
 				</div>
 
 				{this.state.showModal ? (
