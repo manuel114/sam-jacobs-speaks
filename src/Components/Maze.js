@@ -112,6 +112,8 @@ class Maze extends Component {
 						break;
 					}
 				}
+			} else {
+				this.moveCoin(target);
 			}
 		}
 	};
