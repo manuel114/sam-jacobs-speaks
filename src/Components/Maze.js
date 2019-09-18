@@ -9,7 +9,7 @@ class Maze extends Component {
 		this.state = {
       mazeMap: [
         [-1, 1, -7, 1, 0, 0, 0, 0, 0, 0, 0, -4],
-        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+        [0, 1, 0, 1, -6, 1, 1, 1, 0, 1, 1, 1],
         [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
         [-3, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
         [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0],
@@ -29,7 +29,8 @@ class Maze extends Component {
       spin: false,
       coinSize: "regular",
       reverseControl: false,
-      dPad: "show"
+		dPad: "show",
+		moveCount:0
     };
 	}
 
@@ -106,17 +107,15 @@ class Maze extends Component {
 		document.querySelector('.player').style.transform = `translate(${target.x -
 			1}00%,${target.y - 1}00%)`;
 		document.querySelector('.player').style.transition = `transform ${time}s`;
-		this.setState({ playerLocation: target });
+		this.setState({ playerLocation: target,moveCount: this.state.moveCount + 1});
 	};
+
 	removeItem=(target)=>{
-		
 			const newMazeMap = this.state.mazeMap;
 			newMazeMap[target.y - 1][target.x - 1] = 0;
 			this.setState({mazeMap:newMazeMap})
-		
 	}
 
-	
 	handleKeyPress = e => {
 		if (this.state.reverseControl === true) {
 			switch (e.key) {
@@ -158,9 +157,13 @@ class Maze extends Component {
 			}
 		}
 	};
+
 	render() {
 		return (
 			<main className='mazeContainer' onKeyPress={this.handleKeyPress}>
+
+				{this.state.moveCount < 2 ? <h2 className='info'>navigate through the maze <br/>with arrow keys / d-pad <br/>to get Zoltar's advice </h2>: null}
+				
 				<div className={`mazeLayer ${this.state.spin}Spin`}>
 					{this.state.mazeMap.map((row, Y) => {
 						return row.map((cell, X) => {
@@ -181,7 +184,7 @@ class Maze extends Component {
 								}
 
 								case -3: {
-									return <Cell cellLayer='mapCell' cellType='reverse'key={`mapCell-${X}-${Y}`}/>;
+									return <Cell cellLayer='mapCell' cellType='spinTrap' key={`mapCell-${X}-${Y}`}/>;
 									break;
 								}
 
@@ -191,7 +194,7 @@ class Maze extends Component {
 								}
 
 								case -5: {
-									return <Cell cellLayer='mapCell' cellType='oil'key={`mapCell-${X}-${Y}`}  />;
+									return <Cell cellLayer='mapCell' cellType='reverse'key={`mapCell-${X}-${Y}`}  />;
 									break;
 								}
 								case -6: {

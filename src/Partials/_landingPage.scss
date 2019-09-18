@@ -16,10 +16,13 @@
   position: relative;
   display: inline-block;
 
-  &:hover .landingPageButtonHover,
-  &:focus .landingPageButtonHover {
+  &:hover .landingPageButtonHover{
     display: inline;
   }
+}
+
+.buttonLinkContainer a:focus .landingPageButtonHover {
+  display: inline;
 }
 
 .landingPageButton,
@@ -63,13 +66,11 @@ h1 {
 
   &::placeholder {
     font-family: $bodyFont;
+    
   }
 }
 
-.wishLabel {
-  color: #fff;
-  font-family: $bodyFont;
-}
+
 
 .leftForm {
   display: flex;

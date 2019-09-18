@@ -23,6 +23,7 @@
   margin: 0 auto;
   border: 30px solid transparent;
   border-image: url("../Assets/ZoltarFrame.svg") 150 round;
+  z-index:400;
 }
 
 .movingLayer {
@@ -61,6 +62,19 @@
   animation: spin 25s infinite linear;
 }
 
+.info{
+ color:white;
+ z-index:1000;
+ font-family:$headlineFont;
+ font-size: 1rem;
+ position: fixed;
+margin:0 auto;
+top: 30vh;
+text-transform: uppercase;
+}
+.falseInfo{
+  display:none;
+}
 @keyframes spin {
   from {
     transform: rotateZ(0deg);
@@ -87,6 +101,16 @@
   }
   to{filter:contrast(180%) brightness(1.5)}
 }
+
+@keyframes shake{
+  from{
+    transform:translateX(-10%);
+  }
+  to{
+    transform:translateX(10%)
+  }
+}
+
 .path {
   background-color: transparent;
 }
@@ -108,18 +132,19 @@
   animation: spin 3s linear infinite reverse;
 }
 .reverse {
-  background: url('../Assets/reverseTrap.svg');
+  background: url('../Assets/reverseTrap.svg') no-repeat;
   background-size: 100%;
-  animation: spin 1s linear infinite;
+  animation:shake 0.3s infinite linear alternate-reverse;
 }
 .mushroom {
   background: url("../Assets/mushroom.svg");
   background-size: 100%;
   animation: pulse 0.5s infinite alternate-reverse linear;
 }
-.oil{
-  background: url("../Assets/oilSpill.svg") no-repeat;
-  background-size: contain;
+.spinTrap{
+  background: url("../Assets/spinTrap.svg");
+  background-size: cover;
+  animation: spin 2s infinite linear;
 }
 
 .player {
@@ -139,7 +164,7 @@
     circle,
     rgba(0, 0, 0, 0) 0.15vw,
     rgba(12, 9, 15, 0.5) 8vw,
-    rgba(12, 9, 15, 0.9) 20vw
+    rgb(12, 9, 15) 20vw
   );
 }
 
@@ -150,11 +175,11 @@
   background-size: cover;
 
   /* for avatar sprite sheet */
-  animation: moveSprite 0.5s steps(5) infinite;
+  animation: moveSprite 0.5s steps(4) infinite;
   width: 90%;
   height: 90%;
   position: absolute;
-  left: 50%;
+  left: 45%;
   top: 50%;
   transform: translate(-50%, -50%);
   border: none;
@@ -163,7 +188,7 @@
 
 @keyframes moveSprite {
   .00% {
-    background-position: top 0% left 122%;
+    background-position: top 0% left 97.7%;
     // -200 is the width of the coin multiples by the number of steps
   }
 }
