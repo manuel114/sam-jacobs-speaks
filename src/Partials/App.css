@@ -662,7 +662,6 @@ button:focus {
 
 .front,
 .back {
-  /* some styling for each card */
   position: absolute;
   height: 100%;
   width: 100%;
@@ -672,14 +671,8 @@ button:focus {
   font-size: 1.4rem;
 }
 
-.front {
-  background: white;
-  /* coral */
-}
 
 .back {
-  background: white;
-  /*cornflowerblue */
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   /*By Default set the back to be rotate */

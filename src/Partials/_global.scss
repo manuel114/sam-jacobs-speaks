@@ -1,12 +1,14 @@
-// COLORS
-
 $primary: #e2804d;
 $secondary: #3e000e;
 $tertiary: #df96cc;
+$white: #f9f1da;
+$black: #090a0f;
+$headlineFont: 'Poiret One', cursive;
+$bodyFont: 'Hind Siliguri', sans-serif;
 
 html {
 	font-size: 125%;
-	background: radial-gradient(ellipse at bottom, $secondary 0%, #090a0f 100%)
+	background: radial-gradient(ellipse at bottom, $secondary 0%, $black 100%)
 		no-repeat;
 	overflow: hidden;
 }
@@ -32,7 +34,7 @@ img {
 input {
 	height: 2rem;
 	background: $secondary;
-	color: #fff;
+	color: $white;
 	border: 2px solid $tertiary;
 	margin: 1rem 0;
 	padding: 1rem 0;
@@ -46,16 +48,15 @@ a:focus {
 
 h1 {
 	font-family: $headlineFont;
-	-webkit-text-stroke: 3px #f9f1da;
-	color: #f9f1da;
+	-webkit-text-stroke: 3px $white;
+	color: $white;
 	letter-spacing: 7px;
 	font-size: 2.5rem;
 	text-transform: uppercase;
 	text-align: center;
 }
 
-button:focus,
 input:focus {
 	outline: none;
-	box-shadow: 0 0 0 0.5px #ffffff, 0 0 3px 3px $tertiary;
+	box-shadow: 0 0 0 0.5px $white, 0 0 3px 3px $tertiary;
 }

@@ -1,93 +1,96 @@
-
-.dPad{
+.dPad {
 	display: none;
 }
 
-
 .dPadButton {
-//the rectangle part of the arrow
-	display: inline-block;  
+	//the rectangle part of the arrow
+	display: inline-block;
 	border-top-left-radius: 10%;
 	border-bottom-left-radius: 10%;
-	border:none;
+	border: none;
 	position: relative;
 	width: 60px;
 	height: 40px;
 	background: $primary;
 	//the triangle part of the arrow
-	 &::after {
-	  border-left: 20px solid $primary;
-	  content: "";
-	  position: absolute;
-	  border-bottom: 20px solid transparent;
-	  border-top: 20px solid transparent;
-	  height: 0px;
-	  width: 0px;
-	  margin-right: -20px;
-	  right: 0; 
-	  top: 0;
+	&::after {
+		border-left: 20px solid $primary;
+		content: '';
+		position: absolute;
+		border-bottom: 20px solid transparent;
+		border-top: 20px solid transparent;
+		height: 0px;
+		width: 0px;
+		margin-right: -20px;
+		right: 0;
+		top: 0;
 	}
- }
+}
 
- 
 .dPadButton:active {
 	background: $tertiary;
 	&::after:active {
-	  // triangle hover
-	  border-left: 20px solid $tertiary;
+		// triangle hover
+		border-left: 20px solid $tertiary;
 	}
- }
+}
 
-.dPadLeft{
+.dPadLeft {
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
 }
 .dPadRight {
-	transform:rotate(180deg);
+	transform: rotate(180deg);
 	grid-column: 3 / 4;
 	grid-row: 2 / 3;
 }
 
 .dPadDown {
-	transform:rotate(-90deg);
+	transform: rotate(-90deg);
 	grid-column: 2 / 3;
-	grid-row:3 / 4;
+	grid-row: 3 / 4;
 }
-.dPadUp{
+.dPadUp {
 	transform: rotate(90deg);
 	grid-column: 2 / 3;
-	grid-row:1 / 2;
- }
-
+	grid-row: 1 / 2;
+}
 
 @media (max-width: 1113px) {
-	
-.dPad {
-	display:grid;
-	grid-template-columns: repeat 52px;
-	grid-template-rows: repeat 52px;
-	width:150px;
-	height:150px;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	bottom:2%;
-	margin: 0 auto;
-	z-index:999;
-}
+	.dPad {
+		display: grid;
+		grid-template-columns: repeat 52px;
+		grid-template-rows: repeat 52px;
+		width: 150px;
+		height: 150px;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		bottom: 2%;
+		margin: 0 auto;
+		z-index: 999;
+	}
 }
 @media (max-width: 1024px) {
-	
 	.dPad {
-		bottom:10%;
+		bottom: 5%;
+		right: 5%;
 	}
+}
+
+@media (max-width: 720px) {
+	.dPad {
+		left: 0;
+		right: 0;
 	}
+}
 
 @media (max-width: 321px) {
-	.dPad{
-		bottom:0;
-	}}
+	.dPad {
+		bottom: 0;
+	}
+}
 
-.hideDPad{
-display:none;
+.hideDPad {
+	display: none;
 }

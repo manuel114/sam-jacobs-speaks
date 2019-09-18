@@ -1,246 +1,227 @@
 .mazeContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  margin-top: 10vh;
-
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	margin-top: 10vh;
 }
 
+.info {
+	color: white;
+	z-index: 1000;
+	font-family: $headlineFont;
+	font-size: 1.2rem;
+	position: fixed;
+	margin: 0 auto;
+	top: 40vh;
+	text-transform: capitalize;
+	line-height: 1.2em;
+	-webkit-text-stroke: 1px $white;
+}
+.falseInfo {
+	display: none;
+}
 .mazeLayer {
-  display: grid;
-  max-width: 600px;
-  max-height: 600px;
-  min-width: 300px;
-  min-height: 300px;
-  width: 50vw;
-  height: 50vw;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
-  position: relative;
-  margin: 0 auto;
-  border: 30px solid transparent;
-  border-image: url("../Assets/ZoltarFrame.svg") 150 round;
-  z-index:400;
+	display: grid;
+	max-width: 600px;
+	max-height: 600px;
+	min-width: 300px;
+	min-height: 300px;
+	width: 50vw;
+	height: 50vw;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
+	position: relative;
+	margin: 0 auto;
+	border: 30px solid transparent;
+	border-image: url('../Assets/ZoltarFrame.svg') 150 round;
+	z-index: 400;
 }
 
 .movingLayer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  justify-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(12, 1fr);
+	justify-items: center;
 }
 
 .cell {
-  min-height: 24px;
-  min-width: 24px;
-  width: 100%;
-  height: 100%;
+	min-height: 24px;
+	min-width: 24px;
+	width: 100%;
+	height: 100%;
 }
 
 .mapCell {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 .movingCell {
-  position: relative;
-}
-
-.buttonContainerMaze {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 1rem;
+	position: relative;
 }
 
 .trueSpin {
-  animation: spin 25s infinite linear;
+	animation: spin 25s infinite linear;
 }
 
-.info{
- color:white;
- z-index:1000;
- font-family:$headlineFont;
- font-size: 1rem;
- position: fixed;
-margin:0 auto;
-top: 30vh;
-text-transform: uppercase;
-}
-.falseInfo{
-  display:none;
-}
 @keyframes spin {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
+	from {
+		transform: rotateZ(0deg);
+	}
+	to {
+		transform: rotateZ(360deg);
+	}
 }
 
 @keyframes pulse {
-  from{
-    transform:scale(0.8);
-    filter:hue-rotate(50deg);
-  }
-  to{
-    transform:scale(1);
-    filter:hue-rotate(-100deg);
-  }
+	from {
+		transform: scale(0.8);
+		filter: hue-rotate(50deg);
+	}
+	to {
+		transform: scale(1);
+		filter: hue-rotate(-100deg);
+	}
 }
 
-@keyframes glow{
-  from{
-    filter:contrast(90%) brightness(0.9)
-  }
-  to{filter:contrast(180%) brightness(1.5)}
+@keyframes glow {
+	from {
+		filter: contrast(90%) brightness(0.9);
+	}
+	to {
+		filter: contrast(180%) brightness(1.5);
+	}
 }
 
-@keyframes shake{
-  from{
-    transform:translateX(-10%);
-  }
-  to{
-    transform:translateX(10%)
-  }
-}
-
-.path {
-  background-color: transparent;
+@keyframes shake {
+	from {
+		transform: translateX(-10%);
+	}
+	to {
+		transform: translateX(10%);
+	}
 }
 
 .wall {
-  background-color:rgba(226, 128, 77, 0.4);
-  background-image: url("https://www.transparenttextures.com/patterns/dark-brick-wall.png");
-  border-radius:15%;
+	background-color: rgba(226, 128, 77, 0.4);
+	background-image: url('../Assets/brickWall.png');
+	border-radius: 15%;
 }
 
 .exit {
-  background: url("../Assets/globe.svg");
-  background-size: cover;
-  animation: glow 1s infinite linear alternate-reverse;
+	background: url('../Assets/globe.svg');
+	background-size: cover;
+	animation: glow 1s infinite linear alternate-reverse;
 }
 .portal {
-  background: url("../Assets/portal.svg");
-  background-size: cover;
-  animation: spin 3s linear infinite reverse;
+	background: url('../Assets/portal.svg');
+	background-size: cover;
+	animation: spin 3s linear infinite reverse;
 }
 .reverse {
-  background: url('../Assets/reverseTrap.svg') no-repeat;
-  background-size: 100%;
-  animation:shake 0.3s infinite linear alternate-reverse;
+	background: url('../Assets/reverseTrap.svg') no-repeat;
+	background-size: 100%;
+	animation: shake 0.3s infinite linear alternate-reverse;
 }
 .mushroom {
-  background: url("../Assets/mushroom.svg");
-  background-size: 100%;
-  animation: pulse 0.5s infinite alternate-reverse linear;
+	background: url('../Assets/mushroom.svg');
+	background-size: 100%;
+	animation: pulse 0.5s infinite alternate-reverse linear;
 }
-.spinTrap{
-  background: url("../Assets/spinTrap.svg");
-  background-size: cover;
-  animation: spin 2s infinite linear;
+.spinTrap {
+	background: url('../Assets/spinTrap.svg');
+	background-size: cover;
+	animation: spin 2s infinite linear;
 }
 
 .player {
-  position: relative;
-  transition: all 0.3s;
+	position: relative;
+	transition: all 0.3s;
 }
 
+//creating the black fog
 .player::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 300vw;
-  height: 300vh;
-  left: -148vw;
-  top: -148vh;
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 0.15vw,
-    rgba(12, 9, 15, 0.5) 8vw,
-    rgb(12, 9, 15) 20vw
-  );
+	content: '';
+	display: block;
+	position: absolute;
+	width: 300vw;
+	height: 300vh;
+	left: -148vw;
+	top: -148vh;
+	background: radial-gradient(
+		circle,
+		rgba(0, 0, 0, 0) 0.15vw,
+		rgba(12, 9, 15, 0.6) 4vw,
+		rgb(12, 9, 15) 15vw
+	);
 }
 
 .coin {
-  background-image: url("../Assets/coinSprite.png");
-  background-position: top 0% left 0px;
-  background-repeat: no-repeat;
-  background-size: cover;
+	background-image: url('../Assets/coinSprite.png');
+	background-position: top 0% left 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
 
-  /* for avatar sprite sheet */
-  animation: moveSprite 0.5s steps(4) infinite;
-  width: 90%;
-  height: 90%;
-  position: absolute;
-  left: 45%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  z-index: 5;
+	/* for avatar sprite sheet */
+	animation: moveSprite 0.5s steps(4) infinite;
+	width: 90%;
+	height: 90%;
+	position: absolute;
+	left: 45%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: none;
+	z-index: 5;
 }
 
 @keyframes moveSprite {
-  .00% {
-    background-position: top 0% left 97.7%;
-    // -200 is the width of the coin multiples by the number of steps
-  }
+	.00% {
+		background-position: top 0% left 97.7%;
+	}
 }
 
 .big {
-  transform: scale(1.5);
-  left: 0;
-  top: 0;
+	transform: scale(1.5);
+	transition: all 0.5s ease-out;
+	left: 0;
+	top: 0;
 }
-
-
 
 @keyframes appear {
-  0% {
-    transform: translateY(-20vh);
-  }
-  100% {
-    transform: translateY(0);
-  }
+	0% {
+		transform: translateY(-20vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
 
-
-// Responsive Design
 
 @media (max-width: 940px) {
-  .dPad {
-    display: block;
-  }
-  .mazeLayer {
-    width: 65vw;
-    height: 65vw;
-  }
+	.dPad {
+		display: block;
+	}
+	.mazeLayer {
+		width: 65vw;
+		height: 65vw;
+	}
 }
 
-
-
 @media (max-width: 600px) {
-
-  .mazeLayer {
-    width: 75vw;
-    height: 75vw;
-  }
-
+	.mazeLayer {
+		width: 75vw;
+		height: 75vw;
+	}
 }
 
 @media (max-width: 480px) {
-
-  .mazeLayer {
-
-    border-image: none;
-    border:2px solid $primary;
-  }
-
+	.mazeLayer {
+		border-image: none;
+		border: 2px solid $primary;
+	}
 }
-

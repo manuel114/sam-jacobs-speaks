@@ -7,38 +7,38 @@ class Maze extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      mazeMap: [
-        [-1, 1, -7, 1, 0, 0, 0, 0, 0, 0, 0, -4],
-        [0, 1, 0, 1, -6, 1, 1, 1, 0, 1, 1, 1],
-        [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
-        [-3, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-        [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0, 1, -3, 1, 0, 1, -5, 0],
-        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
-        [0, 1, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
-        [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-        [0, 1, 0, 0, -5, 1, -2, 0, 0, 1, -4, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0],
-        [0, 0, -4, 1, -7, 0, 0, 0, 0, 0, 0, 0]
-      ],
-      playerLocation: {
-        x: 1,
-        y: 1
-      },
-      showModal: false,
-      spin: false,
-      coinSize: "regular",
-      reverseControl: false,
-		dPad: "show",
-		moveCount:0
-    };
+			mazeMap: [
+				[-1, 1, -7, 1, 0, 0, 0, 0, 0, 0, 0, -4],
+				[0, 1, 0, 1, -6, 1, 0, 1, 0, 1, 1, 1],
+				[0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0],
+				[-3, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+				[1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 1, -3, 1, 0, 1, -5, 0],
+				[0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+				[0, 1, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
+				[0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+				[0, 1, 0, 0, -5, 1, 0, 0, -2, 1, -4, 0],
+				[0, 1, 1, 1, 1, 1, 0, 1,1 , 1, 1, 0],
+				[0, 0, -4, 1, -7, 0, 0, 0, 0, 0, 0, 0]
+			],
+			playerLocation: {
+				x: 1,
+				y: 1
+			},
+			showModal: false,
+			spin: false,
+			coinSize: 'regular',
+			reverseControl: false,
+			dPad: 'show',
+			moveCount: 0
+		};
 	}
 
+	//start listening to keydown event
 	componentDidMount() {
 		document.addEventListener('keydown', this.handleKeyPress, false);
 	}
-
-	
+	//stop listening to keydown event
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this.handleKeyPress, false);
 	}
@@ -62,61 +62,68 @@ class Maze extends Component {
 		//if target cell is not a wall
 		if (targetCellValue !== 1) {
 			this.moveCoin(target, 0.3);
-			if(targetCellValue!==-1){
-			setTimeout(() => {this.removeItem(target)}, 300)
-			switch (targetCellValue) {
+			if (targetCellValue !== -1) {
+				setTimeout(() => {
+					this.removeItem(target);
+				}, 300);
+				switch (targetCellValue) {
+					//exit of maze
+					case -2: {
+						this.setState({
+							showModal: true,
+							dPad: 'hide'
+						});
+						document.removeEventListener('keydown', this.handleKeyPress, false);
+						break;
+					}
+					//spin the maze
+					case -3: {
+						this.setState({ spin: !this.state.spin });
+						break;
+					}
 
-				//exit of maze
-				case -2: {
-					this.setState({
-						showModal: true,
-						spin: 'noSpin',
-						dPad: 'hide'
-					});
-					break;
+					//grow the coin
+					case -4: {
+						this.setState({ coinSize: 'big' });
+						break;
+					}
+					//reverse the controls
+					case -5: {
+						this.setState({ reverseControl: !this.state.reverseControl });
+						break;
+					}
+					case -6: {
+						setTimeout(() => {
+							this.moveCoin({ x: 1, y: 1 }, 2);
+						}, 300);
+						break;
+					}
+					case -7: {
+						setTimeout(() => {
+							this.moveCoin({ x: 12, y: 3 }, 2);
+						}, 300);
+						break;
+					}
 				}
-				//spin the maze
-				case -3: {
-					this.setState({ spin: !this.state.spin });
-					break;
-				}
-	
-				//grow the coin
-				case -4: {
-					this.setState({ coinSize: 'big' });
-					break;
-				}
-				//reverse the controls
-				case -5: {
-					this.setState({ reverseControl: !this.state.reverseControl });
-					break;
-				}
-				case -6: {
-					setTimeout(() => {this.moveCoin({ x: 1, y: 1 }, 2)}, 300);
-					break;
-				}
-				case -7: {
-					setTimeout(() => {this.moveCoin({ x: 12, y: 3 }, 2)}, 300);
-					break;
-				}
-			}	
-		}}
-
-		
+			}
+		}
 	};
 
 	moveCoin = (target, time) => {
 		document.querySelector('.player').style.transform = `translate(${target.x -
 			1}00%,${target.y - 1}00%)`;
 		document.querySelector('.player').style.transition = `transform ${time}s`;
-		this.setState({ playerLocation: target,moveCount: this.state.moveCount + 1});
+		this.setState({
+			playerLocation: target,
+			moveCount: this.state.moveCount + 1
+		});
 	};
 
-	removeItem=(target)=>{
-			const newMazeMap = this.state.mazeMap;
-			newMazeMap[target.y - 1][target.x - 1] = 0;
-			this.setState({mazeMap:newMazeMap})
-	}
+	removeItem = target => {
+		const newMazeMap = this.state.mazeMap;
+		newMazeMap[target.y - 1][target.x - 1] = 0;
+		this.setState({ mazeMap: newMazeMap });
+	};
 
 	handleKeyPress = e => {
 		if (this.state.reverseControl === true) {
@@ -163,63 +170,118 @@ class Maze extends Component {
 	render() {
 		return (
 			<main className='mazeContainer' onKeyPress={this.handleKeyPress}>
+				{this.state.moveCount < 2 ? (
+					<h2 className='info'>
+						navigate through the maze <br />
+						with arrow keys / d-pad <br />
+						to get Zoltar's advice{' '}
+					</h2>
+				) : null}
 
-				{this.state.moveCount < 2 ? <h2 className='info'>navigate through the maze <br/>with arrow keys / d-pad <br/>to get Zoltar's advice </h2>: null}
-				
 				<div className={`mazeLayer ${this.state.spin}Spin`}>
 					{this.state.mazeMap.map((row, Y) => {
 						return row.map((cell, X) => {
-								
 							switch (cell) {
 								case 1: {
-									return <Cell cellLayer='mapCell' cellType='wall' key={`mapCell-${X}-${Y}`} />;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='wall'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 								case -1: {
-									return <Cell cellLayer='mapCell' cellType='path'key={`mapCell-${X}-${Y}`}/>;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='path'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 
 								case -2: {
-									return <Cell cellLayer='mapCell' cellType='exit' key={`mapCell-${X}-${Y}`} />;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='exit'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 
 								case -3: {
-									return <Cell cellLayer='mapCell' cellType='spinTrap' key={`mapCell-${X}-${Y}`}/>;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='spinTrap'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 
 								case -4: {
-									return <Cell cellLayer='mapCell' cellType='mushroom'key={`mapCell-${X}-${Y}`} />;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='mushroom'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 
 								case -5: {
-									return <Cell cellLayer='mapCell' cellType='reverse'key={`mapCell-${X}-${Y}`}  />;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='reverse'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 								case -6: {
-									return <Cell cellLayer='mapCell' cellType='portal'key={`mapCell-${X}-${Y}`}/>;
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='portal'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
-								case -7:{
-									return <Cell cellLayer='mapCell' cellType='portal'key={`mapCell-${X}-${Y}`}/>;
+								case -7: {
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='portal'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 									break;
 								}
 								default:
-									return <Cell cellLayer='mapCell' cellType='path' key={`mapCell-${X}-${Y}`} />;
-									
-								
-
+									return (
+										<Cell
+											cellLayer='mapCell'
+											cellType='path'
+											key={`mapCell-${X}-${Y}`}
+										/>
+									);
 							}
 						});
 					})}
 					<div className='movingLayer'>
 						{this.state.mazeMap.map((row, Y) => {
-							return row.map((cell,X) => {
+							return row.map((cell, X) => {
 								if (cell === -1) {
-									// starting location
+									// player spawn cell
 									return (
 										<Cell
 											cellLayer='movingCell'
@@ -229,14 +291,24 @@ class Maze extends Component {
 										/>
 									);
 								} else {
-									return <Cell cellLayer='movingCell' cellType='fog' key={`movingCell-${X}-${Y}`} />;
+									return (
+										<Cell
+											cellLayer='movingCell'
+											cellType='fog'
+											key={`movingCell-${X}-${Y}`}
+										/>
+									);
 								}
 							});
 						})}
 					</div>
 				</div>
 
-				<DPad showStatus={this.state.dPad} tap={this.updateCoinLocation} reverseControl={this.state.reverseControl}/>
+				<DPad
+					showStatus={this.state.dPad}
+					tap={this.updateCoinLocation}
+					reverseControl={this.state.reverseControl}
+				/>
 
 				{/* modal appears if victory condition is set to true */}
 				{this.state.showModal ? (
