@@ -1,55 +1,55 @@
 import React from "react";
 
-const DPad = ({ showStatus }) => {
+const DPad = ({ showStatus, tap, reverseControl}) => {
   return (
     <div className={`dPad ${showStatus}DPad`}>
       <button
         className="dPadButton dPadLeft"
         onClick={() => {
-          if (this.state.reverseControl === false) {
-            this.updateCoinLocation("x", -1);
+          if (reverseControl === false) {
+            tap("x", -1);
           } else {
-            this.updateCoinLocation("x", 1);
+            tap("x", 1);
           }
         }}
       >
-        <span className="visuallyHidden">left</span>
+        <span className="visuallyHidden">Left</span>
       </button>
       <button
         className="dPadButton dPadUp"
         onClick={() => {
-          if (this.state.reverseControl === false) {
-            this.updateCoinLocation("y", -1);
+          if (reverseControl === false) {
+            tap("y", -1);
           } else {
-            this.updateCoinLocation("y", 1);
+            tap("y", 1);
           }
         }}
       >
-        <span className="visuallyHidden">up</span>
+        <span className="visuallyHidden">Up</span>
       </button>
       <button
         className="dPadButton dPadRight"
         onClick={() => {
-          if (this.state.reverseControl === false) {
-            this.updateCoinLocation("x", 1);
+          if (reverseControl === false) {
+            tap("x", 1);
           } else {
-            this.updateCoinLocation("x", -1);
+            tap("x", -1);
           }
         }}
       >
-        <span className="visuallyHidden">right</span>
+        <span className="visuallyHidden">Right</span>
       </button>
       <button
         className="dPadButton dPadDown"
         onClick={() => {
-          if (this.state.reverseControl === false) {
-            this.updateCoinLocation("y", 1);
+          if (reverseControl === false) {
+            tap("y", 1);
           } else {
-            this.updateCoinLocation("y", -1);
+            tap("y", -1);
           }
         }}
       >
-        <span className="visuallyHidden">down</span>
+        <span className="visuallyHidden">Down</span>
       </button>
     </div>
   );

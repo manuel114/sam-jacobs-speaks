@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class WinModal extends Component {
   constructor(props) {
+
     super(props);
     this.state = {
       flipButtonPressed: false
@@ -15,12 +16,10 @@ class WinModal extends Component {
     });
   };
 
-
   render() {
     return (
       <div className="winModal">
         <div className="winModalSub">
-          {/* <Link to="/results"> */}
           <div className="card" onClick={this.flipCard}>
             <div
               className={`front ${
@@ -28,10 +27,8 @@ class WinModal extends Component {
                 }`}
             >
               <h2 className="cardTitle">your wish is granted</h2>
-              {/*<button className="seeWishButton" >
-                see wish now
-              </button>*/}
-            </div>
+
+            </div>x
 
             <div
               className={`back ${
@@ -42,7 +39,7 @@ class WinModal extends Component {
 
               <Link to="/">
                 <button className="newWishButton" onClick={this.props.getRandomQuote}>
-                  Try another wish?
+                  Wish Again?
                 </button>
               </Link>
             </div>

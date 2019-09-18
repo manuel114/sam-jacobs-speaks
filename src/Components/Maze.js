@@ -9,17 +9,17 @@ class Maze extends Component {
 		this.state = {
       mazeMap: [
         [-1, 1, -7, 1, 0, 0, 0, 0, 0, 0, 0, -4],
+        [-2, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+        [-3, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 1, -3, 1, 0, 1, -5, 0],
         [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
-        [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
-        [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0],
-        [-3, 1, 0, 0, 0, 1, -3, 1, 0, 1, -5, 0],
-        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
-        [0, 0, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 0, -6, 1, -2, 0, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+        [0, 1, 0, 0, -5, 1, -2, 0, 0, 1, 0, 0],
         [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0],
-        [0, 0, -4, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        [0, 0, -4, 1, -7, 0, 0, 0, 0, 0, 0, 0]
       ],
       playerLocation: {
         x: 1,
@@ -74,7 +74,7 @@ class Maze extends Component {
 				}
 				//spin the maze
 				case -3: {
-					this.setState({ spin: 'spin' });
+					this.setState({ spin: !this.state.spin });
 					break;
 				}
 	
@@ -85,7 +85,7 @@ class Maze extends Component {
 				}
 				//reverse the controls
 				case -5: {
-					this.setState({ reverseControl: true });
+					this.setState({ reverseControl: !this.state.reverseControl });
 					break;
 				}
 				case -6: {
@@ -161,7 +161,7 @@ class Maze extends Component {
 	render() {
 		return (
 			<main className='mazeContainer' onKeyPress={this.handleKeyPress}>
-				<div className={`mazeLayer ${this.state.spin}`}>
+				<div className={`mazeLayer ${this.state.spin}Spin`}>
 					{this.state.mazeMap.map((row, Y) => {
 						return row.map((cell, X) => {
 								
@@ -181,7 +181,7 @@ class Maze extends Component {
 								}
 
 								case -3: {
-									return <Cell cellLayer='mapCell' cellType='oil'key={`mapCell-${X}-${Y}`}/>;
+									return <Cell cellLayer='mapCell' cellType='reverse'key={`mapCell-${X}-${Y}`}/>;
 									break;
 								}
 
@@ -191,7 +191,7 @@ class Maze extends Component {
 								}
 
 								case -5: {
-									return <Cell cellLayer='mapCell' cellType='reverse'key={`mapCell-${X}-${Y}`}  />;
+									return <Cell cellLayer='mapCell' cellType='oil'key={`mapCell-${X}-${Y}`}  />;
 									break;
 								}
 								case -6: {
@@ -231,7 +231,8 @@ class Maze extends Component {
 					</div>
 				</div>
 
-				<DPad showStatus={this.state.dPad}/>
+				<DPad showStatus={this.state.dPad} tap={this.updateCoinLocation} reverseControl={this.state.reverseControl}/>
+
 				{this.state.showModal ? (
 					<WinModal
 						finalAnswer={this.props.finalAnswer}

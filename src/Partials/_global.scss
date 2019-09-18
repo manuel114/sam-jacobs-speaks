@@ -17,6 +17,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	overflow: hidden;
+	min-width: 320px;
 }
 
 .wrapper {
@@ -42,8 +43,8 @@ a:focus{
 text-decoration: none;
 border:transparent;
 }
-h1 {
 
+h1 {
   font-family: 'Poiret One', cursive;
   -webkit-text-stroke: 3px #f9f1da;
   color:  #f9f1da;
@@ -51,7 +52,6 @@ h1 {
   font-size: 2.5rem;
   text-transform: uppercase;
   text-align: center;
-
 }
 
 button:focus,

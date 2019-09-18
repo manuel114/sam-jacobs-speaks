@@ -10,22 +10,39 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  cursor: url("../Assets/singleCoin.png"), pointer;
-}
-form,
-a,
-button,
-input[type="text"],
-.wishButton {
-  cursor: url("../Assets/singleCoin.png"), pointer;
 }
 
-button.landingPageButton:focus {
-  border: none;
+.submitCard {
+  position: relative;
+  display: inline-block;
+
+  &:hover .landingPageButtonHover, &:focus .landingPageButtonHover {
+    display: inline;
+  }
 }
+
+.landingPageButton,
+.landingPageButtonHover {
+  width: 6rem;
+  padding-left: 10%;
+
+  &:hover, &:focus {
+    cursor: url("../Assets/singleCoin.png"), pointer;
+  }
+}
+
+.landingPageButtonHover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
 h1 {
   margin-bottom: 0.5rem;
 }
+
 .zoltarImage {
   margin-top: -5%;
   max-height: 60%;
@@ -37,7 +54,7 @@ h1 {
 }
 .wishQuestion {
   color: #fff;
-  font-family: "Poiret One", cursive;
+  font-family: "Hind Siliguri", sans-serif;
   letter-spacing: 1.2px;
   padding-top: 2%;
   // padding-bottom: 10%;
@@ -46,8 +63,14 @@ h1 {
   -webkit-text-stroke: 2px #f9f1da;
   text-align: center;
 }
+
 .wishInputBox {
   text-align: center;
+
+  &::placeholder{
+    font-family: "Hind Siliguri", sans-serif;
+  }
+  
 }
 
 .wishLabel {
@@ -63,19 +86,10 @@ h1 {
 }
 .buttonLinkContainer {
   padding-left: 0.5rem;
-  //   width: 25%;
   flex: 1 0 25%;
   max-width: 130px;
-  button {
-    border: none;
-  }
-
-  .wishButton:focus,
-  .wishButton:active,
-  .wishButton:hover {
-    border: none;
-  }
 }
+
 .userInput {
   width: 70%;
   height: 50px;
@@ -86,7 +100,7 @@ h1 {
 }
 .wishError {
   border: 2px solid $tertiary;
-  animation: warning 2s infinite;
+  animation: warning 0.2s infinite;
 }
 @keyframes warning {
   0% {
@@ -176,8 +190,7 @@ h1 {
   animation: float 4s ease-in-out infinite alternate-reverse;
 }
 @media (max-width: 1120px) {
-
-	.zoltarContainer {
+  .zoltarContainer {
     width: 70%;
   }
 
@@ -185,12 +198,15 @@ h1 {
     font-size: 2rem;
     margin-bottom: 0;
   }
+
   h2.wishQuestion {
     font-size: 1.2rem;
   }
+
   img.zoltarImage {
     width: 80%;
   }
+
   .makeWishContainer {
     flex-direction: column;
     justify-content: flex-start;
@@ -212,18 +228,19 @@ h1 {
     height: auto;
   }
 
-  .landingPageButton {
+  .landingPageButton, .landingPageButtonHover {
     width: 5rem;
   }
 }
 @media (max-width: 736px) {
-  
   .zoltarContainer {
-    width: 80%;
+    width: 90%;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 470px) {
 
-  
+  h2.wishQuestion {
+    font-size: 0.9rem;
+  }
 }

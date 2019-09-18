@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import coinSlot from "../Assets/coinSlot.svg";
+import coinSlotHover from "../Assets/coinSlotHover.svg";
 class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ class LandingPage extends Component {
 
     if (userWish !== "") {
       this.props.handleSubmit(userWish);
+
       this.setState({
         wishEmpty: false
       });
@@ -49,15 +51,13 @@ class LandingPage extends Component {
         <form
           className="makeWishContainer"
           action="submit"
-          onSubmit={event => (
-            this.emptyStringCheck(event, this.state.userWish)
-          )}
+          onSubmit={event => event.preventDefault()}
+          // this.emptyStringCheck(event, this.state.userWish)
         >
           <div className="leftForm">
             <h2 className="wishQuestion">What do you wish for?</h2>
             <label className="wishLabel visuallyHidden">Enter a wish</label>
             <input
-              // required
               type="text"
               placeholder="Enter A Wish & Insert Coin"
               onChange={this.handleChange}
@@ -68,15 +68,26 @@ class LandingPage extends Component {
           </div>
           <div className="buttonLinkContainer">
             <Link to="/maze">
-              <img
-                type="button"
-                src={coinSlot}
-                alt="Coin Slot"
-                className="landingPageButton"
-                onClick={event =>
-                  this.emptyStringCheck(event, this.state.userWish)
-                }
-              />
+              <div className="submitCard">
+                <img
+                  type="button"
+                  src={coinSlot}
+                  alt="Coin Slot"
+                  className="landingPageButton"
+                  onClick={event =>
+                    this.emptyStringCheck(event, this.state.userWish)
+                  }
+                />
+                <img
+                  type="button"
+                  src={coinSlotHover}
+                  alt="Coin Slot"
+                  className="landingPageButtonHover"
+                  onClick={event =>
+                    this.emptyStringCheck(event, this.state.userWish)
+                  }
+                />
+              </div>
             </Link>
           </div>
         </form>

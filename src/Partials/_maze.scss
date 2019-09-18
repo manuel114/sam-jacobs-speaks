@@ -37,8 +37,8 @@
 }
 
 .cell {
-  min-height: 27px;
-  min-width: 27px;
+  min-height: 25px;
+  min-width: 25px;
   width: 100%;
   height: 100%;
 }
@@ -51,83 +51,18 @@
   position: relative;
 }
 
-// .buttonContainerMaze {
-//   display: flex;
-//   flex-direction: row;
-//   margin: 0 auto;
-//   padding: 1rem;
-// }
-
-// button {
-//   border: 3px solid #e2804d;
-//   background: #3e000e;
-
-//   &:hover {
-//     background: #e2804d;
-//   }
-// }
-
-// .controller {
-//   position: relative;
-// }
-
-// .dpad {
-//   position: fixed;
-//   width: 50vw;
-//   height: 10vh;
-//   display: none;
-// }
-
-// .dpadUp {
-//   position: absolute;
-//   top: 44%;
-//   left: 50%;
-//   border-top-left-radius: 25%;
-//   border-top-right-radius: 25%;
-// }
-
-// .dpadDown {
-//   position: absolute;
-//   top: 167%;
-//   left: 50%;
-//   border-bottom-left-radius: 25%;
-//   border-bottom-right-radius: 25%;
-// }
-
-// .dpadLeft {
-//   position: absolute;
-//   top: 111.5%;
-//   right: 49.25%;
-//   border-top-left-radius: 25%;
-//   border-bottom-left-radius: 25%;
-// }
-
-// .dpadRight {
-//   position: absolute;
-//   top: 111.5%;
-//   left: 59.5%;
-//   border-top-right-radius: 25%;
-//   border-bottom-right-radius: 25%;
-// }
-
-// .dpadUp,
-// .dpadDown {
-//   width: 10%;
-//   height: 70%;
-// }
-
-// .dpadLeft,
-// .dpadRight {
-//   width: 13%;
-//   height: 60%;
-
-  
-// }
-.spin {
-  animation: spinMaze 15s infinite linear;
+.buttonContainerMaze {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-@keyframes spinMaze {
+.trueSpin {
+  animation: spin 25s infinite linear;
+}
+
+@keyframes spin {
   from {
     transform: rotateZ(0deg);
   }
@@ -136,6 +71,23 @@
   }
 }
 
+@keyframes pulse {
+  from{
+    transform:scale(0.8);
+    filter:hue-rotate(50deg);
+  }
+  to{
+    transform:scale(1);
+    filter:hue-rotate(-100deg);
+  }
+}
+
+@keyframes glow{
+  from{
+    filter:contrast(90%) brightness(0.9)
+  }
+  to{filter:contrast(180%) brightness(1.5)}
+}
 .path {
   background-color: transparent;
 }
@@ -147,21 +99,26 @@
 }
 
 .exit {
-  background: url("../Assets/crystalBall.svg");
+  background: url("../Assets/globe.svg");
   background-size: cover;
+  animation: glow 1s infinite linear alternate-reverse;
 }
 .portal {
   background: url("../Assets/portal.svg");
   background-size: cover;
+  animation: spin 3s linear infinite reverse;
 }
 .reverse {
-  background: yellow;
+  background: url('../Assets/reverseTrap.svg');
+  background-size: 100%;
+  animation: spin 1s linear infinite;
 }
 .mushroom {
   background: url("../Assets/mushroom.svg");
   background-size: 100%;
+  animation: pulse 0.5s infinite alternate-reverse linear;
 }
-.oil {
+.oil{
   background: url("../Assets/oilSpill.svg") no-repeat;
   background-size: contain;
 }
@@ -171,21 +128,21 @@
   transition: all 0.3s;
 }
 
-.player::after {
-  content: "";
-  // display: block;
-  position: absolute;
-  width: 300vw;
-  height: 300vh;
-  left: -148vw;
-  top: -148vh;
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 0.15vw,
-    rgba(12, 9, 15, 0.5) 5vw,
-    rgb(12, 9, 15) 10vw
-  );
-}
+// .player::after {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 300vw;
+//   height: 300vh;
+//   left: -148vw;
+//   top: -148vh;
+//   background: radial-gradient(
+//     circle,
+//     rgba(0, 0, 0, 0) 0.15vw,
+//     rgba(12, 9, 15, 0.5) 6vw,
+//     rgb(12, 9, 15) 15vw
+//   );
+// }
 
 .coin {
   background-image: url("../Assets/coinSprite.png");
@@ -220,27 +177,6 @@
 
 
 
-.winModal {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.winModalSub {
-  position: fixed;
-  width: 60vw;
-  height: 40vh;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  animation: appear 1s;
-}
-
 @keyframes appear {
   0% {
     transform: translateY(-20vh);
@@ -250,155 +186,48 @@
   }
 }
 
-.card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  perspective: 800px; /*important for the flip. The lower the value, the closer you will view the transform" */
-}
 
-.front,
-.back {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+// Responsive Design
 
-  backface-visibility: hidden;
-  font-size: 1.4rem;
-}
-
-.front {
-  transform: rotateY(0deg);
-}
-
-.back {
-  transform: rotateY(180deg); /*By Default set the back to be rotate */
-}
-
-.flipFront {
-  transform: rotateY(-180deg);
-  animation: flipFrontAnimation 2s;
-}
-
-.flipBack {
-  transform: rotateY(0deg);
-  animation: flipBackAnimation 2s;
-
-  p {
-    color: black;
+@media (max-width: 940px) {
+  .dPad {
+    display: block;
+  }
+  .mazeLayer {
+    width: 65vw;
+    height: 65vw;
   }
 }
 
-// @keyframes flipBackAnimation {
-//   from {
-//     transform: rotateY(180deg);
-//   }
-//   to {
-//     transform: rotateY(0);
-//   }
-// }
+@media (max-width: 750px) {
 
-// @keyframes flipFrontAnimation {
-//   from {
-//     transform: rotateY(0);
-//   }
-//   to {
-//     transform: rotateY(-180deg);
-//   }
-// }
+}
 
-// // button responsive
+@media (max-width: 600px) {
 
-// @media (max-width: 940px) {
-//   .dpad {
-//     display: block;
-//   }
-// }
+  .mazeLayer {
+    width: 75vw;
+    height: 75vw;
+  }
 
-// @media (max-width: 750px) {
-//   .dpadRight {
-//     position: absolute;
-//     top: 111.5%;
-//     left: 61.5%;
-//     border-top-right-radius: 25%;
-//     border-bottom-right-radius: 25%;
-//   }
+}
 
-//   .dpadUp,
-//   .dpadDown {
-//     width: 12%;
-//     height: 70%;
-//   }
+@media (max-width: 480px) {
 
-//   .dpadLeft,
-//   .dpadRight {
-//     width: 13%;
-//     height: 59%;
-//   }
-// }
+  .mazeLayer {
+    width: 78vw;
+    height: 78vw;
+    border-image: none;
+    border:2px solid $primary;
+  }
 
-// @media (max-width: 600px) {
-//   .dpadUp {
-//     top: 100%;
-//     left: 50%;
-//   }
+}
 
-//   .dpadLeft {
-//     top: 166.5%;
-//     right: 49.25%;
-//   }
+@media (max-width: 320px) {
 
-//   .dpadDown {
-//     top: 223%;
-//     left: 50%;
-//   }
+  .mazeLayer {
+    width: 80vw;
+    height: 80vw;
+  }
 
-//   .dpadRight {
-//     top: 166.5%;
-//     left: 64.25%;
-//   }
-
-//   .dpadUp,
-//   .dpadDown {
-//     width: 15%;
-//     height: 70%;
-//   }
-
-//   .dpadLeft,
-//   .dpadRight {
-//     width: 18%;
-//     height: 60%;
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .dpadRight {
-//     left: 69%;
-//   }
-
-//   .dpadUp,
-//   .dpadDown {
-//     width: 20%;
-//   }
-
-//   .dpadLeft,
-//   .dpadRight {
-//     width: 20%;
-//   }
-// }
-
-// @media (max-width: 320px) {
-//   .dpadRight {
-//     left: 78.5%;
-//   }
-
-//   .dpadUp,
-//   .dpadDown {
-//     width: 30%;
-//   }
-
-//   .dpadLeft,
-//   .dpadRight {
-//     width: 30%;
-//   }
-// }
+}
