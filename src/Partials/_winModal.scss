@@ -5,12 +5,13 @@
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index:999;
 }
 
 .winModalSub {
   position: absolute;
   width: 70vw;
-  height: 40vh;
+  height: 45vh;
   left: 0;
   right: 0;
   top: 0;
@@ -35,16 +36,13 @@ h2.cardTitle {
 .front,
 .back {
   min-width: 280px;
-
   background: url("../Assets/paperBackground.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   position: absolute;
   height: 40vh;
   width: 100%;
-
   padding: 5% 0;
 
   backface-visibility: hidden;
@@ -67,7 +65,7 @@ h2.cardTitle {
 }
 
 .back {
-  transform: rotateY(180deg); /*By Default set the back to be rotate */
+  transform: rotateY(180deg); 
 }
 
 .flipFront {
@@ -105,17 +103,15 @@ h2.cardTitle {
 
 .cardTitle,
 .modalWish {
-  font-family: "Poiret One", cursive;
+  font-family: $headlineFont;
   -webkit-text-stroke: 3px $secondary;
   color: $secondary;
   letter-spacing: 2rem;
-  // text-stroke: 3px $secondary;
   text-transform: capitalize;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  // transition-duration: 5s;
-  // transition-delay: 2s;
+
 }
 
 .cardTitle {
@@ -123,7 +119,7 @@ h2.cardTitle {
   padding-bottom: 5%;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
-  font-family: "Cinzel", serif;
+  font-family: $headlineFont;
 }
 
 .modalWish {
@@ -131,11 +127,11 @@ h2.cardTitle {
   text-align: center;
   line-height: 2rem;
   letter-spacing: 0.2rem;
-  font-family: "Hind Siliguri", sans-serif;
+  font-family: $bodyFont;
   font-size: 1.5rem;
 }
 
-.seeWishButton,
+
 .newWishButton {
   display: flex;
   justify-content: center;
@@ -143,9 +139,10 @@ h2.cardTitle {
   margin: 0.5rem auto 1.5rem auto;
   background: $primary;
   border: 1px solid $primary;
+  border-radius: 15px;
   color: #fff;
-  font-family: "Hind Siliguri", sans-serif;
-  text-transform: capitalize;
+  font-family: $bodyFont;
+  font-weight: 600;
   font-size: 1.1rem;
 }
 
@@ -157,9 +154,9 @@ h2.cardTitle {
 }
 
 .finalAnswer {
-  color: #000;
+  color: $primary;
   padding: 5% 5%;
-  font-family: "Hind Siliguri", sans-serif;
+  font-family: $bodyFont;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -197,7 +194,6 @@ h2.cardTitle {
   }
 
   .flipBack {
-
     p {
     font-size: 1rem;
   }

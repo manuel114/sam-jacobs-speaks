@@ -17,8 +17,7 @@ class LandingPage extends Component {
   };
 
   emptyStringCheck = (event, userWish) => {
-    console.log(userWish);
-
+    // check if user input is empty, if not, then pass to user submit and reset wishEmpty state
     if (userWish !== "") {
       this.props.handleSubmit(userWish);
 
@@ -26,6 +25,8 @@ class LandingPage extends Component {
         wishEmpty: false
       });
     } else {
+
+      // if user input is empty, prevent default, and toggle wishEmpty to add the error class to user 
       event.preventDefault();
       this.setState(
         {
@@ -42,20 +43,19 @@ class LandingPage extends Component {
     return (
       <main className="wrapper zoltarContainer">
         <h1>Zoltar Speaks</h1>
-        <img
-          className="zoltarImage"
-          src={require("../Assets/ZoltarLogo.svg")}
-          alt={"Zoltar Speaks Logo"}
-        />
+          <img
+            className="zoltarImage"
+            src={require("../Assets/ZoltarLogo.svg")}
+            alt={"Zoltar Speaks Logo"}
+          />
 
         <form
           className="makeWishContainer"
           action="submit"
           onSubmit={event => event.preventDefault()}
-          // this.emptyStringCheck(event, this.state.userWish)
         >
           <div className="leftForm">
-            <h2 className="wishQuestion">What do you wish for?</h2>
+            
             <label className="wishLabel visuallyHidden">Enter a wish</label>
             <input
               type="text"

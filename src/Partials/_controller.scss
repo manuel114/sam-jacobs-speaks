@@ -1,15 +1,20 @@
 
-.dPadButton {
+.dPad{
+	display: none;
+}
 
+.dPadButton {
+//the rectangle part of the arrow
 	display: inline-block;  
 	border-top-left-radius: 10%;
 	border-bottom-left-radius: 10%;
 	border:none;
 	position: relative;
 	width: 60px;
-	height:40px;
+	height: 40px;
 	background: $primary;
-	 &:after {
+	//the triangle part of the arrow
+	 &::after {
 	  border-left: 20px solid $primary;
 	  content: "";
 	  position: absolute;
@@ -19,196 +24,66 @@
 	  width: 0px;
 	  margin-right: -20px;
 	  right: 0; 
-	  top:0;
+	  top: 0;
 	}
  }
 
  
- .arrow:hover, .arrow:active, .arrow:focus {
-	background: yellow;
-	color: black;
-	&:after {
+.dPadButton:active {
+	background: $tertiary;
+	&::after:active {
 	  // triangle hover
-	  border-left: 20px solid yellow;
+	  border-left: 20px solid $tertiary;
 	}
  }
- 
- 
-
-// .dPad {
-// 	display: none;
-// }
-
-// .showDPad{
-// 	z-index: 500;
-// }
-
-// button {
-//   border: 3px solid $tertiary;
-//   background: $secondary;
-
-//   &:hover {
-//     background: $primary;
-//   }
-// }
-
-// .controller {
-//   position: relative;
-// }
-
-.dPad {
-display:grid;
-grid-template-columns: repeat 52px;
-grid-template-rows: repeat 52px;
-  width:156px;
-  height:156px;
-  justify-content: center;
-  align-items: center;
-}
 
 .dPadLeft{
 	grid-column: 1 / 2;
-	grid-row:2 / 3;
+	grid-row: 2 / 3;
 }
 .dPadRight {
- transform:rotate(180deg);
- grid-column: 3 / 4;
-grid-row:2 / 3;
-//  right:-50px;
-//  top:52px;
-
+	transform:rotate(180deg);
+	grid-column: 3 / 4;
+	grid-row: 2 / 3;
 }
 
 .dPadDown {
-transform:rotate(-90deg);
-grid-column: 2 / 3;
-grid-row:3 / 4;
-// bottom:0;
-// left:0;
-// 	right:0;
+	transform:rotate(-90deg);
+	grid-column: 2 / 3;
+	grid-row:3 / 4;
 }
 .dPadUp{
 	transform: rotate(90deg);
 	grid-column: 2 / 3;
 	grid-row:1 / 2;
-
-	// top:0;
-	// left:0;
-	// right:0;
  }
 
-// .dPadLeft {
-//   position: absolute;
-//   top: 111.5%;
-//   right: 49.25%;
-//   border-top-left-radius: 25%;
-//   border-bottom-left-radius: 25%;
-// }
 
-// .dPadRight {
-//   position: absolute;
-//   top: 111.5%;
-//   left: 59.5%;
-//   border-top-right-radius: 25%;
-//   border-bottom-right-radius: 25%;
-// }
+@media (max-width: 1113px) {
+	
+.dPad {
+	display:grid;
+	grid-template-columns: repeat 52px;
+	grid-template-rows: repeat 52px;
+	width:150px;
+	height:150px;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom:2%;
+	margin: 0 auto;
+	z-index:999;
+}
+}
+@media (max-width: 1024px) {
+	
+	.dPad {
+		bottom:10%;
+	}
+	}
 
+@media (max-width: 321px) {
+	.dPad{
+		bottom:0;
+	}}
 
-
-// .dPadLeft,
-// .dPadRight {
-//   width: 13%;
-//   height: 60%;  
-// }
-
-// // // button responsive
-
-// @media (max-width: 940px) {
-// 	.dPad {
-// 		display: block;
-// 	}
-// }
-
-// @media (max-width: 750px) {
-// 	.dPadRight {
-// 		position: absolute;
-// 		top: 111.5%;
-// 		left: 61.5%;
-// 		border-top-right-radius: 25%;
-// 		border-bottom-right-radius: 25%;
-// 	}
-
-// 	.dPadUp,
-// 	.dPadDown {
-// 		width: 12%;
-// 		height: 70%;
-// 	}
-
-// 	.dPadLeft,
-// 	.dPadRight {
-// 		width: 13%;
-// 		height: 59%;
-// 	}
-// }
-
-// @media (max-width: 600px) {
-// 	.dPadUp {
-// 		top: 100%;
-// 		left: 50%;
-// 	}
-
-// 	.dPadLeft {
-// 		top: 166.5%;
-// 		right: 49.25%;
-// 	}
-
-// 	.dPadDown {
-// 		top: 223%;
-// 		left: 50%;
-// 	}
-
-// 	.dPadRight {
-// 		top: 166.5%;
-// 		left: 64.25%;
-// 	}
-
-// 	.dPadUp,
-// 	.dPadDown {
-// 		width: 15%;
-// 		height: 70%;
-// 	}
-
-// 	.dPadLeft,
-// 	.dPadRight {
-// 		width: 18%;
-// 		height: 60%;
-// 	}
-// }
-
-// @media (max-width: 480px) {
-// 	.dPadRight {
-// 		left: 69%;
-// 	}
-
-// 	.dPadUp,
-// 	.dPadDown {
-// 		width: 20%;
-// 	}
-// }
-
-// @media (max-width: 320px) {
-// 	.dPadRight {
-// 		left: 78.5%;
-// 	}
-
-// 	.dPadUp,
-// 	.dPadDown,
-// 	.dPadLeft,
-// 	.dPadRight {
-// 		width: 30%;
-// 	}
-
-// .hideDPad {
-// 	display: none;
-// }
-// }

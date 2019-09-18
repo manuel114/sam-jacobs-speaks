@@ -14,6 +14,7 @@ class App extends Component {
       advice: ""
     };
   }
+  
   handleSubmit = userWish => {
     const userInput = userWish;
 
@@ -32,7 +33,6 @@ class App extends Component {
       dataResponse: `json`
     }).then(answer => {
       if (typeof answer.data.message === "undefined") {
-        console.log(answer.data.slips[0].advice);
         this.setState({
           advice: answer.data.slips[0].advice
         });
@@ -52,8 +52,6 @@ class App extends Component {
     })
       .then(answer => {
         const randomAdvice = answer.data.slip.advice;
-        console.log(randomAdvice);
-
         this.setState({
           advice: randomAdvice
         });
