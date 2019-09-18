@@ -21,7 +21,7 @@ body {
 }
 
 .wrapper {
-	max-width: 1680px;
+	max-width: 1440px;
 }
 
 img {
@@ -39,19 +39,19 @@ input {
 	padding: 15px;
 }
 
-a:focus{
-text-decoration: none;
-border:transparent;
+a:focus {
+	text-decoration: none;
+	border: transparent;
 }
 
 h1 {
-  font-family: $headlineFont;
-  -webkit-text-stroke: 3px #f9f1da;
-  color:  #f9f1da;
-  letter-spacing: 7px;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  text-align: center;
+	font-family: $headlineFont;
+	-webkit-text-stroke: 3px #f9f1da;
+	color: #f9f1da;
+	letter-spacing: 7px;
+	font-size: 2.5rem;
+	text-transform: uppercase;
+	text-align: center;
 }
 
 button:focus,

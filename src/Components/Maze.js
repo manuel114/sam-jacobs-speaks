@@ -12,7 +12,7 @@ class Maze extends Component {
         [0, 1, 0, 1, -6, 1, 1, 1, 0, 1, 1, 1],
         [0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
         [-3, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-        [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0],
+        [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0],
         [0, 0, 0, 0, 0, 1, -3, 1, 0, 1, -5, 0],
         [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1],
         [0, 1, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
@@ -62,8 +62,10 @@ class Maze extends Component {
 		//if target cell is not a wall
 		if (targetCellValue !== 1) {
 			this.moveCoin(target, 0.3);
+			if(targetCellValue!==-1){
 			setTimeout(() => {this.removeItem(target)}, 300)
 			switch (targetCellValue) {
+
 				//exit of maze
 				case -2: {
 					this.setState({
@@ -98,7 +100,7 @@ class Maze extends Component {
 					break;
 				}
 			}	
-		}
+		}}
 
 		
 	};
@@ -236,13 +238,13 @@ class Maze extends Component {
 
 				<DPad showStatus={this.state.dPad} tap={this.updateCoinLocation} reverseControl={this.state.reverseControl}/>
 
+				{/* modal appears if victory condition is set to true */}
 				{this.state.showModal ? (
 					<WinModal
 						finalAnswer={this.props.finalAnswer}
 						getRandomQuote={this.props.getRandomQuote}
 					/>
 				) : null}
-				{/* modal appears if victory condition is set to true */}
 			</main>
 		);
 	}
