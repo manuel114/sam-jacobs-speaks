@@ -16,14 +16,13 @@ class App extends Component {
 
 	handleSubmit = userWish => {
 		const userInput = userWish;
-
 		///run the imported filterWish function to remove filler words
 		const filteredWish = filterWish(userInput);
 
-		// turn the words into an array a
-		const wordArray = filteredWish.split(' ')[0];
+		// turn the words into an array
+		const wordArray = filteredWish.split(' ');
 
-		// take the first value of the array [0] and save it to state
+		// take the first word of the array and save it
 		const userKeyWord = wordArray[0];
 
 		// run it through the API Call to get contextual advice
@@ -57,6 +56,7 @@ class App extends Component {
 				});
 			})
 			.catch(() => {
+				// if ajax call for random advice failed (API down) return this error message
 				this.setState({
 					advice: `Zoltar is resting and can't offer advice. Try again later.`
 				});
@@ -73,7 +73,6 @@ class App extends Component {
 						component={() => (
 							<LandingPage
 								handleSubmit={this.handleSubmit}
-								handleChange={this.handleChange}
 								wishEmpty={this.state.wishEmpty}
 							/>
 						)}

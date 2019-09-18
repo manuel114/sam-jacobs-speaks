@@ -29,7 +29,7 @@
 
 .dPadButton:active {
 	background: $tertiary;
-	&::after:active {
+	&::after {
 		// triangle hover
 		border-left: 20px solid $tertiary;
 	}
@@ -67,14 +67,14 @@
 		align-items: center;
 		position: fixed;
 		bottom: 2%;
+		right: 5%;
 		margin: 0 auto;
 		z-index: 999;
 	}
 }
 @media (max-width: 1024px) {
 	.dPad {
-		bottom: 5%;
-		right: 5%;
+		bottom: 3%;
 	}
 }
 

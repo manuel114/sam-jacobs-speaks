@@ -7,6 +7,7 @@ class Maze extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			//define the map layout
 			mazeMap: [
 				[-1, 1, -7, 1, 0, 0, 0, 0, 0, 0, 0, -4],
 				[0, 1, 0, 1, -6, 1, 0, 1, 0, 1, 1, 1],
@@ -18,7 +19,7 @@ class Maze extends Component {
 				[0, 1, 0, 1, 0, 0, -6, 1, 0, 0, 0, 0],
 				[0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
 				[0, 1, 0, 0, -5, 1, 0, 0, -2, 1, -4, 0],
-				[0, 1, 1, 1, 1, 1, 0, 1,1 , 1, 1, 0],
+				[0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
 				[0, 0, -4, 1, -7, 0, 0, 0, 0, 0, 0, 0]
 			],
 			playerLocation: {
@@ -59,10 +60,13 @@ class Maze extends Component {
 	checkTargetCell = target => {
 		//use target location x and y as indexes to access maze array and element value
 		const targetCellValue = this.state.mazeMap[target.y - 1][target.x - 1];
+
 		//if target cell is not a wall
 		if (targetCellValue !== 1) {
 			this.moveCoin(target, 0.3);
+			//if target is not the starting point
 			if (targetCellValue !== -1) {
+				// wait for 0.3s, after moveCoin animation finishes, remove item/trap icon
 				setTimeout(() => {
 					this.removeItem(target);
 				}, 300);
@@ -73,6 +77,7 @@ class Maze extends Component {
 							showModal: true,
 							dPad: 'hide'
 						});
+						//stop arrow key events
 						document.removeEventListener('keydown', this.handleKeyPress, false);
 						break;
 					}
@@ -92,12 +97,14 @@ class Maze extends Component {
 						this.setState({ reverseControl: !this.state.reverseControl });
 						break;
 					}
+					//a portal to the starting point
 					case -6: {
 						setTimeout(() => {
 							this.moveCoin({ x: 1, y: 1 }, 2);
 						}, 300);
 						break;
 					}
+					//a portal to somewhere else
 					case -7: {
 						setTimeout(() => {
 							this.moveCoin({ x: 12, y: 3 }, 2);
@@ -110,22 +117,29 @@ class Maze extends Component {
 	};
 
 	moveCoin = (target, time) => {
+		// use CSS to change coin location
 		document.querySelector('.player').style.transform = `translate(${target.x -
 			1}00%,${target.y - 1}00%)`;
+
+		// set transition time
 		document.querySelector('.player').style.transition = `transform ${time}s`;
+
 		this.setState({
 			playerLocation: target,
 			moveCount: this.state.moveCount + 1
 		});
 	};
 
+	//remove item/trap from map once consumed
 	removeItem = target => {
 		const newMazeMap = this.state.mazeMap;
+		//change cell type to normal path
 		newMazeMap[target.y - 1][target.x - 1] = 0;
 		this.setState({ mazeMap: newMazeMap });
 	};
 
 	handleKeyPress = e => {
+		// when reverseControl item has been consumed
 		if (this.state.reverseControl === true) {
 			switch (e.key) {
 				case 'ArrowUp': {
@@ -146,6 +160,7 @@ class Maze extends Component {
 				}
 			}
 		} else {
+			//normal controls
 			switch (e.key) {
 				case 'ArrowUp': {
 					this.updateCoinLocation('y', -1);
