@@ -4,7 +4,7 @@
 
 ## Creators
 
-Abdullahi Roble
-Konrad Droeske
-Nora Zheng
-Whitney Reid
+- Abdullahi Roble [GitHub](https://github.com/Abdullahi-Roble)
+- Konrad Droeske [GitHub](https://github.com/konraddroeske)
+- Nora Zheng [GitHub](https://github.com/NoraZheng)
+- Whitney Reid [GitHub](https://github.com/whitreid07)
