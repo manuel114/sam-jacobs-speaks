@@ -1,259 +1,260 @@
 .zoltarContainer {
-	border: 30px solid transparent;
-	border-image: url('../Assets/ZoltarFrame.svg') 150 round;
-	margin: 2rem auto;
-	padding: 1rem;
-	z-index: 100;
-	width: 55vw;
-	height: 90vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+  border: 30px solid transparent;
+  border-image: url('../Assets/ZoltarFrame.svg') 150 round;
+  margin: 2rem auto;
+  padding: 1rem;
+  z-index: 100;
+  width: 55vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .submitCard {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 
-	&:hover .landingPageButtonHover {
-		display: inline;
-	}
+  &:hover .landingPageButtonHover {
+    display: inline;
+  }
 }
 
 .buttonLinkContainer a:focus .landingPageButtonHover {
-	display: inline;
+  display: inline;
 }
 
 .landingPageButton,
 .landingPageButtonHover {
-	width: 5rem;
+  width: 5rem;
 
-	&:hover,
-	&:focus {
-		cursor: url('../Assets/singleCoin.png'), pointer;
-	}
+  &:hover,
+  &:focus {
+    cursor: url('../Assets/singleCoin.png'), pointer;
+  }
 }
 
 .landingPageButtonHover {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 99;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
 }
 
 h1 {
-	margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .zoltarImage {
-	margin-top: -5%;
-	max-height: 60%;
+  margin-top: -5%;
+  max-height: 60%;
 }
 
 .makeWishContainer {
-	display: flex;
-	flex-direction: column;
-	width: auto;
-	justify-content: center;
-	align-items: center;
-	max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
 }
 
 .wishInputBox {
-	text-align: center;
+  text-align: center;
 
-	&::placeholder {
-		font-family: $bodyFont;
-	}
+  &::placeholder {
+    font-family: $bodyFont;
+  }
 }
 
 .leftForm {
-	display: flex;
-	flex-direction: column;
-	width: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
 }
 
 .buttonLinkContainer {
-	padding-left: 0.5rem;
-	max-width: 130px;
+  padding-left: 0.5rem;
+  max-width: 130px;
 }
 
 .userInput {
-	width: 70%;
-	height: 50px;
-	padding-left: 5rem;
+  width: 70%;
+  height: 50px;
+  padding-left: 5rem;
 }
 .wishButton {
-	align-self: center;
+  align-self: center;
 }
 .wishError {
-	border: 2px solid $tertiary;
-	animation: warning 0.2s 6;
+  border: 2px solid $tertiary;
+  animation: warning 0.2s 6;
 }
 @keyframes warning {
-	0% {
-		border: 2px solid $tertiary;
-	}
-	50% {
-		border: 2px solid red;
-	}
-	100% {
-		border: 2px solid $tertiary;
-	}
+  0% {
+    border: 2px solid $tertiary;
+  }
+  50% {
+    border: 2px solid red;
+  }
+  100% {
+    border: 2px solid $tertiary;
+  }
 }
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
 .stars {
-	content: '';
-	background: transparent;
-	box-shadow: $stars;
-	animation: animStar 50s linear infinite;
-	z-index: -1;
+  content: '';
+  background: transparent;
+  box-shadow: $stars;
+  animation: animStar 50s linear infinite;
+  z-index: -1;
 }
 
 .stars:after {
-	content: ' ';
-	position: absolute;
-	top: 2000px;
-	border-radius: 50%;
-	width: 2px;
-	height: 2px;
-	background: transparent;
-	box-shadow: $starsAfter;
-	z-index: -1;
+  content: ' ';
+  position: absolute;
+  top: 2000px;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $starsAfter;
+  z-index: -1;
 }
 
 .stars2 {
-	width: 4px;
-	height: 4px;
-	border-radius: 50%;
-	background: transparent;
-	box-shadow: $stars2;
-	animation: animStar 100s linear infinite;
-	z-index: -1;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: $stars2;
+  animation: animStar 100s linear infinite;
+  z-index: -1;
 }
 
 .stars2:after {
-	content: ' ';
-	position: absolute;
-	top: 2000px;
-	width: 2px;
-	height: 2px;
-	border-radius: 50%;
-	background: transparent;
-	box-shadow: $stars2After;
-	z-index: -1;
+  content: ' ';
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: $stars2After;
+  z-index: -1;
 }
 
 .stars3 {
-	width: 3px;
-	height: 3px;
-	border-radius: 50%;
-	background: transparent;
-	box-shadow: $stars3;
-	animation: animStar 150s linear infinite;
-	z-index: -1;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: $stars3;
+  animation: animStar 150s linear infinite;
+  z-index: -1;
 }
 
 .stars3:after {
-	content: '';
-	position: absolute;
-	top: 2000px;
-	background: transparent;
-	box-shadow: $stars3After;
-	z-index: -1;
+  content: '';
+  position: absolute;
+  top: 2000px;
+  background: transparent;
+  box-shadow: $stars3After;
+  z-index: -1;
 }
 // REFERENCED BY Mario Duarte
 @keyframes animStar {
-	from {
-		transform: translateY(-2000px);
-	}
-	to {
-		transform: translateY(infinite);
-	}
+  from {
+    transform: translateY(-2000px);
+  }
+  to {
+    transform: translateY(infinite);
+  }
 }
 
 @keyframes float {
-	0% {
-		transform: translateY(1%);
-	}
-	100% {
-		transform: translateY(5%);
-	}
+  0% {
+    transform: translateY(3%);
+  }
+  100% {
+    transform: translateY(6%);
+  }
 }
 
 .zoltarImage {
-	animation: float 3s linear infinite alternate-reverse;
+  animation: float 3s linear infinite alternate-reverse;
 }
 
 @media (max-width: 1120px) {
-	.zoltarContainer {
-		width: 70%;
-	}
+  .zoltarContainer {
+    width: 70%;
+  }
 
-	h1 {
-		font-size: 2rem;
-		margin-bottom: 0;
-	}
+  h1 {
+    margin-bottom: 0;
+  }
 
-	h2.wishQuestion {
-		font-size: 1.2rem;
-	}
+  h2.wishQuestion {
+    font-size: 1.2rem;
+  }
 
-	img.zoltarImage {
-		width: 90%;
-	}
+  img.zoltarImage {
+    width: 90%;
+  }
 
-	.makeWishContainer {
-		flex-direction: column;
-		width: auto;
-		justify-content: center;
-		align-items: center;
-	}
+  .makeWishContainer {
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+  }
 
-	.wishInputBox {
-		margin: 1.2rem 0;
-		font-weight: 500;
-	}
+  .wishInputBox {
+    margin: 1.2rem 0;
+    font-weight: 500;
+  }
 
-	.leftForm,
-	.buttonLinkContainer {
-		padding: 0;
-	}
+  .leftForm,
+  .buttonLinkContainer {
+    padding: 0;
+  }
 
-	.leftForm {
-		width: 350px;
-	}
+  .leftForm {
+    width: 350px;
+  }
 
-	.landingPageButton,
-	.landingPageButtonHover {
-		padding: 0;
-	}
+  .landingPageButton,
+  .landingPageButtonHover {
+    padding: 0;
+  }
 }
 
 @media (max-width: 736px) {
-	.zoltarContainer {
-		width: 80%;
-		padding: 0;
-	}
+  .zoltarContainer {
+    width: 80%;
+    padding: 0;
+  }
 
-	.leftForm {
-		width: 320px;
-	}
+  .leftForm {
+    width: 320px;
+  }
 }
 
 @media (max-width: 470px) {
-	.zoltarContainer {
-		border-image: none;
-		border: none;
-	}
+  .zoltarContainer {
+    border-image: none;
+    border: none;
+  }
 
-	.leftForm {
-		width: 250px;
-	}
+  .leftForm {
+    width: 250px;
+  }
 
-	.wishInputBox {
-		font-size: 0.9rem;
-	}
+  .wishInputBox {
+    font-size: 0.9rem;
+  }
 }
