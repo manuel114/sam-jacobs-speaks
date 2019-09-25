@@ -21,9 +21,6 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-a:focus {
-  outline: thin dotted;
-}
 
 a:active, a:hover {
   outline: 0;
@@ -229,10 +226,6 @@ h1 {
   letter-spacing: 7px;
   font-size: 3rem;
   text-transform: uppercase;
-}
-
-button:focus {
-  outline: none;
 }
 
 :focus {
