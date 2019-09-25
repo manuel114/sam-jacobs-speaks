@@ -108,10 +108,11 @@ h1 {
 //ANIMATED BACKGROUND //CODEPEN REFERENCED FROM SARANSH SINHA
 .stars {
   content: '';
+  position: relative;
   background: transparent;
   box-shadow: $stars;
   animation: animStar 50s linear infinite;
-  z-index: -1;
+  z-index: -1000;
 }
 
 .stars:after {
@@ -123,7 +124,7 @@ h1 {
   height: 2px;
   background: transparent;
   box-shadow: $starsAfter;
-  z-index: -1;
+  z-index: -10;
 }
 
 .stars2 {
@@ -133,7 +134,8 @@ h1 {
   background: transparent;
   box-shadow: $stars2;
   animation: animStar 100s linear infinite;
-  z-index: -1;
+  z-index: -10;
+  position: relative;
 }
 
 .stars2:after {
@@ -145,7 +147,7 @@ h1 {
   border-radius: 50%;
   background: transparent;
   box-shadow: $stars2After;
-  z-index: -1;
+  z-index: -10;
 }
 
 .stars3 {
@@ -155,7 +157,8 @@ h1 {
   background: transparent;
   box-shadow: $stars3;
   animation: animStar 150s linear infinite;
-  z-index: -1;
+  z-index: -10;
+  position: relative;
 }
 
 .stars3:after {
@@ -164,7 +167,7 @@ h1 {
   top: 2000px;
   background: transparent;
   box-shadow: $stars3After;
-  z-index: -1;
+  z-index: -10;
 }
 // REFERENCED BY Mario Duarte
 @keyframes animStar {
