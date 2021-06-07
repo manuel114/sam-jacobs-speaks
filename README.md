@@ -12,3 +12,7 @@ Inspired by [this clip](https://www.youtube.com/watch?v=Q6RK4479XD8) of movie Bi
   - Mushroom: grows the coin to super big.
   - Black holes: teleport the coin to somewhere else.
 - Once you reach the exit (a golden crystall ball around the bottom right), a card would appear. Click on the card to read Zoltar's response.
+
+## Live Link
+
+[Vercel Hosting](https://zoltar-speaks.vercel.app/)
