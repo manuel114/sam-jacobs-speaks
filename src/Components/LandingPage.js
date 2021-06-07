@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import zoltarImage from '../Assets/ZoltarLogo.svg';
 import coinSlot from '../Assets/coinSlot.svg';
 import coinSlotHover from '../Assets/coinSlotHover.svg';
 class LandingPage extends Component {
@@ -32,7 +33,7 @@ class LandingPage extends Component {
           wishEmpty: true
         },
         () => {
-          console.log(this.state.wishEmpty);
+          alert('Enter a wish to continue');
         }
       );
     }
@@ -44,7 +45,7 @@ class LandingPage extends Component {
         <h1>Zoltar Speaks</h1>
         <img
           className='zoltarImage'
-          src={require('../Assets/ZoltarLogo.svg')}
+          src={zoltarImage}
           alt={'Zoltar Speaks Logo'}
         />
 

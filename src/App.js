@@ -4,15 +4,7 @@ import filterWish from './filterWish';
 import './Partials/App.scss';
 import Maze from './Components/Maze';
 import LandingPage from './Components/LandingPage';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// ~~~ for AXE accessibility testing only ~~~
-
-// var ReactDOM = require('react-dom');
-// if (process.env.NODE_ENV !== 'production') {
-//   var axe = require('react-axe');
-//   axe(React, ReactDOM, 1000);
-// }
-// ~~~ for AXE accessibility testing only ~~~
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
