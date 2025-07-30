@@ -43,8 +43,13 @@ class App extends Component {
   getSamAdvice = async (question) => {
     this.setState({ isLoading: true });
     
+    // Use localhost in development, /api/advice in production
+    const apiUrl = process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3001/api/advice'
+      : '/api/advice';
+
     try {
-      const response = await axios.post('/api/advice', {
+      const response = await axios.post(apiUrl, {
         userQuestion: question
       });
       
