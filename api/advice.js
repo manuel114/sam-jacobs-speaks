@@ -1,6 +1,9 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
+  console.log('API function called');
+  console.log('Environment check:', process.env.OPENAI_API_KEY ? 'API key present' : 'API key missing');
+  
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -19,11 +22,18 @@ module.exports = async (req, res) => {
 
   try {
     const { userQuestion } = req.body;
+    console.log('User question:', userQuestion);
 
     if (!userQuestion) {
       return res.status(400).json({ error: 'User question is required' });
     }
 
+    if (!process.env.OPENAI_API_KEY) {
+      console.error('OpenAI API key is missing');
+      return res.status(500).json({ error: 'OpenAI API key not configured' });
+    }
+
+    console.log('Creating OpenAI client...');
     // Create OpenAI client
     const openai = axios.create({
       baseURL: 'https://api.openai.com/v1',
@@ -34,6 +44,7 @@ module.exports = async (req, res) => {
       }
     });
 
+    console.log('Creating assistant...');
     // Create assistant
     const assistantResponse = await openai.post('/assistants', {
       name: 'Sam Jacobs GTM Oracle',
@@ -47,12 +58,13 @@ Your responses should be:
 - Around 2-3 sentences, concise but impactful
 
 Always sign off with "~ Sam Jacobs, GTM Oracle"`,
-      model: 'gpt-4o-mini',
-      tools: [{ type: 'retrieval' }]
+      model: 'gpt-4o-mini'
     });
 
     const assistantId = assistantResponse.data.id;
+    console.log('Assistant created:', assistantId);
 
+    console.log('Creating thread...');
     // Create thread
     const threadResponse = await openai.post('/threads', {
       messages: [
@@ -64,14 +76,18 @@ Always sign off with "~ Sam Jacobs, GTM Oracle"`,
     });
 
     const threadId = threadResponse.data.id;
+    console.log('Thread created:', threadId);
 
+    console.log('Creating run...');
     // Create run
     const runResponse = await openai.post(`/threads/${threadId}/runs`, {
       assistant_id: assistantId
     });
 
     const runId = runResponse.data.id;
+    console.log('Run created:', runId);
 
+    console.log('Polling for completion...');
     // Poll for completion
     let runStatus = 'queued';
     while (runStatus === 'queued' || runStatus === 'in_progress') {
@@ -79,12 +95,14 @@ Always sign off with "~ Sam Jacobs, GTM Oracle"`,
       
       const runCheckResponse = await openai.get(`/threads/${threadId}/runs/${runId}`);
       runStatus = runCheckResponse.data.status;
+      console.log('Run status:', runStatus);
     }
 
     if (runStatus === 'failed') {
       throw new Error('OpenAI run failed');
     }
 
+    console.log('Getting messages...');
     // Get messages
     const messagesResponse = await openai.get(`/threads/${threadId}/messages`);
     const messages = messagesResponse.data.data;
@@ -120,11 +138,14 @@ Always sign off with "~ Sam Jacobs, GTM Oracle"`,
 
       res.json({ advice });
     } else {
+      console.error('No assistant message found');
       res.status(500).json({ error: 'No advice received from assistant' });
     }
 
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Detailed error:', error);
+    console.error('Error message:', error.message);
+    console.error('Error response:', error.response?.data);
     res.status(500).json({ error: 'Failed to get advice' });
   }
 }; 
