@@ -111,6 +111,9 @@ class Maze extends Component {
 						}, 300);
 						break;
 					}
+					default:
+						// No action needed for default case
+						break;
 				}
 			} else {
 				this.moveCoin(target);
@@ -160,6 +163,9 @@ class Maze extends Component {
 					this.updateCoinLocation('x', -1);
 					break;
 				}
+				default:
+					// No action for other keys
+					break;
 			}
 		} else {
 			//normal controls
@@ -180,6 +186,9 @@ class Maze extends Component {
 					this.updateCoinLocation('x', 1);
 					break;
 				}
+				default:
+					// No action for other keys
+					break;
 			}
 		}
 	};
@@ -207,7 +216,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 								case -1: {
 									return (
@@ -217,7 +225,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 
 								case -2: {
@@ -228,7 +235,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 
 								case -3: {
@@ -239,7 +245,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 
 								case -4: {
@@ -250,7 +255,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 
 								case -5: {
@@ -261,7 +265,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 								case -6: {
 									return (
@@ -271,7 +274,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 								case -7: {
 									return (
@@ -281,7 +283,6 @@ class Maze extends Component {
 											key={`mapCell-${X}-${Y}`}
 										/>
 									);
-									break;
 								}
 								default:
 									return (
