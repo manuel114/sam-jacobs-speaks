@@ -46,7 +46,7 @@ class App extends Component {
     // Use localhost in development, /api/advice in production
     const apiUrl = process.env.NODE_ENV === 'development'
       ? 'http://localhost:3001/api/advice'
-      : '/api/advice';
+      : `${window.location.origin}/api/advice`;
 
     try {
       const response = await axios.post(apiUrl, {
