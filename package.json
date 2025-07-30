@@ -18,6 +18,7 @@
     "server": "node server.js",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
     "build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
+    "vercel-build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

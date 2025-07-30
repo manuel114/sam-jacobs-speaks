@@ -44,8 +44,8 @@ class App extends Component {
     this.setState({ isLoading: true });
     
     try {
-      const response = await axios.post('http://localhost:3001/api/sam-advice', {
-        question: question
+      const response = await axios.post('/api/advice', {
+        userQuestion: question
       });
       
       this.setState({
