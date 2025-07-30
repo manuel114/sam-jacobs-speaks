@@ -1,0 +1,108 @@
+.background-music-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(44, 62, 80, 0.7);
+  border-radius: 20px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  opacity: 0.3;
+  transition: opacity 0.3s, background 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+  pointer-events: auto;
+
+  &:hover,
+  &:focus-within {
+    opacity: 0.92;
+    background: rgba(44, 62, 80, 0.95);
+  }
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  color: #ecf0f1;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover,
+  &:focus {
+    background: rgba(255,255,255,0.08);
+    transform: scale(1.08);
+    outline: none;
+  }
+}
+
+.volume-slider {
+  width: 0;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+  margin-left: 0;
+  pointer-events: none;
+  transition: width 0.3s, opacity 0.3s, margin-left 0.3s;
+}
+
+.background-music-controls:hover .volume-slider,
+.background-music-controls:focus-within .volume-slider {
+  width: 48px;
+  opacity: 1;
+  margin-left: 6px;
+  pointer-events: auto;
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  .background-music-controls {
+    bottom: 12px;
+    right: 12px;
+    padding: 4px 7px;
+  }
+  .music-btn {
+    font-size: 13px;
+    width: 22px;
+    height: 22px;
+  }
+  .background-music-controls:hover .volume-slider,
+  .background-music-controls:focus-within .volume-slider {
+    width: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-music-controls {
+    bottom: 6px;
+    right: 6px;
+    padding: 2px 4px;
+  }
+  .music-controls {
+    gap: 4px;
+  }
+  .music-btn {
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+  }
+  .background-music-controls:hover .volume-slider,
+  .background-music-controls:focus-within .volume-slider {
+    width: 22px;
+  }
+} 

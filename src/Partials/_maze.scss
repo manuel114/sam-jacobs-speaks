@@ -224,3 +224,39 @@
 		border: 2px solid $primary;
 	}
 }
+
+@media (max-width: 736px) {
+  .mazeContainer {
+    margin-top: 2vh;
+  }
+  .mazeLayer, .movingLayer {
+    max-width: 98vw;
+    max-height: 60vw;
+    min-width: 180px;
+    min-height: 180px;
+    width: 98vw;
+    height: 60vw;
+  }
+  .info {
+    font-size: 1rem;
+    top: 20vh;
+  }
+}
+
+@media (max-width: 470px) {
+  .mazeContainer {
+    margin-top: 0.5vh;
+  }
+  .mazeLayer, .movingLayer {
+    max-width: 99vw;
+    max-height: 45vw;
+    min-width: 100px;
+    min-height: 100px;
+    width: 99vw;
+    height: 45vw;
+  }
+  .info {
+    font-size: 0.8rem;
+    top: 12vh;
+  }
+}

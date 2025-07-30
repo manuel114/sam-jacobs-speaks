@@ -189,9 +189,9 @@ class Maze extends Component {
 			<main className='mazeContainer' onKeyPress={this.handleKeyPress}>
 				{this.state.moveCount < 2 ? (
 					<h2 className='info'>
-						navigate through the maze <br />
+						Navigate through Sam's mystical machine <br />
 						with arrow keys / d-pad <br />
-						to get Zoltar's advice{' '}
+						to receive his GTM wisdom{' '}
 					</h2>
 				) : null}
 
@@ -331,6 +331,8 @@ class Maze extends Component {
 				{this.state.showModal ? (
 					<WinModal
 						finalAnswer={this.props.finalAnswer}
+						userQuestion={this.props.userQuestion}
+						isLoading={this.props.isLoading}
 						getRandomQuote={this.props.getRandomQuote}
 					/>
 				) : null}

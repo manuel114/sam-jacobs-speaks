@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import zoltarImage from '../Assets/ZoltarLogo.svg';
+import samOracleImage from '../Assets/Sam The Oracle Image.png';
 import coinSlot from '../Assets/coinSlot.svg';
 import coinSlotHover from '../Assets/coinSlotHover.svg';
 class LandingPage extends Component {
@@ -25,6 +25,9 @@ class LandingPage extends Component {
       this.setState({
         wishEmpty: false
       });
+      
+      // Trigger music start on first user interaction
+      this.startBackgroundMusic();
     } else {
       // if user input is empty, prevent default, and toggle wishEmpty to add the error class to user
       event.preventDefault();
@@ -33,64 +36,98 @@ class LandingPage extends Component {
           wishEmpty: true
         },
         () => {
-          alert('Enter a wish to continue');
+          alert('Enter a GTM question to continue');
         }
       );
     }
   };
 
+  startBackgroundMusic = () => {
+    // Find the audio element and start playing
+    const audioElement = document.querySelector('audio');
+    if (audioElement && audioElement.paused) {
+      audioElement.play().then(() => {
+        // Update the music component state if it exists
+        const musicComponent = document.querySelector('.background-music-controls');
+        if (musicComponent) {
+          const playBtn = musicComponent.querySelector('.play-btn');
+          if (playBtn) {
+            playBtn.textContent = '⏸️';
+          }
+        }
+      }).catch(error => {
+        console.log('Music start failed:', error);
+      });
+    }
+  };
+
+  isMobile = () => {
+    return window.innerWidth <= 736;
+  };
+
   render() {
     return (
       <main className='wrapper zoltarContainer'>
-        <h1>Zoltar Speaks</h1>
+        <div className='titleBlock'>
+          <h1>The GTM Oracle</h1>
+          <h2 className='subtitle'>"Channeling the wisdom of Sam Jacobs. Powered by hard lessons, Pavilion scars, and a sprinkle of Luxembourg astrology."</h2>
+        </div>
         <img
-          className='zoltarImage'
-          src={zoltarImage}
-          alt={'Zoltar Speaks Logo'}
+          className='samOracleImage'
+          src={samOracleImage}
+          alt={'Sam Jacobs Speaks Logo'}
         />
 
         <form
           className='makeWishContainer'
           action='submit'
           onSubmit={event => event.preventDefault()}>
-          <div className='leftForm'>
-            <label htmlFor='wish' className='wishLabel visuallyHidden'>
-              Enter a wish to start
-            </label>
-            <input
-              id='wish'
-              type='text'
-              placeholder='Enter A Wish & Insert Coin'
-              onChange={this.handleChange}
-              className={`wishInputBox ${
-                this.state.wishEmpty === true ? 'wishError' : ''
-              }`}
-            />
-          </div>
-          <div className='buttonLinkContainer'>
-            <Link to='/maze'>
-              <div className='submitCard'>
-                <img
-                  type='button'
-                  src={coinSlot}
-                  alt='Coin Slot'
-                  className='landingPageButton'
-                  onClick={event =>
-                    this.emptyStringCheck(event, this.state.userWish)
-                  }
-                />
-                <img
-                  type='button'
-                  src={coinSlotHover}
-                  alt='Coin Slot'
-                  className='landingPageButtonHover'
-                  onClick={event =>
-                    this.emptyStringCheck(event, this.state.userWish)
-                  }
+          {!this.isMobile() ? (
+            <>
+              <div className='leftForm'>
+                <label htmlFor='wish' className='wishLabel visuallyHidden'>
+                  Ask your GTM question to start
+                </label>
+                <input
+                  id='wish'
+                  type='text'
+                  placeholder='Ask your GTM question & Insert Coin'
+                  onChange={this.handleChange}
+                  className={`wishInputBox ${
+                    this.state.wishEmpty === true ? 'wishError' : ''
+                  }`}
                 />
               </div>
-            </Link>
-          </div>
+              <div className='buttonLinkContainer'>
+                <Link to='/maze'>
+                  <div className='submitCard'>
+                    <img
+                      type='button'
+                      src={coinSlot}
+                      alt='Coin Slot'
+                      className='landingPageButton'
+                      onClick={event =>
+                        this.emptyStringCheck(event, this.state.userWish)
+                      }
+                    />
+                    <img
+                      type='button'
+                      src={coinSlotHover}
+                      alt='Coin Slot'
+                      className='landingPageButtonHover'
+                      onClick={event =>
+                        this.emptyStringCheck(event, this.state.userWish)
+                      }
+                    />
+                  </div>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className='mobileMessage'>
+              <p>Please come back on desktop</p>
+            </div>
+          )}
         </form>
       </main>
     );

@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "quote": "Focus. Your first product will scale farther than you think.",
+        "theme": "Focus"
+    },
+    {
+        "id": 2,
+        "quote": "Churn is not solved with triage. Solve it upstream.",
+        "theme": "Churn"
+    },
+    {
+        "id": 3,
+        "quote": "The future is in your hands. Sam has spoken.",
+        "theme": "Motivation"
+    },
+    {
+        "id": 4,
+        "quote": "Product-market fit is not a destination. It's a journey.",
+        "theme": "Product-Market Fit"
+    },
+    {
+        "id": 5,
+        "quote": "Your first 10 customers will teach you more than any book.",
+        "theme": "Customer Development"
+    },
+    {
+        "id": 6,
+        "quote": "Revenue solves most problems. Focus there first.",
+        "theme": "Revenue"
+    },
+    {
+        "id": 7,
+        "quote": "Hire for culture, train for skills. The reverse never works.",
+        "theme": "Hiring"
+    },
+    {
+        "id": 8,
+        "quote": "Your biggest competitor is your customer's status quo.",
+        "theme": "Competition"
+    },
+    {
+        "id": 9,
+        "quote": "Pricing is a feature. Don't treat it like an afterthought.",
+        "theme": "Pricing"
+    },
+    {
+        "id": 10,
+        "quote": "The best marketing is a product that sells itself.",
+        "theme": "Marketing"
+    },
+    {
+        "id": 11,
+        "quote": "Founder-led sales is not a phase. It's a superpower.",
+        "theme": "Sales"
+    },
+    {
+        "id": 12,
+        "quote": "Your roadmap should be written in pencil, not stone.",
+        "theme": "Strategy"
+    },
+    {
+        "id": 13,
+        "quote": "The customer is always right about their problem. Not the solution.",
+        "theme": "Customer Feedback"
+    },
+    {
+        "id": 14,
+        "quote": "Burn rate is a choice. Make it intentional.",
+        "theme": "Finance"
+    },
+    {
+        "id": 15,
+        "quote": "The best time to raise money is when you don't need it.",
+        "theme": "Fundraising"
+    }
+]

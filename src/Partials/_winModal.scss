@@ -10,8 +10,8 @@
 
 .winModalSub {
 	position: absolute;
-	width: 50vw;
-	height: 45vh;
+	width: 45vw;
+	height: 40vh;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -43,13 +43,13 @@ h2.cardTitle {
 	position: absolute;
 	height: 40vh;
 	width: 100%;
-	padding: 5% 0;
+	padding: 4% 0;
 
 	backface-visibility: hidden;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 
 	span {
-		width: 80%;
+		width: 85%;
 	}
 }
 
@@ -103,9 +103,8 @@ h2.cardTitle {
 .cardTitle,
 .modalWish {
 	font-family: $headlineFont;
-	-webkit-text-stroke: 3px $secondary;
 	color: $secondary;
-	letter-spacing: 2rem;
+	letter-spacing: normal;
 	text-transform: capitalize;
 	display: flex;
 	justify-content: center;
@@ -113,21 +112,84 @@ h2.cardTitle {
 }
 
 .cardTitle {
-	font-size: 1.8rem;
-	padding-bottom: 5%;
+	font-size: 1.5rem;
+	padding-bottom: 4%;
 	text-transform: uppercase;
-	letter-spacing: 0.3rem;
+	letter-spacing: normal;
 	font-family: $headlineFont;
 }
 
-.modalWish {
-	padding: 0 3rem;
+.user-question {
 	text-align: center;
-	line-height: 2rem;
-	letter-spacing: 0.2rem;
-	font-family: $bodyFont;
-	font-size: 1.5rem;
+	margin-bottom: 15px;
+	padding: 0 1.5rem;
+	
+	.question-label {
+		display: block;
+		font-size: 12px;
+		font-weight: 600;
+		color: #7f8c8d;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		margin-bottom: 5px;
+	}
+	
+	.question-text {
+		display: block;
+		font-size: 14px;
+		font-weight: 500;
+		color: #34495e;
+		font-style: italic;
+		line-height: 1.4;
+	}
 }
+
+.modalWish {
+	padding: 0 1.5rem;
+	text-align: center;
+	line-height: 1.5;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-size: 16px;
+	color: #333;
+	max-width: 90%;
+	margin: 0 auto;
+	
+	.advice-quote {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 20px;
+		color: #2c3e50;
+		line-height: 1.6;
+		padding: 0;
+		text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+		letter-spacing: 0.02rem;
+	}
+	
+	.advice-theme {
+		display: block;
+		font-size: 0.85rem;
+		font-weight: 500;
+		color: #7f8c8d;
+		font-style: italic;
+		margin-bottom: 0.8rem;
+		font-family: 'Inter', sans-serif;
+	}
+}
+
+.advice-footer {
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #7f8c8d;
+	margin: 20px 0 0 0;
+	padding: 0 1.5rem;
+	line-height: 1.4;
+	font-style: italic;
+	letter-spacing: 0.01rem;
+}
+
+
 
 .newWishButton {
 	display: flex;
@@ -181,18 +243,45 @@ h2.cardTitle {
 	}
 
 	.winModalSub {
-		width: 80%;
+		width: 98vw;
+		height: 60vh;
+	}
+	.card {
+		min-width: 220px;
+	}
+	.front, .back {
+		min-width: 180px;
+		height: 60vh;
+		padding: 2% 0;
+	}
+	.advice-quote {
+		font-size: 13px;
+	}
+	.advice-footer {
+		font-size: 12px;
+	}
+	.newWishButton {
+		width: 7rem;
+		font-size: 1rem;
 	}
 }
 
 @media (max-width: 470px) {
 	.winModalSub {
-		width: 90%;
+		width: 99vw;
+		height: 70vw;
 	}
 
 	.flipBack {
 		p {
 			font-size: 1rem;
 		}
+		
+		.advice-quote {
+			// Ensure minimum readable size on mobile
+			font-size: 12px !important;
+		}
 	}
+
+
 }

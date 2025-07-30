@@ -32,25 +32,63 @@ class WinModal extends Component {
 		}
 	};
 
+	getDynamicFontSize = (text) => {
+		if (!text) return '16px';
+		
+		const length = text.length;
+		
+		// Very long responses (300+ characters)
+		if (length > 300) return '12px';
+		
+		// Long responses (200-300 characters)
+		if (length > 200) return '14px';
+		
+		// Medium responses (100-200 characters)
+		if (length > 100) return '15px';
+		
+		// Short responses (default)
+		return '16px';
+	};
+
+
+
 	render() {
 		return (
 			<div className='winModalOverlay' onKeyPress={this.handleKeyPress}>
 				<div className='winModalSub'>
 					<div className='card' onClick={this.flipCard}>
 						<div className={`front ${this.state.fliped ? 'flipFront' : ''}`}>
-							<h2 className='cardTitle'>your wish is granted</h2>
+							<h2 className='cardTitle'>Sam has spoken</h2>
 						</div>
 						x
 						<div className={`back ${this.state.fliped ? 'flipBack' : ''}`}>
+							{this.props.userQuestion && (
+								<p className='user-question'>
+									<span className='question-label'>Your Question:</span>
+									<span className='question-text'>"{this.props.userQuestion}"</span>
+								</p>
+							)}
 							<p className='modalWish'>
-								<span>{this.props.finalAnswer}</span>
+								{this.props.isLoading ? (
+									<span className='advice-quote'>Sam is thinking...</span>
+								) : (
+									<span 
+										className='advice-quote'
+										style={{
+											fontSize: this.getDynamicFontSize(this.props.finalAnswer)
+										}}
+									>
+										{this.props.finalAnswer}
+									</span>
+								)}
 							</p>
+							<p className='advice-footer'>The future is in your hands. What will you do about it?</p>
 
 							<Link to='/'>
 								<button
 									className='newWishButton'
 									onClick={this.props.getRandomQuote}>
-									Wish Again?
+									Ask Again?
 								</button>
 							</Link>
 						</div>
